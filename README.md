@@ -91,3 +91,9 @@ logger:
 ![Config flow](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/config_flow.png)
 
 ![Config options](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/config_options.png)
+
+## Code origin
+
+The code of this Home Assistant integration has been written by analysing the calls done by the Youfone website and by contributing to the integration made by [@myTselection](https://github.com/myTselection). It made me curious on how to build an integration from scratch, using the recommendations here https://developers.home-assistant.io/docs/creating_component_index/. I tried to pull out of the website as much information as possible.
+
+I have no link with Youfone
