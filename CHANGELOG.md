@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.1.5](https://github.com/geertmeersman/youfone/tree/v0.1.5) (2023-04-10)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.4...v0.1.5)
+
+**Documentation:**
+
+- Screenshots of config flow & options [\#3](https://github.com/geertmeersman/youfone/pull/3) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.1.4](https://github.com/geertmeersman/youfone/tree/v0.1.4) (2023-04-10)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.3...v0.1.4)
