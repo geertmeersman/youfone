@@ -7,6 +7,14 @@
 
 A Home Assistant integration allowing to monitor your Youfone usage
 
+### Features
+
+- 📱 Mobile data sensors
+- 📞 Voice & sms sensors
+- 💲 Youcoins balance
+- 📈 Invoice sensors
+- 👱 User account information
+
 ---
 
 <!-- [START BADGES] -->
