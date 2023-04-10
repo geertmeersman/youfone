@@ -1,0 +1,13 @@
+{
+  "domain": "youfone",
+  "name": "Youfone",
+  "codeowners": ["@geertmeersman"],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/geertmeersman/youfone",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/geertmeersman/youfone/issues",
+  "requirements": [],
+  "version": "v0.1.3"
+}

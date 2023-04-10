@@ -1,0 +1,65 @@
+{
+  "config": {
+    "step": {
+      "connection_init": {
+        "title": "Nieuwe Youfone account",
+        "description": "Configureer je Youfone gebruikers account",
+        "data": {
+          "username": "Gebruiker",
+          "password": "Wachtwoord",
+          "country": "Land"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Account is al geconfigureerd"
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken",
+      "invalid_auth": "Ongeldige authenticatie",
+      "unknown": "Onverwachte fout",
+      "service_error": "Service niet beschikbaar"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Herconfigureer Youfone",
+        "data": {
+          "username": "Gebruiker",
+          "password": "Wachtwoord"
+        }
+      },
+      "country": {
+        "title": "Wijzig je land",
+        "description": "Dit zou je normaal niet hoeven te gebruiken",
+        "data": {
+          "country": "Land"
+        }
+      },
+      "password": {
+        "title": "Pas je wachtwoord aan",
+        "description": "Te doen wanneer je je account wachtwoord gewijzigd hebt op 'Youfone'",
+        "data": {
+          "password": "Wachtwoord"
+        }
+      },
+      "options_init": {
+        "title": "Opties wijzigen",
+        "menu_options": {
+          "country": "Land",
+          "password": "Wachtwoord"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Account is al geconfigureerd"
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken",
+      "invalid_auth": "Ongeldige authenticatie",
+      "unknown": "Onverwachte fout",
+      "service_error": "Service niet beschikbaar"
+    }
+  }
+}
