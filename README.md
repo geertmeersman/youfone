@@ -53,9 +53,9 @@ A Home Assistant integration allowing to monitor your Youfone usage
 
 This integration will set up the following platforms.
 
-| Platform  | Description                                      |
-| --------- | ------------------------------------------------ |
-| `youfone` | Home Assistant component for Youfone BE services |
+| Platform  | Description                                           |
+| --------- | ----------------------------------------------------- |
+| `youfone` | Home Assistant component for Youfone BE & NL services |
 
 ## Contributions are welcome!
 
