@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.1.7](https://github.com/geertmeersman/youfone/tree/v0.1.7) (2023-04-10)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.6...v0.1.7)
+
+**Documentation:**
+
+- Update README.md [\#5](https://github.com/geertmeersman/youfone/pull/5) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.1.6](https://github.com/geertmeersman/youfone/tree/v0.1.6) (2023-04-10)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.5...v0.1.6)
