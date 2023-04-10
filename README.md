@@ -74,4 +74,14 @@ logger:
 
 ## Screenshots
 
-![Sensors](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/sensors.png)
+### Msisdn info
+
+![Msisdn](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/msisdn.png)
+
+### Useraccount and Youcoins info
+
+![Useraccount](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/useraccount.png)
+
+### Invoices
+
+![Invoices](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/invoices.png)
