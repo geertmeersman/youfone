@@ -73,3 +73,5 @@ logger:
 ```
 
 ## Screenshots
+
+![Sensors](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/sensors.png)
