@@ -85,3 +85,9 @@ logger:
 ### Invoices
 
 ![Invoices](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/invoices.png)
+
+### Config flow
+
+![Config flow](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/config_flow.png)
+
+![Config options](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/config_options.png)
