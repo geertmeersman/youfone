@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.1.2](https://github.com/geertmeersman/youfone/tree/v0.1.2) (2023-04-10)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.1...v0.1.2)
+
 ## [v0.1.1](https://github.com/geertmeersman/youfone/tree/v0.1.1) (2023-04-10)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.0...v0.1.1)
