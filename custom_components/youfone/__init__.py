@@ -102,7 +102,7 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
             )
         }
 
-        if len(items) > 0:
+        if items is not None and len(items) > 0:
             fetched_items = {str(items[item].device_key) for item in items}
             log_debug(
                 f"[init|YoufoneDataUpdateCoordinator|_async_update_data|fetched_items] {fetched_items}"
