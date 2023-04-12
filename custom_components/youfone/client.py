@@ -41,8 +41,9 @@ class YoufoneClient:
         self.username = username
         self.password = password
         self.environment = environment
-        self.session.headers = headers
         self.country = country
+        self._headers = headers
+        self.securitykey = None
         self.user_details = None
         self.request_error = {}
         if country != DEFAULT_COUNTRY:
@@ -61,12 +62,21 @@ class YoufoneClient:
         connection_retry_left=CONNECTION_RETRY,
     ) -> dict:
         """Send a request to Youfone."""
+        headers = self._headers
+        headers.update(
+            {
+                "referer": f"https://my.youfone.{self.country}/login",
+                "securitykey": self.securitykey,
+            }
+        )
         if data is None:
             log_debug(f"{caller} Calling GET {url}")
-            response = self.session.get(url, timeout=REQUEST_TIMEOUT)
+            response = self.session.get(url, timeout=REQUEST_TIMEOUT, headers=headers)
         else:
             log_debug(f"{caller} Calling POST {url} with {data}")
-            response = self.session.post(url, data, timeout=REQUEST_TIMEOUT)
+            response = self.session.post(
+                url, data, timeout=REQUEST_TIMEOUT, headers=headers
+            )
         log_debug(
             f"{caller} http status code = {response.status_code} (expecting {expected})"
         )
@@ -115,9 +125,7 @@ class YoufoneClient:
         if result.get("ResultCode") != 0:
             return False
         self.user_details = result.get("Object")
-        self.session.headers.update(
-            {"securitykey": response.headers.get("securitykey")}
-        )
+        self.securitykey = response.headers.get("securitykey")
         return True
 
     def fetch_data(self):
