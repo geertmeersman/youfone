@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.1.11](https://github.com/geertmeersman/youfone/tree/v0.1.11) (2023-04-17)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.10...v0.1.11)
+
+**Implemented enhancements:**
+
+- Round usage percentages [\#9](https://github.com/geertmeersman/youfone/pull/9) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.1.10](https://github.com/geertmeersman/youfone/tree/v0.1.10) (2023-04-17)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.9...v0.1.10)
