@@ -227,7 +227,7 @@ class YoufoneClient:
                         device_key=device_key,
                         device_name=device_name,
                         device_model=device_model,
-                        state=properties.get("Percentage"),
+                        state=round(properties.get("Percentage"), 0),
                         extra_attributes=properties,
                     )
                 elif property.get("SectionId") == 2:
@@ -240,7 +240,7 @@ class YoufoneClient:
                         device_key=device_key,
                         device_name=device_name,
                         device_model=device_model,
-                        state=properties.get("Percentage"),
+                        state=round(properties.get("Percentage"), 0),
                         extra_attributes=properties,
                     )
                 elif property.get("SectionId") == 3:
