@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.1.10](https://github.com/geertmeersman/youfone/tree/v0.1.10) (2023-04-17)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.9...v0.1.10)
+
+**Merged pull requests:**
+
+- Update pip requirement from \<23.1,\>=8.0.3 to \>=8.0.3,\<23.2 [\#7](https://github.com/geertmeersman/youfone/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.1.9](https://github.com/geertmeersman/youfone/tree/v0.1.9) (2023-04-17)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.8...v0.1.9)
