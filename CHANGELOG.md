@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.2.0](https://github.com/geertmeersman/youfone/tree/v0.2.0) (2023-04-24)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.14...v0.2.0)
+
+**Merged pull requests:**
+
+- Bump actions/setup-python from 4.5.0 to 4.6.0 [\#13](https://github.com/geertmeersman/youfone/pull/13) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.1.14](https://github.com/geertmeersman/youfone/tree/v0.1.14) (2023-04-24)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.13...v0.1.14)
