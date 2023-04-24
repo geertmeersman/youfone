@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.1.14](https://github.com/geertmeersman/youfone/tree/v0.1.14) (2023-04-24)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.13...v0.1.14)
+
+**Merged pull requests:**
+
+- Bump ruff from 0.0.261 to 0.0.262 [\#12](https://github.com/geertmeersman/youfone/pull/12) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.1.13](https://github.com/geertmeersman/youfone/tree/v0.1.13) (2023-04-21)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.12...v0.1.13)
