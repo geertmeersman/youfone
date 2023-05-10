@@ -164,7 +164,7 @@ class YoufoneClient:
             country=self.country,
             name="Youcoins",
             key=key,
-            type="euro",
+            type="coins",
             device_key=device_key,
             device_name=device_name,
             device_model=device_model,
