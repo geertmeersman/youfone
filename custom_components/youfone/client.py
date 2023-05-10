@@ -437,7 +437,7 @@ class YoufoneClient:
         return False
 
     def youcoins_propositions(self, token):
-        """Get Youcoins Propositions"""
+        """Get Youcoins Propositions."""
         response = self.request(
             f"https://my.youfone.be/prov/PartnerAPI/CustomerService.svc/propositions?data={token}&connectId=1",
             "youcoins",
