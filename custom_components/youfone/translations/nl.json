@@ -61,5 +61,13 @@
       "unknown": "Onverwachte fout",
       "service_error": "Service niet beschikbaar"
     }
+  },
+  "selector": {
+    "country": {
+      "options": {
+        "be": "België",
+        "nl": "Nederland"
+      }
+    }
   }
 }
