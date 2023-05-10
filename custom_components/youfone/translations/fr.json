@@ -1,0 +1,73 @@
+{
+  "config": {
+    "step": {
+      "connection_init": {
+        "title": "Nouveau compte Youfone",
+        "description": "Configurez votre compte utilisateur Youfone",
+        "data": {
+          "username": "Nom d'utilisateur",
+          "password": "Mot de passe",
+          "country": "Pays"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Le compte est déjà configuré"
+    },
+    "error": {
+      "cannot_connect": "Échec de la connexion",
+      "invalid_auth": "Authentification invalide",
+      "unknown": "Erreur inattendue",
+      "service_error": "Service indisponible"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Reconfigurer Youfone",
+        "data": {
+          "username": "Nom d'utilisateur",
+          "password": "Mot de passe"
+        }
+      },
+      "country": {
+        "title": "Changer de pays",
+        "description": "Ceci ne devrait normalement pas être utilisé",
+        "data": {
+          "country": "Pays"
+        }
+      },
+      "password": {
+        "title": "Mettre à jour votre mot de passe",
+        "description": "A faire lorsque vous avez changé votre mot de passe sur 'Youfone'",
+        "data": {
+          "password": "Mot de passe"
+        }
+      },
+      "options_init": {
+        "title": "Modifier les options",
+        "menu_options": {
+          "country": "Pays",
+          "password": "Mot de passe"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Échec de la connexion",
+      "invalid_auth": "Authentification invalide",
+      "unknown": "Erreur inattendue",
+      "service_error": "Service indisponible"
+    },
+    "abort": {
+      "already_configured": "Le compte est déjà configuré"
+    }
+  },
+  "selector": {
+    "country": {
+      "options": {
+        "be": "Belgique",
+        "nl": "Pays-Bas"
+      }
+    }
+  }
+}

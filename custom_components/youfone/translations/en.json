@@ -65,8 +65,8 @@
   "selector": {
     "country": {
       "options": {
-        "be": "België",
-        "nl": "Nederland"
+        "be": "Belgium",
+        "nl": "The Netherlands"
       }
     }
   }
