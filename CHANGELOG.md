@@ -1,5 +1,23 @@
 # Changelog
 
+## [v0.2.1](https://github.com/geertmeersman/youfone/tree/v0.2.1) (2023-05-10)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.2.0...v0.2.1)
+
+**Implemented enhancements:**
+
+- Manually launch version & release workflow [\#14](https://github.com/geertmeersman/youfone/pull/14) ([geertmeersman](https://github.com/geertmeersman))
+
+**Closed issues:**
+
+- Youcoins are displayed as euro [\#17](https://github.com/geertmeersman/youfone/issues/17)
+
+**Merged pull requests:**
+
+- Fix Youcoin sensor type, fixes \#17 [\#18](https://github.com/geertmeersman/youfone/pull/18) ([geertmeersman](https://github.com/geertmeersman))
+- Bump ruff from 0.0.263 to 0.0.265 [\#16](https://github.com/geertmeersman/youfone/pull/16) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump ruff from 0.0.262 to 0.0.263 [\#15](https://github.com/geertmeersman/youfone/pull/15) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.2.0](https://github.com/geertmeersman/youfone/tree/v0.2.0) (2023-04-24)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.14...v0.2.0)
