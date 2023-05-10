@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.2.2](https://github.com/geertmeersman/youfone/tree/v0.2.2) (2023-05-10)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.2.1...v0.2.2)
+
+**Implemented enhancements:**
+
+- Config flow improvement for language option [\#19](https://github.com/geertmeersman/youfone/pull/19) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.2.1](https://github.com/geertmeersman/youfone/tree/v0.2.1) (2023-05-10)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.2.0...v0.2.1)
