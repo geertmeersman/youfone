@@ -61,5 +61,13 @@
     "abort": {
       "already_configured": "Account is already configured"
     }
+  },
+  "selector": {
+    "country": {
+      "options": {
+        "be": "België",
+        "nl": "Nederland"
+      }
+    }
   }
 }

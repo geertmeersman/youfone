@@ -14,6 +14,9 @@ from homeassistant.const import CONF_USERNAME
 from homeassistant.core import callback
 from homeassistant.data_entry_flow import FlowHandler
 from homeassistant.data_entry_flow import FlowResult
+from homeassistant.helpers.selector import SelectSelector
+from homeassistant.helpers.selector import SelectSelectorConfig
+from homeassistant.helpers.selector import SelectSelectorMode
 from homeassistant.helpers.selector import TextSelector
 from homeassistant.helpers.selector import TextSelectorConfig
 from homeassistant.helpers.selector import TextSelectorType
@@ -32,6 +35,14 @@ from .utils import log_debug
 DEFAULT_ENTRY_DATA = YoufoneConfigEntryData(
     username=None,
     password=None,
+)
+
+COUNTRY_SELECTOR = SelectSelector(
+    SelectSelectorConfig(
+        options=COUNTRY_CHOICES,
+        mode=SelectSelectorMode.DROPDOWN,
+        translation_key=CONF_COUNTRY,
+    )
 )
 
 
@@ -91,9 +102,7 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                     type=TextSelectorType.PASSWORD, autocomplete="current-password"
                 )
             ),
-            vol.Required(CONF_COUNTRY, default=DEFAULT_COUNTRY): vol.In(
-                COUNTRY_CHOICES
-            ),
+            vol.Required(CONF_COUNTRY, default=DEFAULT_COUNTRY): COUNTRY_SELECTOR,
         }
         return self.async_show_form(
             step_id="connection_init",
@@ -116,7 +125,7 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                 return self.finish_flow()
 
         fields = {
-            vol.Required(CONF_COUNTRY): vol.In(COUNTRY_CHOICES),
+            vol.Required(CONF_COUNTRY): COUNTRY_SELECTOR,
         }
         return self.async_show_form(
             step_id="country",
