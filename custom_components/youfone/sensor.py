@@ -67,6 +67,16 @@ SENSOR_DESCRIPTIONS: list[SensorEntityDescription] = [
         icon="mdi:hand-coin",
         state_class=SensorStateClass.MEASUREMENT,
     ),
+    YoufoneSensorDescription(
+        key="coins_pending",
+        icon="mdi:timer-sand",
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
+    YoufoneSensorDescription(
+        key="coins_proposition",
+        icon="mdi:offer",
+        state_class=SensorStateClass.MEASUREMENT,
+    ),
     YoufoneSensorDescription(key="sim", icon="mdi:sim"),
     YoufoneSensorDescription(key="address", icon="mdi:home"),
     YoufoneSensorDescription(key="voice", icon="mdi:phone"),
