@@ -93,7 +93,7 @@ logger:
 
 ### Voice, Sms & Data overview
 
-![Lovelace overview.](https://github.com/geertmeersman/telenet/raw/main/images/screenshots/lovelace_overview.png)
+![Lovelace overview.](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/lovelace_overview.png)
 
 <details><summary>Show markdown code</summary>
 
@@ -250,7 +250,7 @@ custom_fields:
 
 ### Subscription details + gauge
 
-![Lovelace Usage Gauge](https://github.com/geertmeersman/telenet/raw/main/images/screenshots/lovelace_usage_gauge.png)
+![Lovelace Usage Gauge](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/lovelace_usage_gauge.png)
 
 <details><summary>Show markdown code</summary>
 
