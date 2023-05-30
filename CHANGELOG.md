@@ -1,10 +1,26 @@
 # Changelog
 
+## [v0.3.0](https://github.com/geertmeersman/youfone/tree/v0.3.0) (2023-05-30)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.2.3...v0.3.0)
+
+**Documentation:**
+
+- Update README.md [\#21](https://github.com/geertmeersman/youfone/pull/21) ([geertmeersman](https://github.com/geertmeersman))
+
+**Merged pull requests:**
+
+- Round % values & refactoring [\#29](https://github.com/geertmeersman/youfone/pull/29) ([geertmeersman](https://github.com/geertmeersman))
+- Bump ruff from 0.0.265 to 0.0.270 [\#28](https://github.com/geertmeersman/youfone/pull/28) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/setup-python from 4.6.0 to 4.6.1 [\#27](https://github.com/geertmeersman/youfone/pull/27) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump danielchabr/pr-labels-checker from 3.1 to 3.3 [\#25](https://github.com/geertmeersman/youfone/pull/25) ([dependabot[bot]](https://github.com/apps/dependabot))
+- The missing point :-\) [\#24](https://github.com/geertmeersman/youfone/pull/24) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.2.3](https://github.com/geertmeersman/youfone/tree/v0.2.3) (2023-05-10)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.2.2...v0.2.3)
 
-**Implemented enhancements:**
+**Documentation:**
 
 - Config flow: French language added & Youcoins sensors & Readme [\#20](https://github.com/geertmeersman/youfone/pull/20) ([geertmeersman](https://github.com/geertmeersman))
 
@@ -12,17 +28,13 @@
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.2.1...v0.2.2)
 
-**Implemented enhancements:**
+**Merged pull requests:**
 
 - Config flow improvement for language option [\#19](https://github.com/geertmeersman/youfone/pull/19) ([geertmeersman](https://github.com/geertmeersman))
 
 ## [v0.2.1](https://github.com/geertmeersman/youfone/tree/v0.2.1) (2023-05-10)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.2.0...v0.2.1)
-
-**Implemented enhancements:**
-
-- Manually launch version & release workflow [\#14](https://github.com/geertmeersman/youfone/pull/14) ([geertmeersman](https://github.com/geertmeersman))
 
 **Closed issues:**
 
@@ -33,6 +45,7 @@
 - Fix Youcoin sensor type, fixes \#17 [\#18](https://github.com/geertmeersman/youfone/pull/18) ([geertmeersman](https://github.com/geertmeersman))
 - Bump ruff from 0.0.263 to 0.0.265 [\#16](https://github.com/geertmeersman/youfone/pull/16) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump ruff from 0.0.262 to 0.0.263 [\#15](https://github.com/geertmeersman/youfone/pull/15) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Manually launch version & release workflow [\#14](https://github.com/geertmeersman/youfone/pull/14) ([geertmeersman](https://github.com/geertmeersman))
 
 ## [v0.2.0](https://github.com/geertmeersman/youfone/tree/v0.2.0) (2023-04-24)
 
@@ -70,7 +83,7 @@
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.10...v0.1.11)
 
-**Implemented enhancements:**
+**Merged pull requests:**
 
 - Round usage percentages [\#9](https://github.com/geertmeersman/youfone/pull/9) ([geertmeersman](https://github.com/geertmeersman))
 
@@ -86,7 +99,7 @@
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.8...v0.1.9)
 
-**Implemented enhancements:**
+**Merged pull requests:**
 
 - Round usage percentages [\#8](https://github.com/geertmeersman/youfone/pull/8) ([geertmeersman](https://github.com/geertmeersman))
 
@@ -94,7 +107,7 @@
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.1.7...v0.1.8)
 
-**Implemented enhancements:**
+**Merged pull requests:**
 
 - Client header improvements [\#6](https://github.com/geertmeersman/youfone/pull/6) ([geertmeersman](https://github.com/geertmeersman))
 
