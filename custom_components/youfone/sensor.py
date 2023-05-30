@@ -39,16 +39,19 @@ SENSOR_DESCRIPTIONS: list[SensorEntityDescription] = [
         icon="mdi:currency-eur",
         device_class=SensorDeviceClass.MONETARY,
         native_unit_of_measurement=CURRENCY_EURO,
+        suggested_display_precision=0,
     ),
     YoufoneSensorDescription(
         key="usage_percentage_data",
         native_unit_of_measurement=PERCENTAGE,
         icon="mdi:signal-4g",
+        suggested_display_precision=0,
     ),
     YoufoneSensorDescription(
         key="usage_percentage_voice_sms",
         native_unit_of_measurement=PERCENTAGE,
         icon="mdi:phone",
+        suggested_display_precision=0,
     ),
     YoufoneSensorDescription(
         key="data",
