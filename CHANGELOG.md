@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.3.1](https://github.com/geertmeersman/youfone/tree/v0.3.1) (2023-05-30)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.0...v0.3.1)
+
+**Merged pull requests:**
+
+- refactor: suggested\_display\_precision=0 [\#30](https://github.com/geertmeersman/youfone/pull/30) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.3.0](https://github.com/geertmeersman/youfone/tree/v0.3.0) (2023-05-30)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.2.3...v0.3.0)
