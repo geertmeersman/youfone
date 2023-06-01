@@ -76,3 +76,9 @@ def get_json_dict_path(dictionary, path):
     if isinstance(json_dict, list):
         json_dict = json_dict[0]
     return json_dict
+
+
+def filter_out_units(string):
+    """Filter out units in a string, keep only the numbers."""
+    filtered_string = re.sub(r"[^0-9.-]", "", string)
+    return filtered_string

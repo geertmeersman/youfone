@@ -4,21 +4,18 @@ from __future__ import annotations
 from calendar import monthrange
 from datetime import datetime
 
-from requests import (
-    Session,
-)
+from requests import Session
 
-from .const import BASE_HEADERS
-from .const import CONNECTION_RETRY
-from .const import DEFAULT_COUNTRY
-from .const import DEFAULT_YOUFONE_ENVIRONMENT
-from .const import REQUEST_TIMEOUT
+from .const import (
+    BASE_HEADERS,
+    CONNECTION_RETRY,
+    DEFAULT_COUNTRY,
+    DEFAULT_YOUFONE_ENVIRONMENT,
+    REQUEST_TIMEOUT,
+)
 from .exceptions import YoufoneServiceException
-from .models import YoufoneEnvironment
-from .models import YoufoneItem
-from .utils import format_entity_name
-from .utils import log_debug
-from .utils import str_to_float
+from .models import YoufoneEnvironment, YoufoneItem
+from .utils import filter_out_units, format_entity_name, log_debug, str_to_float
 
 
 class YoufoneClient:
@@ -263,7 +260,15 @@ class YoufoneClient:
                         device_key=device_key,
                         device_name=device_name,
                         device_model=device_model,
-                        state=round(str_to_float(properties.get("Percentage"))),
+                        state=(
+                            100
+                            * str_to_float(properties.get("UsedAmount"))
+                            / str_to_float(
+                                filter_out_units(
+                                    properties.get("BundleDurationWithUnits")
+                                )
+                            )
+                        ),
                         extra_attributes=properties,
                     )
                 elif property.get("SectionId") == 2:
@@ -276,7 +281,15 @@ class YoufoneClient:
                         device_key=device_key,
                         device_name=device_name,
                         device_model=device_model,
-                        state=round(str_to_float(properties.get("Percentage"))),
+                        state=(
+                            100
+                            * str_to_float(properties.get("UsedAmount"))
+                            / str_to_float(
+                                filter_out_units(
+                                    properties.get("BundleDurationWithUnits")
+                                )
+                            )
+                        ),
                         extra_attributes=properties,
                     )
                 elif property.get("SectionId") == 3:
