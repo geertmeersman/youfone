@@ -1,16 +1,20 @@
 # Changelog
 
+## [v0.3.4](https://github.com/geertmeersman/youfone/tree/v0.3.4) (2023-06-06)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.3...v0.3.4)
+
+**Merged pull requests:**
+
+- fix: improve logging [\#32](https://github.com/geertmeersman/youfone/pull/32) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.3.3](https://github.com/geertmeersman/youfone/tree/v0.3.3) (2023-06-01)
 
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.2...v0.3.3)
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.1...v0.3.3)
 
 **Merged pull requests:**
 
 - fix: Don't trust the Youfone percentage, calculate it! [\#31](https://github.com/geertmeersman/youfone/pull/31) ([geertmeersman](https://github.com/geertmeersman))
-
-## [v0.3.2](https://github.com/geertmeersman/youfone/tree/v0.3.2) (2023-06-01)
-
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.1...v0.3.2)
 
 ## [v0.3.1](https://github.com/geertmeersman/youfone/tree/v0.3.1) (2023-05-30)
 
