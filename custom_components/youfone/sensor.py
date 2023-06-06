@@ -3,15 +3,17 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
+import logging
 from typing import Any
 
-from homeassistant.components.sensor import SensorDeviceClass
-from homeassistant.components.sensor import SensorEntity
-from homeassistant.components.sensor import SensorEntityDescription
-from homeassistant.components.sensor import SensorStateClass
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
+    SensorEntity,
+    SensorEntityDescription,
+    SensorStateClass,
+)
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CURRENCY_EURO
-from homeassistant.const import PERCENTAGE
+from homeassistant.const import CURRENCY_EURO, PERCENTAGE
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityDescription
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -21,7 +23,8 @@ from . import YoufoneDataUpdateCoordinator
 from .const import DOMAIN
 from .entity import YoufoneEntity
 from .models import YoufoneItem
-from .utils import log_debug
+
+_LOGGER = logging.getLogger(__name__)
 
 
 @dataclass
@@ -93,7 +96,7 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up the Youfone sensors."""
-    log_debug("[sensor|async_setup_entry|async_add_entities|start]")
+    _LOGGER.debug("[sensor|async_setup_entry|async_add_entities|start]")
     coordinator: YoufoneDataUpdateCoordinator = hass.data[DOMAIN][entry.entry_id]
     entities: list[YoufoneSensor] = []
 
@@ -101,7 +104,7 @@ async def async_setup_entry(
         description.key: description for description in SENSOR_DESCRIPTIONS
     }
 
-    # log_debug(f"[sensor|async_setup_entry|async_add_entities|SUPPORTED_KEYS] {SUPPORTED_KEYS}")
+    # _LOGGER.debug(f"[sensor|async_setup_entry|async_add_entities|SUPPORTED_KEYS] {SUPPORTED_KEYS}")
 
     if coordinator.data is not None:
         for item in coordinator.data:
@@ -119,7 +122,7 @@ async def async_setup_entry(
                     icon=description.icon,
                 )
 
-                log_debug(f"[sensor|async_setup_entry|adding] {item.name}")
+                _LOGGER.debug(f"[sensor|async_setup_entry|adding] {item.name}")
                 entities.append(
                     YoufoneSensor(
                         coordinator=coordinator,
@@ -128,7 +131,7 @@ async def async_setup_entry(
                     )
                 )
             else:
-                log_debug(
+                _LOGGER.debug(
                     f"[sensor|async_setup_entry|no support type found] {item.name}, type: {item.type}, keys: {SUPPORTED_KEYS.get(item.type)}",
                     True,
                 )

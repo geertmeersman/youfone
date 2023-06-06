@@ -2,22 +2,19 @@
 from __future__ import annotations
 
 from datetime import datetime
+import logging
 
 from homeassistant.core import callback
 from homeassistant.helpers.device_registry import DeviceEntryType
-from homeassistant.helpers.entity import DeviceInfo
-from homeassistant.helpers.entity import EntityDescription
+from homeassistant.helpers.entity import DeviceInfo, EntityDescription
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import YoufoneDataUpdateCoordinator
-from .const import ATTRIBUTION
-from .const import DOMAIN
-from .const import NAME
-from .const import VERSION
-from .const import WEBSITE
+from .const import ATTRIBUTION, DOMAIN, NAME, VERSION, WEBSITE
 from .models import YoufoneItem
-from .utils import log_debug
 from .utils import sensor_name
+
+_LOGGER = logging.getLogger(__name__)
 
 
 class YoufoneEntity(CoordinatorEntity[YoufoneDataUpdateCoordinator]):
@@ -53,7 +50,7 @@ class YoufoneEntity(CoordinatorEntity[YoufoneDataUpdateCoordinator]):
         self.last_synced = datetime.now()
         self._attr_name = sensor_name(self.item.name)
         self._item = item
-        log_debug(f"[YoufoneEntity|init] {self._key}")
+        _LOGGER.debug(f"[YoufoneEntity|init] {self._key}")
 
     @callback
     def _handle_coordinator_update(self) -> None:
@@ -66,7 +63,7 @@ class YoufoneEntity(CoordinatorEntity[YoufoneDataUpdateCoordinator]):
                     self._item = item
                     self.async_write_ha_state()
                     return
-        log_debug(
+        _LOGGER.debug(
             f"[YoufoneEntity|_handle_coordinator_update] {self._attr_unique_id}: async_write_ha_state ignored since API fetch failed or not found",
             True,
         )

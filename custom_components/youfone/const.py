@@ -1,17 +1,12 @@
 """Constants used by Youfone."""
-import json
-import logging
 from datetime import timedelta
+import json
 from pathlib import Path
 from typing import Final
 
 from homeassistant.const import Platform
 
 from .models import YoufoneEnvironment
-
-SHOW_DEBUG_AS_WARNING = False
-
-_LOGGER = logging.getLogger(__name__)
 
 PLATFORMS: Final = [Platform.SENSOR]
 
