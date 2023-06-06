@@ -253,9 +253,24 @@ class YoufoneClient:
                     properties.update(
                         {property_list.get("Key"): property_list.get("Value")}
                     )
-                _LOGGER.debug(f"Properties: {properties}")
                 if property.get("SectionId") == 1:
                     key = format_entity_name(f"{msisdn} data")
+                    if (
+                        "_isUnlimited" in properties
+                        and properties.get("_isUnlimited") == 1
+                    ):
+                        state = 0
+                    else:
+                        state = (
+                            100
+                            * str_to_float(properties.get("UsedAmount"))
+                            / str_to_float(
+                                filter_out_units(
+                                    properties.get("BundleDurationWithUnits")
+                                )
+                            )
+                        )
+
                     data[key] = YoufoneItem(
                         country=self.country,
                         name="Data",
@@ -264,7 +279,18 @@ class YoufoneClient:
                         device_key=device_key,
                         device_name=device_name,
                         device_model=device_model,
-                        state=(
+                        state=state,
+                        extra_attributes=properties,
+                    )
+                elif property.get("SectionId") == 2:
+                    key = format_entity_name(f"{msisdn} voice sms")
+                    if (
+                        "_isUnlimited" in properties
+                        and properties.get("_isUnlimited") == 1
+                    ):
+                        state = 0
+                    else:
+                        state = (
                             100
                             * str_to_float(properties.get("UsedAmount"))
                             / str_to_float(
@@ -272,11 +298,7 @@ class YoufoneClient:
                                     properties.get("BundleDurationWithUnits")
                                 )
                             )
-                        ),
-                        extra_attributes=properties,
-                    )
-                elif property.get("SectionId") == 2:
-                    key = format_entity_name(f"{msisdn} voice sms")
+                        )
                     data[key] = YoufoneItem(
                         country=self.country,
                         name="Voice Sms",
@@ -285,15 +307,7 @@ class YoufoneClient:
                         device_key=device_key,
                         device_name=device_name,
                         device_model=device_model,
-                        state=(
-                            100
-                            * str_to_float(properties.get("UsedAmount"))
-                            / str_to_float(
-                                filter_out_units(
-                                    properties.get("BundleDurationWithUnits")
-                                )
-                            )
-                        ),
+                        state=state,
                         extra_attributes=properties,
                     )
                 elif property.get("SectionId") == 3:
