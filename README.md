@@ -108,7 +108,7 @@ If you want to contribute to this please read the [Contribution guidelines](CONT
 
 ### ENABLING DEBUG LOGGING
 
-To enable debug logging, go to Settings -> Devices & Services and then click the triple dots for the Robonect integration and click Enable Debug Logging.
+To enable debug logging, go to Settings -> Devices & Services and then click the triple dots for the Youfone integration and click Enable Debug Logging.
 
 ![enable-debug-logging](https://raw.githubusercontent.com/geertmeersman/youfone/main/images/screenshots/enable-debug-logging.gif)
 
