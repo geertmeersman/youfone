@@ -8,7 +8,15 @@ from jsonpath import jsonpath
 
 def str_to_float(input) -> float:
     """Transform float to string."""
-    return float(input.strip().replace(",", "."))
+    return float(filter_out_units(input.strip().replace(",", ".")))
+
+
+def filter_out_units(string):
+    """Filter out units in a string, keep only the numbers."""
+    filtered_string = re.sub(r"[^0-9.-]", "", string)
+    if filtered_string.endswith(".") or filtered_string.endswith("-"):
+        filtered_string = filtered_string[:-1]
+    return filtered_string
 
 
 def float_to_timestring(float_time, unit_type) -> str:
@@ -61,9 +69,3 @@ def get_json_dict_path(dictionary, path):
     if isinstance(json_dict, list):
         json_dict = json_dict[0]
     return json_dict
-
-
-def filter_out_units(string):
-    """Filter out units in a string, keep only the numbers."""
-    filtered_string = re.sub(r"[^0-9.-]", "", string)
-    return filtered_string
