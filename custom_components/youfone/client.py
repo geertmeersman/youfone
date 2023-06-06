@@ -253,6 +253,7 @@ class YoufoneClient:
                     properties.update(
                         {property_list.get("Key"): property_list.get("Value")}
                     )
+                _LOGGER.debug(f"Properties: {properties}")
                 if property.get("SectionId") == 1:
                     key = format_entity_name(f"{msisdn} data")
                     data[key] = YoufoneItem(
