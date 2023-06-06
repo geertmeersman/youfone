@@ -16,7 +16,7 @@ from .const import (
 )
 from .exceptions import YoufoneServiceException
 from .models import YoufoneEnvironment, YoufoneItem
-from .utils import filter_out_units, format_entity_name, str_to_float
+from .utils import format_entity_name, str_to_float
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -257,18 +257,14 @@ class YoufoneClient:
                     key = format_entity_name(f"{msisdn} data")
                     if (
                         "_isUnlimited" in properties
-                        and properties.get("_isUnlimited") == 1
+                        and properties.get("_isUnlimited") == "1"
                     ):
                         state = 0
                     else:
                         state = (
                             100
                             * str_to_float(properties.get("UsedAmount"))
-                            / str_to_float(
-                                filter_out_units(
-                                    properties.get("BundleDurationWithUnits")
-                                )
-                            )
+                            / str_to_float(properties.get("BundleDurationWithUnits"))
                         )
 
                     data[key] = YoufoneItem(
@@ -286,18 +282,14 @@ class YoufoneClient:
                     key = format_entity_name(f"{msisdn} voice sms")
                     if (
                         "_isUnlimited" in properties
-                        and properties.get("_isUnlimited") == 1
+                        and properties.get("_isUnlimited") == "1"
                     ):
                         state = 0
                     else:
                         state = (
                             100
                             * str_to_float(properties.get("UsedAmount"))
-                            / str_to_float(
-                                filter_out_units(
-                                    properties.get("BundleDurationWithUnits")
-                                )
-                            )
+                            / str_to_float(properties.get("BundleDurationWithUnits"))
                         )
                     data[key] = YoufoneItem(
                         country=self.country,
