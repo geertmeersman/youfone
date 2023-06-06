@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from calendar import monthrange
 from datetime import datetime
+import logging
 
 from requests import Session
 
@@ -15,7 +16,9 @@ from .const import (
 )
 from .exceptions import YoufoneServiceException
 from .models import YoufoneEnvironment, YoufoneItem
-from .utils import filter_out_units, format_entity_name, log_debug, str_to_float
+from .utils import filter_out_units, format_entity_name, str_to_float
+
+_LOGGER = logging.getLogger(__name__)
 
 
 class YoufoneClient:
@@ -67,18 +70,18 @@ class YoufoneClient:
             }
         )
         if data is None:
-            log_debug(f"{caller} Calling GET {url}")
+            _LOGGER.debug(f"{caller} Calling GET {url}")
             response = self.session.get(url, timeout=REQUEST_TIMEOUT, headers=headers)
         else:
-            log_debug(f"{caller} Calling POST {url} with {data}")
+            _LOGGER.debug(f"{caller} Calling POST {url} with {data}")
             response = self.session.post(
                 url, data, timeout=REQUEST_TIMEOUT, headers=headers
             )
-        log_debug(
+        _LOGGER.debug(
             f"{caller} http status code = {response.status_code} (expecting {expected})"
         )
         if log:
-            log_debug(f"{caller} Response:\n{response.text}")
+            _LOGGER.debug(f"{caller} Response:\n{response.text}")
         if expected is not None and response.status_code != expected:
             if response.status_code == 404:
                 self.request_error = response.json()
@@ -93,7 +96,7 @@ class YoufoneClient:
                 raise YoufoneServiceException(
                     f"[{caller}] Expecting HTTP {expected} | Response HTTP {response.status_code}, Response: {response.text}, Url: {response.url}"
                 )
-            log_debug(
+            _LOGGER.debug(
                 f"[YoufoneClient|request] Received a HTTP {response.status_code}, nothing to worry about! We give it another try :-)"
             )
             self.login()
@@ -104,7 +107,7 @@ class YoufoneClient:
 
     def login(self) -> dict:
         """Start a new Youfone session with a user & password."""
-        log_debug("[YoufoneClient|login|start]")
+        _LOGGER.debug("[YoufoneClient|login|start]")
         """Login process"""
         if self.username is None or self.password is None:
             return False
@@ -302,7 +305,7 @@ class YoufoneClient:
                         100 * seconds_completed / seconds_in_month, 1
                     )
                     period_percentage_remaining = 100 - period_percentage_completed
-                    log_debug(f"days_in_month: {days_in_month}")
+                    _LOGGER.debug(f"days_in_month: {days_in_month}")
                     data[key] = YoufoneItem(
                         country=self.country,
                         name="Remaining days",

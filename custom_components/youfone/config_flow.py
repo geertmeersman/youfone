@@ -1,36 +1,30 @@
 """Config flow to configure the Youfone integration."""
-from abc import ABC
-from abc import abstractmethod
+from abc import ABC, abstractmethod
+import logging
 from typing import Any
 
-import homeassistant.helpers.config_validation as cv
-import voluptuous as vol
-from homeassistant.config_entries import ConfigEntry
-from homeassistant.config_entries import ConfigFlow
-from homeassistant.config_entries import OptionsFlow
-from homeassistant.const import CONF_COUNTRY
-from homeassistant.const import CONF_PASSWORD
-from homeassistant.const import CONF_USERNAME
+from homeassistant.config_entries import ConfigEntry, ConfigFlow, OptionsFlow
+from homeassistant.const import CONF_COUNTRY, CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import callback
-from homeassistant.data_entry_flow import FlowHandler
-from homeassistant.data_entry_flow import FlowResult
-from homeassistant.helpers.selector import SelectSelector
-from homeassistant.helpers.selector import SelectSelectorConfig
-from homeassistant.helpers.selector import SelectSelectorMode
-from homeassistant.helpers.selector import TextSelector
-from homeassistant.helpers.selector import TextSelectorConfig
-from homeassistant.helpers.selector import TextSelectorType
+from homeassistant.data_entry_flow import FlowHandler, FlowResult
+import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers.selector import (
+    SelectSelector,
+    SelectSelectorConfig,
+    SelectSelectorMode,
+    TextSelector,
+    TextSelectorConfig,
+    TextSelectorType,
+)
 from homeassistant.helpers.typing import UNDEFINED
+import voluptuous as vol
 
 from .client import YoufoneClient
-from .const import COUNTRY_CHOICES
-from .const import DEFAULT_COUNTRY
-from .const import DOMAIN
-from .const import NAME
-from .exceptions import BadCredentialsException
-from .exceptions import YoufoneServiceException
+from .const import COUNTRY_CHOICES, DEFAULT_COUNTRY, DOMAIN, NAME
+from .exceptions import BadCredentialsException, YoufoneServiceException
 from .models import YoufoneConfigEntryData
-from .utils import log_debug
+
+_LOGGER = logging.getLogger(__name__)
 
 DEFAULT_ENTRY_DATA = YoufoneConfigEntryData(
     username=None,
@@ -90,7 +84,7 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                 self.new_entry_data |= user_input
                 await self.async_set_unique_id(f"{DOMAIN}_" + user_input[CONF_USERNAME])
                 self._abort_if_unique_id_configured()
-                log_debug(f"New account {self.new_title} added")
+                _LOGGER.debug(f"New account {self.new_title} added")
                 return self.finish_flow()
             errors = test["errors"]
         fields = {
@@ -121,7 +115,7 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                 self.new_entry_data |= YoufoneConfigEntryData(
                     country=user_input[CONF_COUNTRY],
                 )
-                log_debug(f"Country set to : {user_input[CONF_COUNTRY]}")
+                _LOGGER.debug(f"Country set to : {user_input[CONF_COUNTRY]}")
                 return self.finish_flow()
 
         fields = {
@@ -146,7 +140,7 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                 profile = await self.async_validate_input(user_input)
             except AssertionError as exception:
                 errors["base"] = "cannot_connect"
-                log_debug(f"[async_step_password|login] AssertionError {exception}")
+                _LOGGER.debug(f"[async_step_password|login] AssertionError {exception}")
             except ConnectionError:
                 errors["base"] = "cannot_connect"
             except YoufoneServiceException:
@@ -155,7 +149,7 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                 errors["base"] = "invalid_auth"
             except Exception as exception:
                 errors["base"] = "unknown"
-                log_debug(exception)
+                _LOGGER.debug(exception)
         return {"profile": profile, "errors": errors}
 
     async def async_step_password(self, user_input: dict | None = None) -> FlowResult:
@@ -169,7 +163,7 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                 self.new_entry_data |= YoufoneConfigEntryData(
                     password=user_input[CONF_PASSWORD],
                 )
-                log_debug(f"Password changed for {user_input[CONF_USERNAME]}")
+                _LOGGER.debug(f"Password changed for {user_input[CONF_USERNAME]}")
                 return self.finish_flow()
 
         fields = {

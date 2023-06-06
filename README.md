@@ -46,6 +46,29 @@ A Home Assistant integration allowing to monitor your Youfone usage
 
 <!-- [END BADGES] -->
 
+## Table of Contents
+
+- [Youfone for Home Assistant](#youfone-for-home-assistant)
+  - [Features](#features)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+    - [Using HACS (recommended)](#using-hacs-recommended)
+    - [Manual](#manual)
+  - [Contributions are welcome!](#contributions-are-welcome)
+  - [Troubleshooting](#troubleshooting)
+    - [ENABLING DEBUG LOGGING](#enabling-debug-logging)
+    - [DISABLE DEBUG LOGGING AND DOWNLOAD LOGS](#disable-debug-logging-and-download-logs)
+  - [Lovelace examples](#lovelace-examples)
+    - [Voice, Sms \& Data overview](#voice-sms--data-overview)
+    - [Subscription details + gauge](#subscription-details--gauge)
+  - [Screenshots](#screenshots)
+    - [Msisdn info](#msisdn-info)
+    - [Useraccount](#useraccount)
+    - [Youcoins](#youcoins)
+    - [Invoices](#invoices)
+    - [Config flow](#config-flow)
+  - [Code origin](#code-origin)
+
 ## Installation
 
 The Pull request is still pending merge for the hacs-default repository. So until that time, add my repository as a custom repository in hacs and the integration will show up.
@@ -83,14 +106,17 @@ If you want to contribute to this please read the [Contribution guidelines](CONT
 
 ## Troubleshooting
 
-1. You can enable logging for this integration specifically and share your logs, so I can have a deep dive investigation. To enable logging, update your `configuration.yaml` like this, we can get more information in Configuration -> Logs page
+### ENABLING DEBUG LOGGING
 
-```
-logger:
-  default: warning
-  logs:
-    custom_components.youfone: debug
-```
+To enable debug logging, go to Settings -> Devices & Services and then click the triple dots for the Robonect integration and click Enable Debug Logging.
+
+![enable-debug-logging](https://raw.githubusercontent.com/geertmeersman/youfone/main/images/screenshots/enable-debug-logging.gif)
+
+### DISABLE DEBUG LOGGING AND DOWNLOAD LOGS
+
+Once you enable debug logging, you ideally need to make the error happen. Run your automation, change up your device or whatever was giving you an error and then come back and disable Debug Logging. Disabling debug logging is the same as enabling, but now you will see Disable Debug Logging. After you disable debug logging, it will automatically prompt you to download your log file. Please provide this logfile.
+
+![disable-debug-logging](https://raw.githubusercontent.com/geertmeersman/youfone/main/images/screenshots/disable-debug-logging.gif)
 
 ## Lovelace examples
 
