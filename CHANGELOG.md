@@ -1,5 +1,27 @@
 # Changelog
 
+## [v0.3.5](https://github.com/geertmeersman/youfone/tree/v0.3.5) (2023-06-07)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.4-beta.15...v0.3.5)
+
+## [v0.4.4-beta.15](https://github.com/geertmeersman/youfone/tree/v0.4.4-beta.15) (2023-06-07)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.4.beta.12...v0.4.4-beta.15)
+
+**Merged pull requests:**
+
+- fix: beta version fetcher [\#36](https://github.com/geertmeersman/youfone/pull/36) ([geertmeersman](https://github.com/geertmeersman))
+
+## [v0.4.4.beta.12](https://github.com/geertmeersman/youfone/tree/v0.4.4.beta.12) (2023-06-07)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.4...v0.4.4.beta.12)
+
+**Merged pull requests:**
+
+- feat: Beta release drafter [\#35](https://github.com/geertmeersman/youfone/pull/35) ([geertmeersman](https://github.com/geertmeersman))
+- fix: improve the genius youfone amount notation [\#34](https://github.com/geertmeersman/youfone/pull/34) ([geertmeersman](https://github.com/geertmeersman))
+- docs: debugging docs in Readme [\#33](https://github.com/geertmeersman/youfone/pull/33) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.3.4](https://github.com/geertmeersman/youfone/tree/v0.3.4) (2023-06-06)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.3...v0.3.4)
