@@ -16,7 +16,7 @@ from .const import (
 )
 from .exceptions import YoufoneServiceException
 from .models import YoufoneEnvironment, YoufoneItem
-from .utils import filter_out_units, format_entity_name, str_to_float
+from .utils import format_entity_name, str_to_float
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -255,6 +255,18 @@ class YoufoneClient:
                     )
                 if property.get("SectionId") == 1:
                     key = format_entity_name(f"{msisdn} data")
+                    if (
+                        "_isUnlimited" in properties
+                        and properties.get("_isUnlimited") == "1"
+                    ):
+                        state = 0
+                    else:
+                        state = (
+                            100
+                            * str_to_float(properties.get("UsedAmount"))
+                            / str_to_float(properties.get("BundleDurationWithUnits"))
+                        )
+
                     data[key] = YoufoneItem(
                         country=self.country,
                         name="Data",
@@ -263,19 +275,22 @@ class YoufoneClient:
                         device_key=device_key,
                         device_name=device_name,
                         device_model=device_model,
-                        state=(
-                            100
-                            * str_to_float(properties.get("UsedAmount"))
-                            / str_to_float(
-                                filter_out_units(
-                                    properties.get("BundleDurationWithUnits")
-                                )
-                            )
-                        ),
+                        state=state,
                         extra_attributes=properties,
                     )
                 elif property.get("SectionId") == 2:
                     key = format_entity_name(f"{msisdn} voice sms")
+                    if (
+                        "_isUnlimited" in properties
+                        and properties.get("_isUnlimited") == "1"
+                    ):
+                        state = 0
+                    else:
+                        state = (
+                            100
+                            * str_to_float(properties.get("UsedAmount"))
+                            / str_to_float(properties.get("BundleDurationWithUnits"))
+                        )
                     data[key] = YoufoneItem(
                         country=self.country,
                         name="Voice Sms",
@@ -284,15 +299,7 @@ class YoufoneClient:
                         device_key=device_key,
                         device_name=device_name,
                         device_model=device_model,
-                        state=(
-                            100
-                            * str_to_float(properties.get("UsedAmount"))
-                            / str_to_float(
-                                filter_out_units(
-                                    properties.get("BundleDurationWithUnits")
-                                )
-                            )
-                        ),
+                        state=state,
                         extra_attributes=properties,
                     )
                 elif property.get("SectionId") == 3:
