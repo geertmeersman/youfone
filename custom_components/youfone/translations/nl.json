@@ -37,10 +37,11 @@
           "country": "Land"
         }
       },
-      "password": {
-        "title": "Pas je wachtwoord aan",
-        "description": "Te doen wanneer je je account wachtwoord gewijzigd hebt op 'Youfone'",
+      "username_password": {
+        "title": "Pas je email en wachtwoord aan",
+        "description": "Te doen wanneer je je account email en/of wachtwoord gewijzigd hebt op 'Youfone'",
         "data": {
+          "username": "Gebruiker",
           "password": "Wachtwoord"
         }
       },
@@ -48,7 +49,7 @@
         "title": "Opties wijzigen",
         "menu_options": {
           "country": "Land",
-          "password": "Wachtwoord"
+          "username_password": "Gebruiker en wachtwoord"
         }
       }
     },

@@ -37,10 +37,11 @@
           "country": "Pays"
         }
       },
-      "password": {
+      "username_password": {
         "title": "Mettre à jour votre mot de passe",
         "description": "A faire lorsque vous avez changé votre mot de passe sur 'Youfone'",
         "data": {
+          "username": "Nom d'utilisateur",
           "password": "Mot de passe"
         }
       },
@@ -48,7 +49,7 @@
         "title": "Modifier les options",
         "menu_options": {
           "country": "Pays",
-          "password": "Mot de passe"
+          "username_password": "Nom d'utilisateur & mot de passe"
         }
       }
     },
