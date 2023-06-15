@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.3.6](https://github.com/geertmeersman/youfone/tree/v0.3.6) (2023-06-15)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.5...v0.3.6)
+
+**Merged pull requests:**
+
+- refactor: workflows [\#41](https://github.com/geertmeersman/youfone/pull/41) ([geertmeersman](https://github.com/geertmeersman))
+- refactor: workflows [\#40](https://github.com/geertmeersman/youfone/pull/40) ([geertmeersman](https://github.com/geertmeersman))
+- fix: Add username change in config flow options [\#39](https://github.com/geertmeersman/youfone/pull/39) ([geertmeersman](https://github.com/geertmeersman))
+- Create FUNDING.yml [\#38](https://github.com/geertmeersman/youfone/pull/38) ([geertmeersman](https://github.com/geertmeersman))
+- Bump ruff from 0.0.270 to 0.0.272 [\#37](https://github.com/geertmeersman/youfone/pull/37) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.3.5](https://github.com/geertmeersman/youfone/tree/v0.3.5) (2023-06-07)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.4-beta.15...v0.3.5)
