@@ -37,9 +37,9 @@
           "country": "Country"
         }
       },
-      "password": {
-        "title": "Update your password",
-        "description": "To do when you changed your password on 'Youfone'",
+      "username_password": {
+        "title": "Update your username and/or password",
+        "description": "To do when you changed your username and/or password on 'Youfone'",
         "data": {
           "password": "Password"
         }
@@ -48,7 +48,7 @@
         "title": "Change options",
         "menu_options": {
           "country": "Country",
-          "password": "Password"
+          "username_password": "User & password"
         }
       }
     },

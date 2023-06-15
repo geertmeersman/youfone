@@ -7,7 +7,6 @@ from homeassistant.config_entries import ConfigEntry, ConfigFlow, OptionsFlow
 from homeassistant.const import CONF_COUNTRY, CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import callback
 from homeassistant.data_entry_flow import FlowHandler, FlowResult
-import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.selector import (
     SelectSelector,
     SelectSelectorConfig,
@@ -152,8 +151,10 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                 _LOGGER.debug(exception)
         return {"profile": profile, "errors": errors}
 
-    async def async_step_password(self, user_input: dict | None = None) -> FlowResult:
-        """Configure password."""
+    async def async_step_username_password(
+        self, user_input: dict | None = None
+    ) -> FlowResult:
+        """Configure username & password."""
         errors: dict = {}
 
         if user_input is not None:
@@ -161,16 +162,23 @@ class YoufoneCommonFlow(ABC, FlowHandler):
             test = await self.test_connection(user_input)
             if not test["errors"]:
                 self.new_entry_data |= YoufoneConfigEntryData(
+                    username=user_input[CONF_USERNAME],
                     password=user_input[CONF_PASSWORD],
                 )
-                _LOGGER.debug(f"Password changed for {user_input[CONF_USERNAME]}")
                 return self.finish_flow()
 
         fields = {
-            vol.Required(CONF_PASSWORD): cv.string,
+            vol.Required(CONF_USERNAME): TextSelector(
+                TextSelectorConfig(type=TextSelectorType.EMAIL, autocomplete="username")
+            ),
+            vol.Required(CONF_PASSWORD): TextSelector(
+                TextSelectorConfig(
+                    type=TextSelectorType.PASSWORD, autocomplete="current-password"
+                )
+            ),
         }
         return self.async_show_form(
-            step_id="password",
+            step_id="username_password",
             data_schema=self.add_suggested_values_to_schema(
                 vol.Schema(fields),
                 self.initial_data
@@ -213,7 +221,7 @@ class YoufoneOptionsFlow(YoufoneCommonFlow, OptionsFlow):
         return self.async_show_menu(
             step_id="options_init",
             menu_options=[
-                "password",
+                "username_password",
                 "country",
             ],
         )
