@@ -71,16 +71,13 @@ A Home Assistant integration allowing to monitor your Youfone usage
 
 ## Installation
 
-The Pull request is still pending merge for the hacs-default repository. So until that time, add my repository as a custom repository in hacs and the integration will show up.
-
-Explanation: https://hacs.xyz/docs/faq/custom_repositories/
-
-```
-Repository: geertmeersman/youfone
-Category: Integration
-```
-
 ### Using [HACS](https://hacs.xyz/) (recommended)
+
+**Click on this button:**
+
+[![Open your Home Assistant instance and open the repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg?style=flat-square)](https://my.home-assistant.io/redirect/hacs_repository/?owner=geertmeersman&repository=youfone&category=integration)
+
+**or follow these steps:**
 
 1. Simply search for `Youfone` in HACS and install it easily.
 2. Restart Home Assistant
