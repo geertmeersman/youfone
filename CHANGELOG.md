@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.3.7](https://github.com/geertmeersman/youfone/tree/v0.3.7) (2023-07-03)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.6...v0.3.7)
+
+**Merged pull requests:**
+
+- Feature: Create pt.json [\#45](https://github.com/geertmeersman/youfone/pull/45) ([ViPeR5000](https://github.com/ViPeR5000))
+- docs: troubleshooting [\#44](https://github.com/geertmeersman/youfone/pull/44) ([geertmeersman](https://github.com/geertmeersman))
+- docs: repo finally added to HACS [\#43](https://github.com/geertmeersman/youfone/pull/43) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.0.272 to 0.0.275 [\#42](https://github.com/geertmeersman/youfone/pull/42) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.3.6](https://github.com/geertmeersman/youfone/tree/v0.3.6) (2023-06-15)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.5...v0.3.6)
