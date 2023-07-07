@@ -166,47 +166,48 @@ class YoufoneClient:
         youcoins_token = self.youcoins_token(user_id)
         if youcoins_token:
             balance = self.youcoins_balance(youcoins_token)
-            key = format_entity_name(f"{user_id} youcoins")
-            data[key] = YoufoneItem(
-                country=self.country,
-                name="Youcoins",
-                key=key,
-                type="coins",
-                device_key=device_key,
-                device_name=device_name,
-                device_model=device_model,
-                state=balance.get("Current"),
-                extra_attributes=balance,
-            )
-            key = format_entity_name(f"{user_id} youcoins pending")
-            data[key] = YoufoneItem(
-                country=self.country,
-                name="Youcoins pending",
-                key=key,
-                type="coins_pending",
-                device_key=device_key,
-                device_name=device_name,
-                device_model=device_model,
-                state=balance.get("Pending"),
-                extra_attributes=balance,
-            )
-            propositions = self.youcoins_propositions(youcoins_token)
-            if propositions:
-                for proposition in propositions:
-                    key = format_entity_name(
-                        f"{user_id} youcoins proposition {proposition.get('Id')}"
-                    )
-                    data[key] = YoufoneItem(
-                        country=self.country,
-                        name=f"{proposition.get('DisplayName')}",
-                        key=key,
-                        type="coins_proposition",
-                        device_key=device_key,
-                        device_name=device_name,
-                        device_model=device_model,
-                        state=proposition.get("Price"),
-                        extra_attributes=proposition,
-                    )
+            if balance is not False:
+                key = format_entity_name(f"{user_id} youcoins")
+                data[key] = YoufoneItem(
+                    country=self.country,
+                    name="Youcoins",
+                    key=key,
+                    type="coins",
+                    device_key=device_key,
+                    device_name=device_name,
+                    device_model=device_model,
+                    state=balance.get("Current"),
+                    extra_attributes=balance,
+                )
+                key = format_entity_name(f"{user_id} youcoins pending")
+                data[key] = YoufoneItem(
+                    country=self.country,
+                    name="Youcoins pending",
+                    key=key,
+                    type="coins_pending",
+                    device_key=device_key,
+                    device_name=device_name,
+                    device_model=device_model,
+                    state=balance.get("Pending"),
+                    extra_attributes=balance,
+                )
+                propositions = self.youcoins_propositions(youcoins_token)
+                if propositions:
+                    for proposition in propositions:
+                        key = format_entity_name(
+                            f"{user_id} youcoins proposition {proposition.get('Id')}"
+                        )
+                        data[key] = YoufoneItem(
+                            country=self.country,
+                            name=f"{proposition.get('DisplayName')}",
+                            key=key,
+                            type="coins_proposition",
+                            device_key=device_key,
+                            device_name=device_name,
+                            device_model=device_model,
+                            state=proposition.get("Price"),
+                            extra_attributes=proposition,
+                        )
 
         device_key = format_entity_name(f"{user_id} invoices")
         device_name = f"{customer.get('FirstName')} {customer.get('LastName')} Invoices"
@@ -452,8 +453,10 @@ class YoufoneClient:
             f"https://my.youfone.be/prov/PartnerAPI/CustomerService.svc/customer?data={token}&connectId=1",
             "youcoins",
             None,
-            200,
+            None,
         )
+        if response.status_code != 200:
+            return False
         result = response.json()
         if result.get("Balance") is not None:
             return result.get("Balance")
