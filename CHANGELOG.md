@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.3.8](https://github.com/geertmeersman/youfone/tree/v0.3.8) (2023-07-07)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.7...v0.3.8)
+
+**Merged pull requests:**
+
+- fix: ignore youcoins when the partner service is unavailable [\#46](https://github.com/geertmeersman/youfone/pull/46) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.3.7](https://github.com/geertmeersman/youfone/tree/v0.3.7) (2023-07-03)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.6...v0.3.7)
