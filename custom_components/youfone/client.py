@@ -81,8 +81,7 @@ class YoufoneClient:
         _LOGGER.debug(
             f"{caller} http status code = {response.status_code} (expecting {expected})"
         )
-        if log:
-            _LOGGER.debug(f"{caller} Response:\n{response.text}")
+        _LOGGER.debug(f"{caller} Response:\n{response.text}")
         if expected is not None and response.status_code != expected:
             if response.status_code == 404:
                 self.request_error = response.json()
