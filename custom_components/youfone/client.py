@@ -5,6 +5,7 @@ from calendar import monthrange
 from datetime import datetime
 import logging
 
+import httpx
 from requests import Session
 
 from .const import (
@@ -12,7 +13,6 @@ from .const import (
     CONNECTION_RETRY,
     DEFAULT_COUNTRY,
     DEFAULT_YOUFONE_ENVIRONMENT,
-    REQUEST_TIMEOUT,
 )
 from .exceptions import YoufoneServiceException
 from .models import YoufoneEnvironment, YoufoneItem
@@ -66,17 +66,22 @@ class YoufoneClient:
         headers.update(
             {
                 "referer": f"https://my.youfone.{self.country}/login",
-                "securitykey": self.securitykey,
             }
         )
+        if self.securitykey is not None:
+            headers.update(
+                {
+                    "securitykey": self.securitykey,
+                }
+            )
+
+        client = httpx.Client(http2=True)
         if data is None:
             _LOGGER.debug(f"{caller} Calling GET {url}")
-            response = self.session.get(url, timeout=REQUEST_TIMEOUT, headers=headers)
+            response = client.get(url, headers=headers)
         else:
             _LOGGER.debug(f"{caller} Calling POST {url} with {data}")
-            response = self.session.post(
-                url, data, timeout=REQUEST_TIMEOUT, headers=headers
-            )
+            response = client.post(url, data=data, headers=headers)
         _LOGGER.debug(
             f"{caller} http status code = {response.status_code} (expecting {expected})"
         )
