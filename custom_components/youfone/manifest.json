@@ -8,6 +8,6 @@
   "integration_type": "hub",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/geertmeersman/youfone/issues",
-  "requirements": [],
+  "requirements": ["httpx"],
   "version": "v0.3.8"
 }
