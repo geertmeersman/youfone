@@ -13,7 +13,7 @@ from .const import (
     DEFAULT_COUNTRY,
     DEFAULT_YOUFONE_ENVIRONMENT,
 )
-from .exceptions import YoufoneServiceException
+from .exceptions import BadCredentialsException, YoufoneServiceException
 from .models import YoufoneEnvironment, YoufoneItem
 from .utils import format_entity_name, str_to_float
 
@@ -110,7 +110,7 @@ class YoufoneClient:
         _LOGGER.debug("[YoufoneClient|login|start]")
         """Login process"""
         if self.username is None or self.password is None:
-            return False
+            raise BadCredentialsException("Username or Password cannot be empty")
         response = self.request(
             f"{self.environment.api_endpoint}/login",
             "[YoufoneClient|login|authenticate]",
@@ -119,11 +119,13 @@ class YoufoneClient:
             + '", "Password": "'
             + self.password
             + '"}}',
-            200,
+            None,
         )
+        _LOGGER.debug(response)
         result = response.json()
+        _LOGGER.debug(result)
         if result.get("ResultCode") != 0:
-            return False
+            raise BadCredentialsException(response.text)
         self.user_details = result.get("Object")
         self.securitykey = response.headers.get("securitykey")
         return True

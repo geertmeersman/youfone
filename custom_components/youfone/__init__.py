@@ -12,7 +12,11 @@ from requests.exceptions import ConnectionError
 
 from .client import YoufoneClient
 from .const import COORDINATOR_UPDATE_INTERVAL, DOMAIN, PLATFORMS
-from .exceptions import YoufoneException, YoufoneServiceException
+from .exceptions import (
+    BadCredentialsException,
+    YoufoneException,
+    YoufoneServiceException,
+)
 from .models import YoufoneItem
 
 _LOGGER = logging.getLogger(__name__)
@@ -90,6 +94,8 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
                 raise UpdateFailed(
                     f"YoufoneServiceException {exception}"
                 ) from exception
+            except BadCredentialsException as exception:
+                raise UpdateFailed(f"Login failed: {exception}") from exception
             except YoufoneException as exception:
                 raise UpdateFailed(f"YoufoneException {exception}") from exception
             except Exception as exception:
