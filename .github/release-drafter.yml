@@ -51,6 +51,7 @@ categories:
       - chore
   - title: 🧩 Dependency Updates
     labels:
+      - build(deps)
       - deps
       - dependencies
     collapse-after: 5
