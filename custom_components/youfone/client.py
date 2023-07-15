@@ -121,9 +121,7 @@ class YoufoneClient:
             + '"}}',
             None,
         )
-        _LOGGER.debug(response)
         result = response.json()
-        _LOGGER.debug(result)
         if result.get("ResultCode") != 0:
             raise BadCredentialsException(response.text)
         self.user_details = result.get("Object")
