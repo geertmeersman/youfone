@@ -6,7 +6,6 @@ from datetime import datetime
 import logging
 
 import httpx
-from requests import Session
 
 from .const import (
     BASE_HEADERS,
@@ -24,12 +23,10 @@ _LOGGER = logging.getLogger(__name__)
 class YoufoneClient:
     """Youfone client."""
 
-    session: Session
     environment: YoufoneEnvironment
 
     def __init__(
         self,
-        session: Session | None = None,
         username: str | None = None,
         password: str | None = None,
         country: str | None = None,
@@ -37,7 +34,6 @@ class YoufoneClient:
         environment: YoufoneEnvironment = DEFAULT_YOUFONE_ENVIRONMENT,
     ) -> None:
         """Initialize YoufoneClient."""
-        self.session = session if session else Session()
         self.username = username
         self.password = password
         self.environment = environment
