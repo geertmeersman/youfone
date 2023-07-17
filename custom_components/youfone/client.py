@@ -239,6 +239,8 @@ class YoufoneClient:
 
         for customer_a in customers:
             msisdn = customer_a.get("Msisdn")
+            if msisdn is None:
+                continue
             msisdn_info = self.msisdn_info(msisdn)
             if not msisdn_info:
                 return data
