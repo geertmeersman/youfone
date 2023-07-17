@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.4.2](https://github.com/geertmeersman/youfone/tree/v0.4.2) (2023-07-17)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.2-beta.2...v0.4.2)
+
+**Merged pull requests:**
+
+- fix: skip if msisdn is None [\#54](https://github.com/geertmeersman/youfone/pull/54) ([geertmeersman](https://github.com/geertmeersman))
+
+## [v0.4.2-beta.2](https://github.com/geertmeersman/youfone/tree/v0.4.2-beta.2) (2023-07-17)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.1...v0.4.2-beta.2)
+
 ## [v0.4.1](https://github.com/geertmeersman/youfone/tree/v0.4.1) (2023-07-17)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.0...v0.4.1)
