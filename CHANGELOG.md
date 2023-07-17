@@ -1,5 +1,33 @@
 # Changelog
 
+## [v0.4.0](https://github.com/geertmeersman/youfone/tree/v0.4.0) (2023-07-17)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.9-beta.15...v0.4.0)
+
+**Merged pull requests:**
+
+- build\(deps\): bump actions/setup-python from 4.6.1 to 4.7.0 [\#52](https://github.com/geertmeersman/youfone/pull/52) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.277 to 0.0.278 [\#51](https://github.com/geertmeersman/youfone/pull/51) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): update pip requirement from \<23.2,\>=8.0.3 to \>=8.0.3,\<23.3 [\#50](https://github.com/geertmeersman/youfone/pull/50) ([dependabot[bot]](https://github.com/apps/dependabot))
+- fix: upgraded to http2, references \#48 [\#49](https://github.com/geertmeersman/youfone/pull/49) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.0.275 to 0.0.277 [\#47](https://github.com/geertmeersman/youfone/pull/47) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v0.3.9-beta.15](https://github.com/geertmeersman/youfone/tree/v0.3.9-beta.15) (2023-07-15)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.9-beta.12...v0.3.9-beta.15)
+
+## [v0.3.9-beta.12](https://github.com/geertmeersman/youfone/tree/v0.3.9-beta.12) (2023-07-15)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.9-beta.9...v0.3.9-beta.12)
+
+## [v0.3.9-beta.9](https://github.com/geertmeersman/youfone/tree/v0.3.9-beta.9) (2023-07-15)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.9-beta.1...v0.3.9-beta.9)
+
+## [v0.3.9-beta.1](https://github.com/geertmeersman/youfone/tree/v0.3.9-beta.1) (2023-07-15)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.8...v0.3.9-beta.1)
+
 ## [v0.3.8](https://github.com/geertmeersman/youfone/tree/v0.3.8) (2023-07-07)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.7...v0.3.8)
