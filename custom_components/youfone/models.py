@@ -1,8 +1,7 @@
 """Models used by Youfone."""
 from __future__ import annotations
 
-from dataclasses import dataclass
-from dataclasses import field
+from dataclasses import dataclass, field
 from typing import TypedDict
 
 
@@ -18,6 +17,7 @@ class YoufoneEnvironment:
     """Class to describe a Youfone environment."""
 
     api_endpoint: str
+    base_url: str
 
 
 @dataclass
