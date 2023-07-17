@@ -14,6 +14,7 @@ ATTRIBUTION: Final = "Data provided by Youfone"
 
 DEFAULT_YOUFONE_ENVIRONMENT = YoufoneEnvironment(
     api_endpoint="https://my.youfone.be/prov/MyYoufone/MyYOufone.Wcf/v2.0/Service.svc/json",
+    base_url="https://my.youfone.be",
 )
 
 BASE_HEADERS = {
