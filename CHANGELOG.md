@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.4.1](https://github.com/geertmeersman/youfone/tree/v0.4.1) (2023-07-17)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.0...v0.4.1)
+
+**Closed issues:**
+
+- Cannot setup integration [\#48](https://github.com/geertmeersman/youfone/issues/48)
+
+**Merged pull requests:**
+
+- fix: Youcoins NL url [\#53](https://github.com/geertmeersman/youfone/pull/53) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.4.0](https://github.com/geertmeersman/youfone/tree/v0.4.0) (2023-07-17)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.3.9-beta.15...v0.4.0)
