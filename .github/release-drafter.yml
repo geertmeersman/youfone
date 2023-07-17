@@ -54,7 +54,49 @@ categories:
       - deps
       - dependencies
     collapse-after: 5
-
+autolabeler:
+  - label: "breaking change"
+    title:
+      - "/!:/i"
+  - label: "breaking"
+    title:
+      - "/!:/i"
+  - label: "feature"
+    title:
+      - "/feat:/i"
+  - label: "perf"
+    title:
+      - "/perf:/i"
+  - label: "fix"
+    title:
+      - "/fix:/i"
+  - label: "style"
+    title:
+      - "/style:/i"
+  - label: "refactor"
+    title:
+      - "/refactor:/i"
+  - label: "test"
+    title:
+      - "/test:/i"
+  - label: "chore"
+    title:
+      - "/chore:/i"
+  - label: "doc"
+    title:
+      - "/docs:/i"
+  - label: "documentation"
+    title:
+      - "/docs:/i"
+  - label: "ci"
+    title:
+      - "/ci:/i"
+  - label: "dependencies"
+    title:
+      - "/deps:/i"
+      - '/\(deps\)/i'
+      - "/dependencies:/i"
+      - "/bump:/i"
 change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 version-resolver:

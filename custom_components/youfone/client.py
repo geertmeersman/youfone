@@ -5,16 +5,15 @@ from calendar import monthrange
 from datetime import datetime
 import logging
 
-from requests import Session
+import httpx
 
 from .const import (
     BASE_HEADERS,
     CONNECTION_RETRY,
     DEFAULT_COUNTRY,
     DEFAULT_YOUFONE_ENVIRONMENT,
-    REQUEST_TIMEOUT,
 )
-from .exceptions import YoufoneServiceException
+from .exceptions import BadCredentialsException, YoufoneServiceException
 from .models import YoufoneEnvironment, YoufoneItem
 from .utils import format_entity_name, str_to_float
 
@@ -24,12 +23,10 @@ _LOGGER = logging.getLogger(__name__)
 class YoufoneClient:
     """Youfone client."""
 
-    session: Session
     environment: YoufoneEnvironment
 
     def __init__(
         self,
-        session: Session | None = None,
         username: str | None = None,
         password: str | None = None,
         country: str | None = None,
@@ -37,7 +34,6 @@ class YoufoneClient:
         environment: YoufoneEnvironment = DEFAULT_YOUFONE_ENVIRONMENT,
     ) -> None:
         """Initialize YoufoneClient."""
-        self.session = session if session else Session()
         self.username = username
         self.password = password
         self.environment = environment
@@ -66,22 +62,26 @@ class YoufoneClient:
         headers.update(
             {
                 "referer": f"https://my.youfone.{self.country}/login",
-                "securitykey": self.securitykey,
             }
         )
+        if self.securitykey is not None:
+            headers.update(
+                {
+                    "securitykey": self.securitykey,
+                }
+            )
+
+        client = httpx.Client(http2=True)
         if data is None:
             _LOGGER.debug(f"{caller} Calling GET {url}")
-            response = self.session.get(url, timeout=REQUEST_TIMEOUT, headers=headers)
+            response = client.get(url, headers=headers)
         else:
             _LOGGER.debug(f"{caller} Calling POST {url} with {data}")
-            response = self.session.post(
-                url, data, timeout=REQUEST_TIMEOUT, headers=headers
-            )
+            response = client.post(url, data=data, headers=headers)
         _LOGGER.debug(
             f"{caller} http status code = {response.status_code} (expecting {expected})"
         )
-        if log:
-            _LOGGER.debug(f"{caller} Response:\n{response.text}")
+        _LOGGER.debug(f"{caller} Response:\n{response.text}")
         if expected is not None and response.status_code != expected:
             if response.status_code == 404:
                 self.request_error = response.json()
@@ -110,7 +110,7 @@ class YoufoneClient:
         _LOGGER.debug("[YoufoneClient|login|start]")
         """Login process"""
         if self.username is None or self.password is None:
-            return False
+            raise BadCredentialsException("Username or Password cannot be empty")
         response = self.request(
             f"{self.environment.api_endpoint}/login",
             "[YoufoneClient|login|authenticate]",
@@ -119,11 +119,11 @@ class YoufoneClient:
             + '", "Password": "'
             + self.password
             + '"}}',
-            200,
+            None,
         )
         result = response.json()
         if result.get("ResultCode") != 0:
-            return False
+            raise BadCredentialsException(response.text)
         self.user_details = result.get("Object")
         self.securitykey = response.headers.get("securitykey")
         return True
