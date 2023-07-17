@@ -46,6 +46,9 @@ class YoufoneClient:
             self.environment.api_endpoint = self.environment.api_endpoint.replace(
                 "youfone.be", f"youfone.{country}"
             )
+            self.environment.base_url = self.environment.base_url.replace(
+                "youfone.be", f"youfone.{country}"
+            )
 
     def request(
         self,
@@ -450,7 +453,7 @@ class YoufoneClient:
     def youcoins_balance(self, token):
         """Get Youcoins balance."""
         response = self.request(
-            f"https://my.youfone.be/prov/PartnerAPI/CustomerService.svc/customer?data={token}&connectId=1",
+            f"{self.environment.base_url}/prov/PartnerAPI/CustomerService.svc/customer?data={token}&connectId=1",
             "youcoins",
             None,
             None,
@@ -465,7 +468,7 @@ class YoufoneClient:
     def youcoins_propositions(self, token):
         """Get Youcoins Propositions."""
         response = self.request(
-            f"https://my.youfone.be/prov/PartnerAPI/CustomerService.svc/propositions?data={token}&connectId=1",
+            f"{self.environment.base_url}/prov/PartnerAPI/CustomerService.svc/propositions?data={token}&connectId=1",
             "youcoins",
             None,
             200,
