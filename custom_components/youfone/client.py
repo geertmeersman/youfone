@@ -64,7 +64,9 @@ class YoufoneClient:
         headers = self._headers
         headers.update(
             {
-                "referer": f"https://my.youfone.{self.country}/login",
+                "Referer": f"https://my.youfone.{self.country}/login",
+                "Origin": f"https://my.youfone.{self.country}",
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
             }
         )
         if self.securitykey is not None:
