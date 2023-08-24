@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.4.3](https://github.com/geertmeersman/youfone/tree/v0.4.3) (2023-08-24)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.2...v0.4.3)
+
+**Closed issues:**
+
+- Youfone integration cannot start - exception expection value [\#57](https://github.com/geertmeersman/youfone/issues/57)
+
+**Merged pull requests:**
+
+- fix: increased update interval to 1 hour & format to f-string conversion [\#62](https://github.com/geertmeersman/youfone/pull/62) ([geertmeersman](https://github.com/geertmeersman))
+- fix: 418 issue, fixes \#57 [\#61](https://github.com/geertmeersman/youfone/pull/61) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.0.278 to 0.0.285 [\#60](https://github.com/geertmeersman/youfone/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.4.2](https://github.com/geertmeersman/youfone/tree/v0.4.2) (2023-07-17)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.2-beta.2...v0.4.2)
