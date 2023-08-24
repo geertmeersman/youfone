@@ -25,7 +25,7 @@ DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%S%z"
 DEFAULT_COUNTRY = "be"
 COUNTRY_CHOICES = ["be", "nl"]
 
-COORDINATOR_UPDATE_INTERVAL = timedelta(minutes=15)
+COORDINATOR_UPDATE_INTERVAL = timedelta(minutes=60)
 CONNECTION_RETRY = 5
 REQUEST_TIMEOUT = 20
 WEBSITE = "https://my.youfone.be/"
@@ -38,14 +38,12 @@ DOMAIN = manifest_data.get("domain")
 NAME = manifest_data.get("name")
 VERSION = manifest_data.get("version")
 ISSUEURL = manifest_data.get("issue_tracker")
-STARTUP = """
+STARTUP = f"""
 -------------------------------------------------------------------
-{name}
-Version: {version}
+{NAME}
+Version: {VERSION}
 This is a custom component
 If you have any issues with this you need to open an issue here:
-{issueurl}
+{ISSUEURL}
 -------------------------------------------------------------------
-""".format(
-    name=NAME, version=VERSION, issueurl=ISSUEURL
-)
+"""
