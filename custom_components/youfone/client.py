@@ -4,6 +4,7 @@ from __future__ import annotations
 from calendar import monthrange
 from datetime import datetime
 import logging
+import time
 
 import httpx
 
@@ -87,6 +88,8 @@ class YoufoneClient:
             f"{caller} http status code = {response.status_code} (expecting {expected})"
         )
         _LOGGER.debug(f"{caller} Response:\n{response.text}")
+        # sleep 1 second, slowing down requests for IP blacklisting
+        time.sleep(1)
         if expected is not None and response.status_code != expected:
             if response.status_code == 404:
                 self.request_error = response.json()
