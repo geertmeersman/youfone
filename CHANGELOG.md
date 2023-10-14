@@ -1,12 +1,32 @@
 # Changelog
 
-## [v0.4.3](https://github.com/geertmeersman/youfone/tree/v0.4.3) (2023-08-24)
+## [v0.4.4](https://github.com/geertmeersman/youfone/tree/v0.4.4) (2023-10-14)
 
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.2...v0.4.3)
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.4.3-beta.12...v0.4.4)
+
+**Merged pull requests:**
+
+- fix: sleep added between requests, trying to avoid IP blacklisting [\#70](https://github.com/geertmeersman/youfone/pull/70) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.0.291 to 0.0.292 [\#69](https://github.com/geertmeersman/youfone/pull/69) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/setup-python from 4.7.0 to 4.7.1 [\#68](https://github.com/geertmeersman/youfone/pull/68) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.290 to 0.0.291 [\#67](https://github.com/geertmeersman/youfone/pull/67) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.287 to 0.0.290 [\#66](https://github.com/geertmeersman/youfone/pull/66) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/checkout from 3 to 4 [\#65](https://github.com/geertmeersman/youfone/pull/65) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.286 to 0.0.287 [\#64](https://github.com/geertmeersman/youfone/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.0.285 to 0.0.286 [\#63](https://github.com/geertmeersman/youfone/pull/63) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v1.4.3-beta.12](https://github.com/geertmeersman/youfone/tree/v1.4.3-beta.12) (2023-10-14)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.3...v1.4.3-beta.12)
 
 **Closed issues:**
 
 - Youfone integration cannot start - exception expection value [\#57](https://github.com/geertmeersman/youfone/issues/57)
+- Ip blocked. To many polls [\#55](https://github.com/geertmeersman/youfone/issues/55)
+
+## [v0.4.3](https://github.com/geertmeersman/youfone/tree/v0.4.3) (2023-08-24)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.2...v0.4.3)
 
 **Merged pull requests:**
 
