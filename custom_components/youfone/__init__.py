@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import logging
+import random
+import time
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_COUNTRY, CONF_PASSWORD, CONF_USERNAME
@@ -39,6 +41,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         dev_reg=dev_reg,
         client=client,
     )
+
+    # sleep random number of seconds, trying to avoid IP blacklisting
+    time.sleep(random.uniform(1, 10))
 
     await coordinator.async_config_entry_first_refresh()
 
