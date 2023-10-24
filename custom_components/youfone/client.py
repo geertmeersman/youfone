@@ -4,6 +4,7 @@ from __future__ import annotations
 from calendar import monthrange
 from datetime import datetime
 import logging
+import random
 import time
 
 import httpx
@@ -115,7 +116,8 @@ class YoufoneClient:
 
     def login(self) -> dict:
         """Start a new Youfone session with a user & password."""
-        _LOGGER.debug("[YoufoneClient|login|start]")
+        # sleep random number of seconds, trying to avoid IP blacklisting
+        time.sleep(random.uniform(1, 10))
         """Login process"""
         if self.username is None or self.password is None:
             raise BadCredentialsException("Username or Password cannot be empty")
@@ -213,7 +215,7 @@ class YoufoneClient:
                             device_key=device_key,
                             device_name=device_name,
                             device_model=device_model,
-                            state=proposition.get("Price"),
+                            state=proposition.get("Price").replace(",", "."),
                             extra_attributes=proposition,
                         )
 
@@ -350,7 +352,9 @@ class YoufoneClient:
                         device_key=device_key,
                         device_name=device_name,
                         device_model=device_model,
-                        state=properties.get("Price").replace(",-", ""),
+                        state=properties.get("Price")
+                        .replace(",-", "")
+                        .replace(",", "."),
                         extra_attributes=properties,
                     )
                 elif property.get("SectionId") == 23:
