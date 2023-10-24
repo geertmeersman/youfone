@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.5.1](https://github.com/geertmeersman/youfone/tree/v0.5.1) (2023-10-24)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.5.0...v0.5.1)
+
+**Merged pull requests:**
+
+- fix: price int fix, references \#73 [\#75](https://github.com/geertmeersman/youfone/pull/75) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.5.0](https://github.com/geertmeersman/youfone/tree/v0.5.0) (2023-10-24)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.4...v0.5.0)
