@@ -8,7 +8,9 @@ from jsonpath import jsonpath
 
 def str_to_float(input) -> float:
     """Transform float to string."""
-    return float(filter_out_units(input.strip().replace(",", ".")))
+    return float(
+        filter_out_units(str(input).strip().replace(",-", "").replace(",", "."))
+    )
 
 
 def filter_out_units(string):

@@ -215,7 +215,7 @@ class YoufoneClient:
                             device_key=device_key,
                             device_name=device_name,
                             device_model=device_model,
-                            state=proposition.get("Price").replace(",", "."),
+                            state=str_to_float(proposition.get("Price")),
                             extra_attributes=proposition,
                         )
 
@@ -352,9 +352,7 @@ class YoufoneClient:
                         device_key=device_key,
                         device_name=device_name,
                         device_model=device_model,
-                        state=properties.get("Price")
-                        .replace(",-", "")
-                        .replace(",", "."),
+                        state=str_to_float(properties.get("Price")),
                         extra_attributes=properties,
                     )
                 elif property.get("SectionId") == 23:
