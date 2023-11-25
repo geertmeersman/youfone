@@ -23,13 +23,6 @@
   },
   "options": {
     "step": {
-      "init": {
-        "title": "Reconfigurer Youfone",
-        "data": {
-          "username": "Nom d'utilisateur",
-          "password": "Mot de passe"
-        }
-      },
       "country": {
         "title": "Changer de pays",
         "description": "Ceci ne devrait normalement pas être utilisé",
@@ -45,7 +38,7 @@
           "password": "Mot de passe"
         }
       },
-      "options_init": {
+      "init": {
         "title": "Modifier les options",
         "menu_options": {
           "country": "Pays",
