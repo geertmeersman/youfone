@@ -1,5 +1,26 @@
 # Changelog
 
+## [v0.5.2](https://github.com/geertmeersman/youfone/tree/v0.5.2) (2023-11-25)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.5.1...v0.5.2)
+
+**Closed issues:**
+
+- Sensor doesn't update automatically [\#73](https://github.com/geertmeersman/youfone/issues/73)
+
+**Merged pull requests:**
+
+- fix: move release zip & config flow fix [\#85](https://github.com/geertmeersman/youfone/pull/85) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.1.5 to 0.1.6 [\#84](https://github.com/geertmeersman/youfone/pull/84) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/github-script from 6 to 7 [\#83](https://github.com/geertmeersman/youfone/pull/83) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/upload-artifact from 2 to 3 [\#82](https://github.com/geertmeersman/youfone/pull/82) ([dependabot[bot]](https://github.com/apps/dependabot))
+- fix: Release workflow - remove path from zip [\#81](https://github.com/geertmeersman/youfone/pull/81) ([geertmeersman](https://github.com/geertmeersman))
+- fix: Release workflow - add zip artifact [\#80](https://github.com/geertmeersman/youfone/pull/80) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.1.4 to 0.1.5 [\#79](https://github.com/geertmeersman/youfone/pull/79) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.1.3 to 0.1.4 [\#78](https://github.com/geertmeersman/youfone/pull/78) ([dependabot[bot]](https://github.com/apps/dependabot))
+- fix: Bump Python and HA [\#77](https://github.com/geertmeersman/youfone/pull/77) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.1.1 to 0.1.3 [\#76](https://github.com/geertmeersman/youfone/pull/76) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.5.1](https://github.com/geertmeersman/youfone/tree/v0.5.1) (2023-10-24)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.5.0...v0.5.1)
