@@ -219,7 +219,7 @@ class YoufoneOptionsFlow(YoufoneCommonFlow, OptionsFlow):
     ) -> FlowResult:
         """Manage Youfone options."""
         return self.async_show_menu(
-            step_id="options_init",
+            step_id="init",
             menu_options=[
                 "username_password",
                 "country",

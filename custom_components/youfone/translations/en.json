@@ -23,13 +23,6 @@
   },
   "options": {
     "step": {
-      "init": {
-        "title": "Reconfigure Youfone",
-        "data": {
-          "username": "Username",
-          "password": "Password"
-        }
-      },
       "country": {
         "title": "Change your country",
         "description": "This normally should not be used",
@@ -44,7 +37,7 @@
           "password": "Password"
         }
       },
-      "options_init": {
+      "init": {
         "title": "Change options",
         "menu_options": {
           "country": "Country",

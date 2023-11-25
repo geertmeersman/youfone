@@ -23,13 +23,6 @@
   },
   "options": {
     "step": {
-      "init": {
-        "title": "Herconfigureer Youfone",
-        "data": {
-          "username": "Gebruiker",
-          "password": "Wachtwoord"
-        }
-      },
       "country": {
         "title": "Wijzig je land",
         "description": "Dit zou je normaal niet hoeven te gebruiken",
@@ -45,7 +38,7 @@
           "password": "Wachtwoord"
         }
       },
-      "options_init": {
+      "init": {
         "title": "Opties wijzigen",
         "menu_options": {
           "country": "Land",
