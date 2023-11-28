@@ -4,21 +4,17 @@ from __future__ import annotations
 from calendar import monthrange
 import copy
 from datetime import datetime
+import json
 import logging
 import random
 import time
 
 import httpx
 
-from .const import (
-    BASE_HEADERS,
-    CONNECTION_RETRY,
-    DEFAULT_COUNTRY,
-    DEFAULT_YOUFONE_ENVIRONMENT,
-)
+from .const import BASE_HEADERS, DEFAULT_COUNTRY, DEFAULT_YOUFONE_ENVIRONMENT
 from .exceptions import BadCredentialsException, YoufoneServiceException
 from .models import YoufoneEnvironment, YoufoneItem
-from .utils import format_entity_name, str_to_float
+from .utils import format_entity_name, mask_fields, str_to_float
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -60,8 +56,6 @@ class YoufoneClient:
         data=None,
         expected="200",
         log=False,
-        retrying=False,
-        connection_retry_left=CONNECTION_RETRY,
     ) -> dict:
         """Send a request to Youfone."""
         headers = self._headers
@@ -80,48 +74,31 @@ class YoufoneClient:
             )
 
         client = httpx.Client(http2=True)
+
+        # sleep random number of seconds, trying to avoid IP blacklisting
+        time.sleep(random.uniform(1, 10))
+
         if data is None:
             _LOGGER.debug(f"{caller} Calling GET {url}")
             response = client.get(url, headers=headers)
         else:
             data_copy = copy.deepcopy(data)
-            if "Password" in data_copy:
-                data_copy["Password"] = "***FILTERED***"
-            _LOGGER.debug(f"{caller} Calling POST {url} with {data_copy}")
+            json_data = json.loads(data_copy)
+            mask_fields(json_data, ["Password"])
+            _LOGGER.debug(f"{caller} Calling POST {url} with {json_data}")
             response = client.post(url, data=data, headers=headers)
         _LOGGER.debug(
             f"{caller} http status code = {response.status_code} (expecting {expected})"
         )
         _LOGGER.debug(f"{caller} Response:\n{response.text}")
-        # sleep 1 second, slowing down requests for IP blacklisting
-        time.sleep(1)
         if expected is not None and response.status_code != expected:
-            if response.status_code == 404:
-                self.request_error = response.json()
-                return False
-            if (
-                response.status_code != 403
-                and response.status_code != 401
-                and response.status_code != 500
-                and connection_retry_left > 0
-                and not retrying
-            ):
-                raise YoufoneServiceException(
-                    f"[{caller}] Expecting HTTP {expected} | Response HTTP {response.status_code}, Response: {response.text}, Url: {response.url}"
-                )
-            _LOGGER.debug(
-                f"[YoufoneClient|request] Received a HTTP {response.status_code}, nothing to worry about! We give it another try :-)"
-            )
-            self.login()
-            response = self.request(
-                url, caller, data, expected, log, True, connection_retry_left - 1
+            raise YoufoneServiceException(
+                f"[{caller}] Expecting HTTP {expected} | Response HTTP {response.status_code}, Response: {response.text}, Url: {response.url}"
             )
         return response
 
     def login(self) -> dict:
         """Start a new Youfone session with a user & password."""
-        # sleep random number of seconds, trying to avoid IP blacklisting
-        time.sleep(random.uniform(1, 10))
         """Login process"""
         if self.username is None or self.password is None:
             raise BadCredentialsException("Username or Password cannot be empty")
