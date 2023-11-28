@@ -85,8 +85,8 @@ class YoufoneClient:
             response = client.get(url, headers=headers)
         else:
             data_copy = copy.deepcopy(data)
-            if "password" in data_copy:
-                data_copy["password"] = "***FILTERED***"
+            if "Password" in data_copy:
+                data_copy["Password"] = "***FILTERED***"
             _LOGGER.debug(f"{caller} Calling POST {url} with {data_copy}")
             response = client.post(url, data=data, headers=headers)
         _LOGGER.debug(
