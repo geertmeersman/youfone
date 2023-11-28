@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from calendar import monthrange
+import copy
 from datetime import datetime
 import logging
 import random
@@ -83,7 +84,10 @@ class YoufoneClient:
             _LOGGER.debug(f"{caller} Calling GET {url}")
             response = client.get(url, headers=headers)
         else:
-            _LOGGER.debug(f"{caller} Calling POST {url} with {data}")
+            data_copy = copy.deepcopy(data)
+            if "password" in data_copy:
+                data_copy["password"] = "***FILTERED***"
+            _LOGGER.debug(f"{caller} Calling POST {url} with {data_copy}")
             response = client.post(url, data=data, headers=headers)
         _LOGGER.debug(
             f"{caller} http status code = {response.status_code} (expecting {expected})"
@@ -168,7 +172,7 @@ class YoufoneClient:
             state=user_id,
             extra_attributes=personal_info,
         )
-
+        """
         device_key = format_entity_name(f"{user_id} youcoins")
         device_name = f"{customer.get('FirstName')} {customer.get('LastName')} Youcoins"
         device_model = "Youcoins"
@@ -243,7 +247,7 @@ class YoufoneClient:
                 ),
                 extra_attributes=invoice,
             )
-
+        """
         for customer_a in customers:
             msisdn = customer_a.get("Msisdn")
             if msisdn is None:
