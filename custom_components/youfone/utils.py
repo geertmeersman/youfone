@@ -74,12 +74,13 @@ def get_json_dict_path(dictionary, path):
 
 
 def mask_fields(json_data, fields_to_mask):
+    """Mask sensitive fields."""
     if isinstance(json_data, dict):
         for field in fields_to_mask:
             if field in json_data:
                 json_data[field] = "***FILTERED***"
 
-        for key, value in json_data.items():
+        for _, value in json_data.items():
             mask_fields(
                 value, fields_to_mask
             )  # Recursively traverse the JSON structure
