@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.5.3](https://github.com/geertmeersman/youfone/tree/v0.5.3) (2023-11-28)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.5.2...v0.5.3)
+
+**Merged pull requests:**
+
+- fix: filter out password when debugging [\#88](https://github.com/geertmeersman/youfone/pull/88) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.5.2](https://github.com/geertmeersman/youfone/tree/v0.5.2) (2023-11-25)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.5.1...v0.5.2)
