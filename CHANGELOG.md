@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.5.4](https://github.com/geertmeersman/youfone/tree/v0.5.4) (2023-11-28)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.5.3...v0.5.4)
+
+**Closed issues:**
+
+- \[Errno 111\] Connection refused [\#87](https://github.com/geertmeersman/youfone/issues/87)
+
+**Merged pull requests:**
+
+- fix: slow down http calls, mask sensitive fields and remove youcoin calls \(temporarily\) references \#86 [\#89](https://github.com/geertmeersman/youfone/pull/89) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.5.3](https://github.com/geertmeersman/youfone/tree/v0.5.3) (2023-11-28)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.5.2...v0.5.3)
