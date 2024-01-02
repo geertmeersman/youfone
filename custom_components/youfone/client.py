@@ -255,10 +255,11 @@ class YoufoneClient:
                     ):
                         state = 0
                     else:
-                        state = (
+                        state = round(
                             100
                             * str_to_float(properties.get("UsedAmount"))
-                            / str_to_float(properties.get("BundleDurationWithUnits"))
+                            / str_to_float(properties.get("BundleDurationWithUnits")),
+                            1,
                         )
 
                     data[key] = YoufoneItem(
@@ -280,10 +281,11 @@ class YoufoneClient:
                     ):
                         state = 0
                     else:
-                        state = (
+                        state = round(
                             100
                             * str_to_float(properties.get("UsedAmount"))
-                            / str_to_float(properties.get("BundleDurationWithUnits"))
+                            / str_to_float(properties.get("BundleDurationWithUnits")),
+                            1,
                         )
                     data[key] = YoufoneItem(
                         country=self.country,
