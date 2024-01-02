@@ -1,5 +1,28 @@
 # Changelog
 
+## [v0.5.5](https://github.com/geertmeersman/youfone/tree/v0.5.5) (2024-01-02)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.5.4...v0.5.5)
+
+**Closed issues:**
+
+- Not working. Ip temp blocked. [\#86](https://github.com/geertmeersman/youfone/issues/86)
+
+**Merged pull requests:**
+
+- fix: round to 1 decimal for percentages [\#101](https://github.com/geertmeersman/youfone/pull/101) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.1.8 to 0.1.9 [\#100](https://github.com/geertmeersman/youfone/pull/100) ([dependabot[bot]](https://github.com/apps/dependabot))
+- fix: jsonpath removed [\#99](https://github.com/geertmeersman/youfone/pull/99) ([geertmeersman](https://github.com/geertmeersman))
+- fix: remove requirements [\#98](https://github.com/geertmeersman/youfone/pull/98) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.1.7 to 0.1.8 [\#97](https://github.com/geertmeersman/youfone/pull/97) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/upload-artifact from 3 to 4 [\#96](https://github.com/geertmeersman/youfone/pull/96) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump github/codeql-action from 2 to 3 [\#95](https://github.com/geertmeersman/youfone/pull/95) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.1.6 to 0.1.7 [\#94](https://github.com/geertmeersman/youfone/pull/94) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/setup-python from 4.7.1 to 5.0.0 [\#93](https://github.com/geertmeersman/youfone/pull/93) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/stale from 8 to 9 [\#92](https://github.com/geertmeersman/youfone/pull/92) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump heinrichreimer/github-changelog-generator-action from 2.3 to 2.4 [\#91](https://github.com/geertmeersman/youfone/pull/91) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump colorlog from 6.7.0 to 6.8.0 [\#90](https://github.com/geertmeersman/youfone/pull/90) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.5.4](https://github.com/geertmeersman/youfone/tree/v0.5.4) (2023-11-28)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.5.3...v0.5.4)
