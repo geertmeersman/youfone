@@ -98,7 +98,6 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
 
     async def get_data(self) -> dict | None:
         """Get the data from the Youfone client."""
-        return
         self.data = await self.hass.async_add_executor_job(self.client.fetch_data)
         await self.store.async_save(self.data)
 
