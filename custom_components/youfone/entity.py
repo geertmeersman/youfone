@@ -49,6 +49,8 @@ class YoufoneEntity(CoordinatorEntity[YoufoneDataUpdateCoordinator]):
         self.client = coordinator.client
         self.last_synced = datetime.now()
         self._attr_name = sensor_name(self.item.name)
+        if self.entity_description.name_suffix is not None:
+            self._attr_name += f" {self.entity_description.name_suffix}"
         self._item = item
         _LOGGER.debug(f"[YoufoneEntity|init] {self._key}")
 

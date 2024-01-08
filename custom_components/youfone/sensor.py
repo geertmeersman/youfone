@@ -32,6 +32,7 @@ class YoufoneSensorDescription(SensorEntityDescription):
     """Class to describe a Youfone sensor."""
 
     value_fn: Callable[[Any], StateType] | None = None
+    name_suffix: str | None = None
 
 
 SENSOR_DESCRIPTIONS: list[SensorEntityDescription] = [
@@ -107,8 +108,7 @@ async def async_setup_entry(
     # _LOGGER.debug(f"[sensor|async_setup_entry|async_add_entities|SUPPORTED_KEYS] {SUPPORTED_KEYS}")
 
     if coordinator.data is not None:
-        for item in coordinator.data:
-            item = coordinator.data[item]
+        for _, item in coordinator.data.items():
             if description := SUPPORTED_KEYS.get(item.type):
                 if item.native_unit_of_measurement is not None:
                     native_unit_of_measurement = item.native_unit_of_measurement
