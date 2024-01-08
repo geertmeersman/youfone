@@ -377,7 +377,7 @@ class YoufoneClient:
                         state=properties.get("VoiceSmsSubscription"),
                     )
             if period_percentage_completed is not None:
-                for key, item in data.items():
+                for _, item in data.items():
                     item.extra_attributes[
                         "period_percentage_completed"
                     ] = period_percentage_completed
