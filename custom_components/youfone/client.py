@@ -241,6 +241,7 @@ class YoufoneClient:
             )
             device_model = "Msisdn"
 
+            period_percentage_completed = None
             for property in abonnement_msisdn_info + msisdn_info:
                 properties = {}
                 for property_list in property.get("Properties"):
@@ -375,6 +376,11 @@ class YoufoneClient:
                         device_model=device_model,
                         state=properties.get("VoiceSmsSubscription"),
                     )
+            if period_percentage_completed is not None:
+                for key, item in data.items():
+                    item.extra_attributes[
+                        "period_percentage_completed"
+                    ] = period_percentage_completed
         return data
 
     def personal_info(self, customer_id):

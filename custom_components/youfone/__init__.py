@@ -2,12 +2,14 @@
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_COUNTRY, CONF_PASSWORD, CONF_USERNAME
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import device_registry as dr
-from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
+from homeassistant.helpers.storage import STORAGE_DIR, Store
+from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from requests.exceptions import ConnectionError
 
 from .client import YoufoneClient
@@ -32,12 +34,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         country=entry.data[CONF_COUNTRY],
     )
 
+    storage_dir = Path(f"{hass.config.path(STORAGE_DIR)}/{DOMAIN}")
+    if storage_dir.is_file():
+        storage_dir.unlink()
+    storage_dir.mkdir(exist_ok=True)
+    store: Store = Store(hass, 1, f"{DOMAIN}/{entry.entry_id}")
     dev_reg = dr.async_get(hass)
     hass.data[DOMAIN][entry.entry_id] = coordinator = YoufoneDataUpdateCoordinator(
         hass,
         config_entry_id=entry.entry_id,
         dev_reg=dev_reg,
         client=client,
+        store=store,
     )
 
     await coordinator.async_config_entry_first_refresh()
@@ -67,6 +75,7 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
         config_entry_id: str,
         dev_reg: dr.DeviceRegistry,
         client: YoufoneClient,
+        store: Store,
     ) -> None:
         """Initialize coordinator."""
         super().__init__(
@@ -78,43 +87,53 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
         self._debug = _LOGGER.isEnabledFor(logging.DEBUG)
         self._config_entry_id = config_entry_id
         self._device_registry = dev_reg
+        self.store = store
         self.client = client
         self.hass = hass
+
+    async def async_config_entry_first_refresh(self) -> None:
+        """Refresh data for the first time when a config entry is setup."""
+        self.data = await self.store.async_load() or {}
+        await super().async_config_entry_first_refresh()
+
+    async def get_data(self) -> dict | None:
+        """Get the data from the Youfone client."""
+        return
+        self.data = await self.hass.async_add_executor_job(self.client.fetch_data)
+        await self.store.async_save(self.data)
 
     async def _async_update_data(self) -> dict | None:
         """Update data."""
         if self._debug:
-            items = await self.hass.async_add_executor_job(self.client.fetch_data)
+            await self.get_data()
         else:
             try:
-                items = await self.hass.async_add_executor_job(self.client.fetch_data)
+                await self.get_data()
             except ConnectionError as exception:
-                raise UpdateFailed(f"ConnectionError {exception}") from exception
+                _LOGGER.warning(f"ConnectionError {exception}")
             except YoufoneServiceException as exception:
-                raise UpdateFailed(
-                    f"YoufoneServiceException {exception}"
-                ) from exception
+                _LOGGER.warning(f"YoufoneServiceException {exception}")
             except BadCredentialsException as exception:
-                raise UpdateFailed(f"Login failed: {exception}") from exception
+                _LOGGER.warning(f"Login failed: {exception}")
             except YoufoneException as exception:
-                raise UpdateFailed(f"YoufoneException {exception}") from exception
+                _LOGGER.warning(f"YoufoneException {exception}")
             except Exception as exception:
-                raise UpdateFailed(f"Exception {exception}") from exception
+                _LOGGER.warning(f"Exception {exception}")
 
-        items: list[YoufoneItem] = items
+        self.data = {key: YoufoneItem(**value) for key, value in self.data.items()}
+        if len(self.data):
+            current_items = {
+                list(device.identifiers)[0][1]
+                for device in dr.async_entries_for_config_entry(
+                    self._device_registry, self._config_entry_id
+                )
+            }
+            fetched_items = set()
+            for item_value in self.data.values():
+                device_key = item_value.device_key
+                if device_key:
+                    fetched_items.add(device_key)
 
-        current_items = {
-            list(device.identifiers)[0][1]
-            for device in dr.async_entries_for_config_entry(
-                self._device_registry, self._config_entry_id
-            )
-        }
-
-        if items is not None and len(items) > 0:
-            fetched_items = {str(items[item].device_key) for item in items}
-            _LOGGER.debug(
-                f"[init|YoufoneDataUpdateCoordinator|_async_update_data|fetched_items] {fetched_items}"
-            )
             if stale_items := current_items - fetched_items:
                 for device_key in stale_items:
                     if device := self._device_registry.async_get_device(
@@ -125,16 +144,10 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
                             True,
                         )
                         self._device_registry.async_remove_device(device.id)
-
-            # If there are new items, we should reload the config entry so we can
-            # create new devices and entities.
-            if self.data and fetched_items - {
-                str(self.data[item].device_key) for item in self.data
-            }:
-                # _LOGGER.debug(f"[init|YoufoneDataUpdateCoordinator|_async_update_data|async_reload] {product.product_name}")
+            if fetched_items - current_items:
                 self.hass.async_create_task(
                     self.hass.config_entries.async_reload(self._config_entry_id)
                 )
                 return None
-            return items
-        return []
+            return self.data
+        return {}
