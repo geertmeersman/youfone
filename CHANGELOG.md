@@ -1,11 +1,12 @@
 # Changelog
 
-## [v0.6.0](https://github.com/geertmeersman/youfone/tree/v0.6.0) (2024-01-08)
+## [v0.6.0](https://github.com/geertmeersman/youfone/tree/v0.6.0) (2024-01-09)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.5.5...v0.6.0)
 
 **Merged pull requests:**
 
+- fix: Youfoneitem casting fix [\#104](https://github.com/geertmeersman/youfone/pull/104) ([geertmeersman](https://github.com/geertmeersman))
 - feat: store implemented and data+voice alarm binary sensors [\#103](https://github.com/geertmeersman/youfone/pull/103) ([geertmeersman](https://github.com/geertmeersman))
 - build\(deps\): bump ruff from 0.1.9 to 0.1.11 [\#102](https://github.com/geertmeersman/youfone/pull/102) ([dependabot[bot]](https://github.com/apps/dependabot))
 
