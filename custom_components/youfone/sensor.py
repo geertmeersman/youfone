@@ -98,7 +98,9 @@ async def async_setup_entry(
 ) -> None:
     """Set up the Youfone sensors."""
     _LOGGER.debug("[sensor|async_setup_entry|async_add_entities|start]")
-    coordinator: YoufoneDataUpdateCoordinator = hass.data[DOMAIN][entry.entry_id]
+    coordinator: YoufoneDataUpdateCoordinator = hass.data[DOMAIN][entry.entry_id][
+        "coordinator"
+    ]
     entities: list[YoufoneSensor] = []
 
     SUPPORTED_KEYS = {
