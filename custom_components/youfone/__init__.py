@@ -26,7 +26,10 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Youfone from a config entry."""
-    hass.data.setdefault(DOMAIN, {})
+    hass.data.setdefault(DOMAIN, {})[entry.entry_id] = {}
+
+    for platform in PLATFORMS:
+        hass.data[DOMAIN][entry.entry_id].setdefault(platform, set())
 
     client = YoufoneClient(
         username=entry.data[CONF_USERNAME],
@@ -40,7 +43,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     storage_dir.mkdir(exist_ok=True)
     store: Store = Store(hass, 1, f"{DOMAIN}/{entry.entry_id}")
     dev_reg = dr.async_get(hass)
-    hass.data[DOMAIN][entry.entry_id] = coordinator = YoufoneDataUpdateCoordinator(
+    hass.data[DOMAIN][entry.entry_id][
+        "coordinator"
+    ] = coordinator = YoufoneDataUpdateCoordinator(
         hass,
         config_entry_id=entry.entry_id,
         dev_reg=dev_reg,
@@ -119,8 +124,16 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
             except Exception as exception:
                 _LOGGER.warning(f"Exception {exception}")
 
-        self.data = {key: YoufoneItem(**value) for key, value in self.data.items()}
         if len(self.data):
+            # Map data item as YoufoneItem if it is restored from the data store
+            new_data = {}
+            for key, value in self.data.items():
+                if not isinstance(value, YoufoneItem):
+                    new_data[key] = YoufoneItem(**value)
+                else:
+                    new_data[key] = value
+            self.data = new_data
+
             current_items = {
                 list(device.identifiers)[0][1]
                 for device in dr.async_entries_for_config_entry(
@@ -143,10 +156,13 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
                             True,
                         )
                         self._device_registry.async_remove_device(device.id)
+            """
             if fetched_items - current_items:
                 self.hass.async_create_task(
                     self.hass.config_entries.async_reload(self._config_entry_id)
                 )
                 return None
+            _LOGGER.debug("Returning fetched data")
+            """
             return self.data
         return {}
