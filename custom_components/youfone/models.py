@@ -10,6 +10,7 @@ class YoufoneConfigEntryData(TypedDict):
 
     username: str | None
     password: str | None
+    scan_interval: int | None
 
 
 @dataclass

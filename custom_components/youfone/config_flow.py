@@ -1,13 +1,22 @@
 """Config flow to configure the Youfone integration."""
+
 from abc import ABC, abstractmethod
 import logging
 from typing import Any
 
 from homeassistant.config_entries import ConfigEntry, ConfigFlow, OptionsFlow
-from homeassistant.const import CONF_COUNTRY, CONF_PASSWORD, CONF_USERNAME
+from homeassistant.const import (
+    CONF_COUNTRY,
+    CONF_PASSWORD,
+    CONF_SCAN_INTERVAL,
+    CONF_USERNAME,
+)
 from homeassistant.core import callback
 from homeassistant.data_entry_flow import FlowHandler, FlowResult
 from homeassistant.helpers.selector import (
+    NumberSelector,
+    NumberSelectorConfig,
+    NumberSelectorMode,
     SelectSelector,
     SelectSelectorConfig,
     SelectSelectorMode,
@@ -19,7 +28,13 @@ from homeassistant.helpers.typing import UNDEFINED
 import voluptuous as vol
 
 from .client import YoufoneClient
-from .const import COUNTRY_CHOICES, DEFAULT_COUNTRY, DOMAIN, NAME
+from .const import (
+    COORDINATOR_MIN_UPDATE_INTERVAL,
+    COUNTRY_CHOICES,
+    DEFAULT_COUNTRY,
+    DOMAIN,
+    NAME,
+)
 from .exceptions import BadCredentialsException, YoufoneServiceException
 from .models import YoufoneConfigEntryData
 
@@ -28,6 +43,7 @@ _LOGGER = logging.getLogger(__name__)
 DEFAULT_ENTRY_DATA = YoufoneConfigEntryData(
     username=None,
     password=None,
+    scan_interval=COORDINATOR_MIN_UPDATE_INTERVAL,
 )
 
 COUNTRY_SELECTOR = SelectSelector(
@@ -96,6 +112,16 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                 )
             ),
             vol.Required(CONF_COUNTRY, default=DEFAULT_COUNTRY): COUNTRY_SELECTOR,
+            vol.Required(
+                CONF_SCAN_INTERVAL, default=COORDINATOR_MIN_UPDATE_INTERVAL
+            ): NumberSelector(
+                NumberSelectorConfig(
+                    min=COORDINATOR_MIN_UPDATE_INTERVAL,
+                    max=48,
+                    step=1,
+                    mode=NumberSelectorMode.BOX,
+                )
+            ),
         }
         return self.async_show_form(
             step_id="connection_init",
@@ -150,6 +176,37 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                 errors["base"] = "unknown"
                 _LOGGER.debug(exception)
         return {"profile": profile, "errors": errors}
+
+    async def async_step_scan_interval(
+        self, user_input: dict | None = None
+    ) -> FlowResult:
+        """Configure update interval."""
+        errors: dict = {}
+
+        if user_input is not None:
+            self.new_entry_data |= user_input
+            return self.finish_flow()
+
+        fields = {
+            vol.Required(
+                CONF_SCAN_INTERVAL, default=COORDINATOR_MIN_UPDATE_INTERVAL
+            ): NumberSelector(
+                NumberSelectorConfig(
+                    min=COORDINATOR_MIN_UPDATE_INTERVAL,
+                    max=48,
+                    step=1,
+                    mode=NumberSelectorMode.BOX,
+                )
+            ),
+        }
+        return self.async_show_form(
+            step_id="scan_interval",
+            data_schema=self.add_suggested_values_to_schema(
+                vol.Schema(fields),
+                self.initial_data,
+            ),
+            errors=errors,
+        )
 
     async def async_step_username_password(
         self, user_input: dict | None = None
@@ -222,6 +279,7 @@ class YoufoneOptionsFlow(YoufoneCommonFlow, OptionsFlow):
             step_id="init",
             menu_options=[
                 "username_password",
+                "scan_interval",
                 "country",
             ],
         )
@@ -230,7 +288,7 @@ class YoufoneOptionsFlow(YoufoneCommonFlow, OptionsFlow):
 class YoufoneConfigFlow(YoufoneCommonFlow, ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Youfone."""
 
-    VERSION = 1
+    VERSION = 2
 
     def __init__(self) -> None:
         """Initialize Youfone Config Flow."""

@@ -7,6 +7,7 @@
         "data": {
           "username": "Username",
           "password": "Password",
+          "scan_interval": "Update interval (hours)",
           "country": "Country"
         }
       }
@@ -37,10 +38,18 @@
           "password": "Password"
         }
       },
+      "scan_interval": {
+        "title": "Update interval",
+        "description": "Change the update interval for refreshing the sensors",
+        "data": {
+          "scan_interval": "Update interval (hours)"
+        }
+      },
       "init": {
         "title": "Change options",
         "menu_options": {
           "country": "Country",
+          "scan_interval": "Update interval",
           "username_password": "User & password"
         }
       }

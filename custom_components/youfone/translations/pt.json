@@ -3,63 +3,72 @@
     "step": {
       "connection_init": {
         "title": "Nova conta Youfone",
-        "description": "Configurar a tua conta Youfone ",
+        "description": "Configure sua conta de usuário Youfone",
         "data": {
-          "username": "Utilizador",
+          "username": "Nome de usuário",
           "password": "Senha",
-          "country": "Pais"
+          "scan_interval": "Intervalo de atualização (horas)",
+          "country": "País"
         }
       }
     },
     "abort": {
-      "already_configured": "Conta Já configurada"
+      "already_configured": "A conta já está configurada"
     },
     "error": {
-      "cannot_connect": "Falha na ligação",
+      "cannot_connect": "Falha ao conectar",
       "invalid_auth": "Autenticação inválida",
-      "unknown": "Erro desconhecido",
-      "service_error": "Serviço indisponivel"
+      "unknown": "Erro inesperado",
+      "service_error": "Serviço indisponível"
     }
   },
   "options": {
     "step": {
       "country": {
-        "title": "Mudar o teu país",
-        "description": "Isto normalmente não é usado",
+        "title": "Alterar seu país",
+        "description": "Isso normalmente não deve ser usado",
         "data": {
           "country": "País"
         }
       },
       "username_password": {
-        "title": "Atualizar utilizar e ou senha",
-        "description": "Para mudar a senha ou utilizador do 'Youfone'",
+        "title": "Atualizar seu nome de usuário e/ou senha",
+        "description": "Para fazer quando você alterou seu nome de usuário e/ou senha no 'Youfone'",
         "data": {
-          "password": "senha"
+          "password": "Senha"
+        }
+      },
+      "scan_interval": {
+        "title": "Intervalo de atualização",
+        "description": "Alterar o intervalo de atualização para atualizar os sensores",
+        "data": {
+          "scan_interval": "Intervalo de atualização (horas)"
         }
       },
       "init": {
-        "title": "Mudar opcções",
+        "title": "Alterar opções",
         "menu_options": {
           "country": "País",
-          "username_password": "Utilizado & senha"
+          "scan_interval": "Intervalo de atualização",
+          "username_password": "Nome de usuário e senha"
         }
       }
     },
     "error": {
-      "cannot_connect": "Falha na ligação",
+      "cannot_connect": "Falha ao conectar",
       "invalid_auth": "Autenticação inválida",
-      "unknown": "Erro desconhecido",
-      "service_error": "Serviço indisponivel"
+      "unknown": "Erro inesperado",
+      "service_error": "Serviço indisponível"
     },
     "abort": {
-      "already_configured": "Conta já configurada"
+      "already_configured": "A conta já está configurada"
     }
   },
   "selector": {
     "country": {
       "options": {
-        "be": "Belgica",
-        "nl": "Holanda"
+        "be": "Bélgica",
+        "nl": "Países Baixos"
       }
     }
   }

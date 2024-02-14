@@ -6,7 +6,6 @@ import copy
 from datetime import datetime
 import json
 import logging
-import random
 import time
 
 import httpx
@@ -75,8 +74,8 @@ class YoufoneClient:
 
         client = httpx.Client(http2=True)
 
-        # sleep random number of seconds, trying to avoid IP blacklisting
-        time.sleep(random.uniform(1, 10))
+        # sleep 5 seconds, trying to avoid IP blacklisting
+        time.sleep(5)
 
         if data is None:
             _LOGGER.debug(f"{caller} Calling GET {url}")
