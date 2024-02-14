@@ -3,10 +3,11 @@
     "step": {
       "connection_init": {
         "title": "Nouveau compte Youfone",
-        "description": "Configurez votre compte utilisateur Youfone",
+        "description": "Configurer votre compte utilisateur Youfone",
         "data": {
           "username": "Nom d'utilisateur",
           "password": "Mot de passe",
+          "scan_interval": "Intervalle de mise à jour (heures)",
           "country": "Pays"
         }
       }
@@ -18,30 +19,37 @@
       "cannot_connect": "Échec de la connexion",
       "invalid_auth": "Authentification invalide",
       "unknown": "Erreur inattendue",
-      "service_error": "Service indisponible"
+      "service_error": "Service non disponible"
     }
   },
   "options": {
     "step": {
       "country": {
-        "title": "Changer de pays",
-        "description": "Ceci ne devrait normalement pas être utilisé",
+        "title": "Modifier votre pays",
+        "description": "Cela ne devrait normalement pas être utilisé",
         "data": {
           "country": "Pays"
         }
       },
       "username_password": {
-        "title": "Mettre à jour votre mot de passe",
-        "description": "A faire lorsque vous avez changé votre mot de passe sur 'Youfone'",
+        "title": "Mettre à jour votre nom d'utilisateur et/ou votre mot de passe",
+        "description": "À faire lorsque vous avez changé votre nom d'utilisateur et/ou votre mot de passe sur 'Youfone'",
         "data": {
-          "username": "Nom d'utilisateur",
           "password": "Mot de passe"
+        }
+      },
+      "scan_interval": {
+        "title": "Intervalle de mise à jour",
+        "description": "Modifier l'intervalle de mise à jour pour actualiser les capteurs",
+        "data": {
+          "scan_interval": "Intervalle de mise à jour (heures)"
         }
       },
       "init": {
         "title": "Modifier les options",
         "menu_options": {
           "country": "Pays",
+          "scan_interval": "Intervalle de mise à jour",
           "username_password": "Nom d'utilisateur & mot de passe"
         }
       }
@@ -50,7 +58,7 @@
       "cannot_connect": "Échec de la connexion",
       "invalid_auth": "Authentification invalide",
       "unknown": "Erreur inattendue",
-      "service_error": "Service indisponible"
+      "service_error": "Service non disponible"
     },
     "abort": {
       "already_configured": "Le compte est déjà configuré"

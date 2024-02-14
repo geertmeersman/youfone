@@ -1,8 +1,6 @@
 """Constants used by Youfone."""
-from datetime import timedelta
 import json
 from pathlib import Path
-import random
 from typing import Final
 
 from homeassistant.const import Platform
@@ -26,7 +24,7 @@ DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%S%z"
 DEFAULT_COUNTRY = "be"
 COUNTRY_CHOICES = ["be", "nl"]
 
-COORDINATOR_UPDATE_INTERVAL = timedelta(minutes=110 + random.uniform(10, 20))
+COORDINATOR_MIN_UPDATE_INTERVAL = 2  # hours
 WEBSITE = "https://my.youfone.be/"
 
 manifestfile = Path(__file__).parent / "manifest.json"

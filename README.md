@@ -7,6 +7,12 @@
 
 A Home Assistant integration allowing to monitor your Youfone usage
 
+```
+In order to avoid IP blacklisting / DDOS identification, the update interval is set to a minimum of 2 hours (you can increase it in the configuration).
+When Home Assistant restarts, it will fetch the data from the local storage and it will update the sensors after the configured interval.
+When adding a hub of the integration, it might take 1 minute to complete the addition, due to a 5 seconds interval set between each API call to Youfone.
+```
+
 ### Features
 
 - 📱 Mobile data sensors

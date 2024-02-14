@@ -1,11 +1,19 @@
 """Youfone integration."""
+
 from __future__ import annotations
 
+from datetime import timedelta
 import logging
 from pathlib import Path
+import random
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_COUNTRY, CONF_PASSWORD, CONF_USERNAME
+from homeassistant.const import (
+    CONF_COUNTRY,
+    CONF_PASSWORD,
+    CONF_SCAN_INTERVAL,
+    CONF_USERNAME,
+)
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.storage import STORAGE_DIR, Store
@@ -13,7 +21,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from requests.exceptions import ConnectionError
 
 from .client import YoufoneClient
-from .const import COORDINATOR_UPDATE_INTERVAL, DOMAIN, PLATFORMS
+from .const import COORDINATOR_MIN_UPDATE_INTERVAL, DOMAIN, PLATFORMS
 from .exceptions import (
     BadCredentialsException,
     YoufoneException,
@@ -22,6 +30,14 @@ from .exceptions import (
 from .models import YoufoneItem
 
 _LOGGER = logging.getLogger(__name__)
+
+
+def get_coordinator_update_interval(minimum=COORDINATOR_MIN_UPDATE_INTERVAL):
+    """Get the coordinator update interval."""
+    minimum = max(
+        minimum, COORDINATOR_MIN_UPDATE_INTERVAL
+    )  # Ensure minimum is not lower than COORDINATOR_MIN_UPDATE_INTERVAL
+    return timedelta(minutes=(minimum * 60 + random.uniform(5, 30)))
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
@@ -51,6 +67,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         dev_reg=dev_reg,
         client=client,
         store=store,
+        scan_interval=entry.data[CONF_SCAN_INTERVAL],
     )
 
     await coordinator.async_config_entry_first_refresh()
@@ -81,13 +98,14 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
         dev_reg: dr.DeviceRegistry,
         client: YoufoneClient,
         store: Store,
+        scan_interval: int,
     ) -> None:
         """Initialize coordinator."""
         super().__init__(
             hass,
             _LOGGER,
             name=DOMAIN,
-            update_interval=COORDINATOR_UPDATE_INTERVAL,
+            update_interval=get_coordinator_update_interval(scan_interval),
         )
         self._debug = _LOGGER.isEnabledFor(logging.DEBUG)
         self._config_entry_id = config_entry_id
@@ -99,7 +117,17 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
     async def async_config_entry_first_refresh(self) -> None:
         """Refresh data for the first time when a config entry is setup."""
         self.data = await self.store.async_load() or {}
-        await super().async_config_entry_first_refresh()
+        if len(self.data):
+            # Map data item as YoufoneItem if it is restored from the data store
+            new_data = {}
+            for key, value in self.data.items():
+                if not isinstance(value, YoufoneItem):
+                    new_data[key] = YoufoneItem(**value)
+                else:
+                    new_data[key] = value
+            self.data = new_data
+        else:
+            await super().async_config_entry_first_refresh()
 
     async def get_data(self) -> dict | None:
         """Get the data from the Youfone client."""
@@ -166,3 +194,19 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
             """
             return self.data
         return {}
+
+
+async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
+    """Migrate old entry."""
+    _LOGGER.info("Migrating from version %s", config_entry.version)
+
+    if config_entry.version == 1:
+        new = {**config_entry.data}
+        # TODO: modify Config Entry data
+        new[CONF_SCAN_INTERVAL] = COORDINATOR_MIN_UPDATE_INTERVAL
+        config_entry.version = 2
+        hass.config_entries.async_update_entry(config_entry, data=new)
+
+    _LOGGER.info("Migration to version %s successful", config_entry.version)
+
+    return True
