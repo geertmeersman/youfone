@@ -33,7 +33,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 def get_coordinator_update_interval(minimum=COORDINATOR_MIN_UPDATE_INTERVAL):
-    """Get the coordinator update interval"""
+    """Get the coordinator update interval."""
     minimum = max(
         minimum, COORDINATOR_MIN_UPDATE_INTERVAL
     )  # Ensure minimum is not lower than COORDINATOR_MIN_UPDATE_INTERVAL
