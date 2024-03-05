@@ -229,7 +229,7 @@ async def async_setup_entry(
                         YoufoneSensor(coordinator, sensor_type, device_name, item_id)
                     )
                 elif sensor_type.key in ["sim_only"]:
-                    for index, entry in enumerate(coordinator.data[sensor_type.key]):
+                    for index in range(len(coordinator.data[sensor_type.key])):
                         entities.append(
                             YoufoneSensor(coordinator, sensor_type, device_name, index)
                         )
