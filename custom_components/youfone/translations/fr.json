@@ -64,6 +64,22 @@
       "already_configured": "Le compte est déjà configuré"
     }
   },
+  "entity": {
+    "sensor": {
+      "customer": {
+        "name": "Client"
+      },
+      "data": {
+        "name": "Données"
+      },
+      "voice": {
+        "name": "Voix/SMS"
+      },
+      "sim_subscription": {
+        "name": "Abonnement"
+      }
+    }
+  },
   "selector": {
     "country": {
       "options": {

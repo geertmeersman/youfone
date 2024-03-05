@@ -64,6 +64,22 @@
       "already_configured": "Account is al geconfigureerd"
     }
   },
+  "entity": {
+    "sensor": {
+      "customer": {
+        "name": "Klant"
+      },
+      "data": {
+        "name": "Data"
+      },
+      "voice": {
+        "name": "Voice/SMS"
+      },
+      "sim_subscription": {
+        "name": "Abonnement"
+      }
+    }
+  },
   "selector": {
     "country": {
       "options": {

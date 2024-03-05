@@ -7,6 +7,7 @@ import logging
 from pathlib import Path
 import random
 
+from aioyoufone import YoufoneClient
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import (
     CONF_COUNTRY,
@@ -20,7 +21,7 @@ from homeassistant.helpers.storage import STORAGE_DIR, Store
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from requests.exceptions import ConnectionError
 
-from .client import YoufoneClient
+from .client import YoufoneClient as YoufoneClientBE
 from .const import COORDINATOR_MIN_UPDATE_INTERVAL, DOMAIN, PLATFORMS
 from .exceptions import (
     BadCredentialsException,
@@ -47,11 +48,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     for platform in PLATFORMS:
         hass.data[DOMAIN][entry.entry_id].setdefault(platform, set())
 
-    client = YoufoneClient(
-        username=entry.data[CONF_USERNAME],
-        password=entry.data[CONF_PASSWORD],
-        country=entry.data[CONF_COUNTRY],
-    )
+    if entry.data[CONF_COUNTRY] == "be":
+        client = YoufoneClientBE(
+            username=entry.data[CONF_USERNAME],
+            password=entry.data[CONF_PASSWORD],
+            country=entry.data[CONF_COUNTRY],
+        )
+    else:
+        client = YoufoneClient(
+            email=entry.data[CONF_USERNAME],
+            password=entry.data[CONF_PASSWORD],
+            country=entry.data[CONF_COUNTRY],
+        )
 
     storage_dir = Path(f"{hass.config.path(STORAGE_DIR)}/{DOMAIN}")
     if storage_dir.is_file():
@@ -68,6 +76,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         client=client,
         store=store,
         scan_interval=entry.data[CONF_SCAN_INTERVAL],
+        entry=entry,
     )
 
     await coordinator.async_config_entry_first_refresh()
@@ -99,6 +108,7 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
         client: YoufoneClient,
         store: Store,
         scan_interval: int,
+        entry: ConfigEntry,
     ) -> None:
         """Initialize coordinator."""
         super().__init__(
@@ -113,25 +123,30 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
         self.store = store
         self.client = client
         self.hass = hass
+        self.entry = entry
 
     async def async_config_entry_first_refresh(self) -> None:
         """Refresh data for the first time when a config entry is setup."""
         self.data = await self.store.async_load() or {}
         if len(self.data):
-            # Map data item as YoufoneItem if it is restored from the data store
-            new_data = {}
-            for key, value in self.data.items():
-                if not isinstance(value, YoufoneItem):
-                    new_data[key] = YoufoneItem(**value)
-                else:
-                    new_data[key] = value
-            self.data = new_data
+            if self.entry.data[CONF_COUNTRY] == "be":
+                # Map data item as YoufoneItem if it is restored from the data store
+                new_data = {}
+                for key, value in self.data.items():
+                    if not isinstance(value, YoufoneItem):
+                        new_data[key] = YoufoneItem(**value)
+                    else:
+                        new_data[key] = value
+                self.data = new_data
         else:
             await super().async_config_entry_first_refresh()
 
     async def get_data(self) -> dict | None:
         """Get the data from the Youfone client."""
-        self.data = await self.hass.async_add_executor_job(self.client.fetch_data)
+        if self.entry.data[CONF_COUNTRY] == "be":
+            self.data = await self.hass.async_add_executor_job(self.client.fetch_data)
+        else:
+            self.data = await self.client.fetch_data()
         await self.store.async_save(self.data)
 
     async def _async_update_data(self) -> dict | None:
@@ -153,6 +168,8 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
                 _LOGGER.warning(f"Exception {exception}")
 
         if len(self.data):
+            if self.entry.data[CONF_COUNTRY] != "be":
+                return self.data
             # Map data item as YoufoneItem if it is restored from the data store
             new_data = {}
             for key, value in self.data.items():
@@ -202,9 +219,17 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
 
     if config_entry.version == 1:
         new = {**config_entry.data}
-        # TODO: modify Config Entry data
         new[CONF_SCAN_INTERVAL] = COORDINATOR_MIN_UPDATE_INTERVAL
         config_entry.version = 2
+        hass.config_entries.async_update_entry(config_entry, data=new)
+    if config_entry.version == 2:
+        new = {**config_entry.data}
+        config_entry.version = 3
+        storage_file = Path(
+            f"{hass.config.path(STORAGE_DIR)}/{DOMAIN}/{config_entry.entry_id}"
+        )
+        if storage_file.is_file():
+            storage_file.unlink()
         hass.config_entries.async_update_entry(config_entry, data=new)
 
     _LOGGER.info("Migration to version %s successful", config_entry.version)

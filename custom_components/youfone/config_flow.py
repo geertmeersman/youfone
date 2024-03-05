@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 import logging
 from typing import Any
 
+from aioyoufone import YoufoneClient
 from homeassistant.config_entries import ConfigEntry, ConfigFlow, OptionsFlow
 from homeassistant.const import (
     CONF_COUNTRY,
@@ -27,7 +28,7 @@ from homeassistant.helpers.selector import (
 from homeassistant.helpers.typing import UNDEFINED
 import voluptuous as vol
 
-from .client import YoufoneClient
+from .client import YoufoneClient as YoufoneClientBE
 from .const import (
     COORDINATOR_MIN_UPDATE_INTERVAL,
     COUNTRY_CHOICES,
@@ -75,11 +76,18 @@ class YoufoneCommonFlow(ABC, FlowHandler):
     async def async_validate_input(self, user_input: dict[str, Any]) -> None:
         """Validate user credentials."""
 
-        client = YoufoneClient(
-            username=user_input[CONF_USERNAME],
-            password=user_input[CONF_PASSWORD],
-            country=user_input[CONF_COUNTRY],
-        )
+        if user_input[CONF_COUNTRY] == "be":
+            client = YoufoneClientBE(
+                username=user_input[CONF_USERNAME],
+                password=user_input[CONF_PASSWORD],
+                country=user_input[CONF_COUNTRY],
+            )
+        else:
+            client = YoufoneClient(
+                email=user_input[CONF_USERNAME],
+                password=user_input[CONF_PASSWORD],
+                country=user_input[CONF_COUNTRY],
+            )
 
         profile = await self.hass.async_add_executor_job(client.login)
 
@@ -288,7 +296,7 @@ class YoufoneOptionsFlow(YoufoneCommonFlow, OptionsFlow):
 class YoufoneConfigFlow(YoufoneCommonFlow, ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Youfone."""
 
-    VERSION = 2
+    VERSION = 3
 
     def __init__(self) -> None:
         """Initialize Youfone Config Flow."""
