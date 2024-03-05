@@ -1,5 +1,26 @@
 # Changelog
 
+## [v0.7.0](https://github.com/geertmeersman/youfone/tree/v0.7.0) (2024-02-14)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.6.0...v0.7.0)
+
+**Closed issues:**
+
+- argument after \*\* must be a mapping, not YoufoneItem [\#106](https://github.com/geertmeersman/youfone/issues/106)
+
+**Merged pull requests:**
+
+- feat: improved update interval [\#116](https://github.com/geertmeersman/youfone/pull/116) ([geertmeersman](https://github.com/geertmeersman))
+- refactor: lint [\#114](https://github.com/geertmeersman/youfone/pull/114) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.2.0 to 0.2.1 [\#113](https://github.com/geertmeersman/youfone/pull/113) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.1.14 to 0.2.0 [\#112](https://github.com/geertmeersman/youfone/pull/112) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): update pip requirement from \<23.4,\>=8.0.3 to \>=8.0.3,\<24.1 [\#111](https://github.com/geertmeersman/youfone/pull/111) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump release-drafter/release-drafter from 5 to 6 [\#110](https://github.com/geertmeersman/youfone/pull/110) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump colorlog from 6.8.0 to 6.8.2 [\#109](https://github.com/geertmeersman/youfone/pull/109) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.1.13 to 0.1.14 [\#108](https://github.com/geertmeersman/youfone/pull/108) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/dependency-review-action from 3 to 4 [\#107](https://github.com/geertmeersman/youfone/pull/107) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.1.11 to 0.1.13 [\#105](https://github.com/geertmeersman/youfone/pull/105) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.6.0](https://github.com/geertmeersman/youfone/tree/v0.6.0) (2024-01-09)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.5.5...v0.6.0)
