@@ -64,6 +64,22 @@
       "already_configured": "A conta já está configurada"
     }
   },
+  "entity": {
+    "sensor": {
+      "customer": {
+        "name": "Cliente"
+      },
+      "data": {
+        "name": "Dados"
+      },
+      "voice": {
+        "name": "Voz/SMS"
+      },
+      "sim_subscription": {
+        "name": "Assinatura"
+      }
+    }
+  },
   "selector": {
     "country": {
       "options": {
