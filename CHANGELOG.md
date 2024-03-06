@@ -1,5 +1,22 @@
 # Changelog
 
+## [v0.8.0](https://github.com/geertmeersman/youfone/tree/v0.8.0) (2024-03-06)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.8.0-beta.13...v0.8.0)
+
+**Merged pull requests:**
+
+- feat: new Youfone API for NL [\#119](https://github.com/geertmeersman/youfone/pull/119) ([geertmeersman](https://github.com/geertmeersman))
+
+## [v0.8.0-beta.13](https://github.com/geertmeersman/youfone/tree/v0.8.0-beta.13) (2024-03-06)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.7.0...v0.8.0-beta.13)
+
+**Merged pull requests:**
+
+- build\(deps\): bump ruff from 0.2.2 to 0.3.0 [\#118](https://github.com/geertmeersman/youfone/pull/118) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.2.1 to 0.2.2 [\#117](https://github.com/geertmeersman/youfone/pull/117) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.7.0](https://github.com/geertmeersman/youfone/tree/v0.7.0) (2024-02-14)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.6.0...v0.7.0)
