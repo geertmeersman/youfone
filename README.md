@@ -13,6 +13,11 @@ When Home Assistant restarts, it will fetch the data from the local storage and 
 When adding a hub of the integration, it might take 1 minute to complete the addition, due to a 5 seconds interval set between each API call to Youfone.
 ```
 
+## Note - Youfone NL Sensors
+
+For the Youfone NL sensors, the below lovelace code examples still needs to be adapted as the API recently changed.
+It can also be advised to remove your configuration, reboot HA and add it again to start clean.
+
 ### Features
 
 - 📱 Mobile data sensors
@@ -55,7 +60,8 @@ When adding a hub of the integration, it might take 1 minute to complete the add
 ## Table of Contents
 
 - [Youfone for Home Assistant](#youfone-for-home-assistant)
-  - [Features](#features)
+  - [Note - Youfone NL Sensors](#note---youfone-nl-sensors)
+    - [Features](#features)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
     - [Using HACS (recommended)](#using-hacs-recommended)
