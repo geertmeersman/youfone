@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.9.1](https://github.com/geertmeersman/youfone/tree/v0.9.1) (2024-03-07)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.9.0...v0.9.1)
+
+**Merged pull requests:**
+
+- fix: unit of measurement % [\#121](https://github.com/geertmeersman/youfone/pull/121) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.9.0](https://github.com/geertmeersman/youfone/tree/v0.9.0) (2024-03-07)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.8.0...v0.9.0)
