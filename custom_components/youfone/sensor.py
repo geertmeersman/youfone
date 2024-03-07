@@ -79,6 +79,17 @@ SENSOR_TYPES: tuple[YoufoneSensorDescription, ...] = (
     ),
     YoufoneSensorDescription(
         key="sim_only",
+        icon="mdi:calendar-end-outline",
+        translation_key="remaining_days",
+        unique_id_fn=lambda sim: sim.get("msisdn"),
+        available_fn=lambda sim: sim.get("msisdn") is not None,
+        value_fn=lambda sim: sim.get("usage").get("data").get("remaining_days"),
+        attributes_fn=lambda sim: {
+            "usage": sim.get("usage").get("data"),
+        },
+    ),
+    YoufoneSensorDescription(
+        key="sim_only",
         icon="mdi:phone",
         translation_key="voice",
         unique_id_fn=lambda sim: sim.get("msisdn"),
