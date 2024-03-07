@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.9.0](https://github.com/geertmeersman/youfone/tree/v0.9.0) (2024-03-07)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.8.0...v0.9.0)
+
+**Closed issues:**
+
+- My.Youfone.nl blocked [\#115](https://github.com/geertmeersman/youfone/issues/115)
+
+**Merged pull requests:**
+
+- feat: remaining\_days sensor NL [\#120](https://github.com/geertmeersman/youfone/pull/120) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.8.0](https://github.com/geertmeersman/youfone/tree/v0.8.0) (2024-03-06)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.8.0-beta.13...v0.8.0)
