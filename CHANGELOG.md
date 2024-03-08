@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.10.2](https://github.com/geertmeersman/youfone/tree/v0.10.2) (2024-03-08)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.1...v0.10.2)
+
+**Merged pull requests:**
+
+- fix: aioyoufone client version [\#125](https://github.com/geertmeersman/youfone/pull/125) ([geertmeersman](https://github.com/geertmeersman))
+- fix: NL remove async\_add\_executor\_job in config\_flow [\#124](https://github.com/geertmeersman/youfone/pull/124) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.10.1](https://github.com/geertmeersman/youfone/tree/v0.10.1) (2024-03-08)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.0...v0.10.1)
