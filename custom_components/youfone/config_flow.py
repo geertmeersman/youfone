@@ -82,14 +82,14 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                 password=user_input[CONF_PASSWORD],
                 country=user_input[CONF_COUNTRY],
             )
+            profile = await self.hass.async_add_executor_job(client.login)
         else:
             client = YoufoneClient(
                 email=user_input[CONF_USERNAME],
                 password=user_input[CONF_PASSWORD],
                 country=user_input[CONF_COUNTRY],
             )
-
-        profile = await self.hass.async_add_executor_job(client.login)
+            profile = await client.login()
 
         return profile
 
