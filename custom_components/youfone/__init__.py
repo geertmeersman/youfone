@@ -147,6 +147,7 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
             self.data = await self.hass.async_add_executor_job(self.client.fetch_data)
         else:
             self.data = await self.client.fetch_data()
+        _LOGGER.debug(f"Fetched data: {self.data}")
         await self.store.async_save(self.data)
 
     async def _async_update_data(self) -> dict | None:
