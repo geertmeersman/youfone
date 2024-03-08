@@ -62,6 +62,14 @@ SENSOR_TYPES: tuple[YoufoneSensorDescription, ...] = (
     ),
     YoufoneSensorDescription(
         key="sim_only",
+        icon="mdi:currency-eur",
+        translation_key="sim_subscription_price",
+        unique_id_fn=lambda sim: sim.get("msisdn"),
+        available_fn=lambda sim: sim.get("msisdn") is not None,
+        value_fn=lambda sim: sim.get("subscription_info").get("price"),
+    ),
+    YoufoneSensorDescription(
+        key="sim_only",
         icon="mdi:signal-5g",
         translation_key="data",
         unique_id_fn=lambda sim: sim.get("msisdn"),
@@ -85,6 +93,7 @@ SENSOR_TYPES: tuple[YoufoneSensorDescription, ...] = (
         value_fn=lambda sim: sim.get("usage").get("data").get("remaining_days"),
         attributes_fn=lambda sim: {
             "usage": sim.get("usage").get("data"),
+            "period_percentage": sim.get("usage").get("data").get("period_percentage"),
         },
     ),
     YoufoneSensorDescription(
