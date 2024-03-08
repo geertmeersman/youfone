@@ -67,6 +67,9 @@ SENSOR_TYPES: tuple[YoufoneSensorDescription, ...] = (
         unique_id_fn=lambda sim: sim.get("msisdn"),
         available_fn=lambda sim: sim.get("msisdn") is not None,
         value_fn=lambda sim: sim.get("subscription_info").get("price"),
+        device_class=SensorDeviceClass.MONETARY,
+        native_unit_of_measurement=CURRENCY_EURO,
+        suggested_display_precision=1,
     ),
     YoufoneSensorDescription(
         key="sim_only",
