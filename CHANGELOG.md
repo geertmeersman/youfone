@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.10.0](https://github.com/geertmeersman/youfone/tree/v0.10.0) (2024-03-08)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.9.1...v0.10.0)
+
+**Merged pull requests:**
+
+- feat: subscription price sensor + bump aioyoufone [\#122](https://github.com/geertmeersman/youfone/pull/122) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.9.1](https://github.com/geertmeersman/youfone/tree/v0.9.1) (2024-03-07)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.9.0...v0.9.1)
