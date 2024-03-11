@@ -73,7 +73,7 @@ class YoufoneCommonFlow(ABC, FlowHandler):
         """Construct new data."""
         return DEFAULT_ENTRY_DATA | self.initial_data | self.new_entry_data
 
-    async def async_validate_input(self, user_input: dict[str, Any]) -> None:
+    async def async_validate_input(self, user_input: "dict[str, Any]") -> None:
         """Validate user credentials."""
 
         if user_input[CONF_COUNTRY] == "be":
@@ -280,7 +280,7 @@ class YoufoneOptionsFlow(YoufoneCommonFlow, OptionsFlow):
         return self.async_create_entry(title="", data={})
 
     async def async_step_init(
-        self, user_input: dict[str, Any] | None = None
+        self, user_input: "dict[str, Any]" | None = None
     ) -> FlowResult:
         """Manage Youfone options."""
         return self.async_show_menu(

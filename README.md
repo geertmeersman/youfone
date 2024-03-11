@@ -7,7 +7,7 @@
 
 A Home Assistant integration allowing to monitor your Youfone usage
 
-```
+```text
 In order to avoid IP blacklisting / DDOS identification, the update interval is set to a minimum of 2 hours (you can increase it in the configuration).
 When Home Assistant restarts, it will fetch the data from the local storage and it will update the sensors after the configured interval.
 When adding a hub of the integration, it might take 1 minute to complete the addition, due to a 5 seconds interval set between each API call to Youfone.
@@ -66,7 +66,7 @@ It can also be advised to remove your configuration, reboot HA and add it again 
   - [Installation](#installation)
     - [Using HACS (recommended)](#using-hacs-recommended)
     - [Manual](#manual)
-  - [Contributions are welcome!](#contributions-are-welcome)
+  - [Contributions are welcome](#contributions-are-welcome)
   - [Troubleshooting](#troubleshooting)
     - [Enable debug logging](#enable-debug-logging)
     - [Disable debug logging and download logs](#disable-debug-logging-and-download-logs)
@@ -109,7 +109,7 @@ This integration will set up the following platforms.
 | --------- | ----------------------------------------------------- |
 | `youfone` | Home Assistant component for Youfone BE & NL services |
 
-## Contributions are welcome!
+## Contributions are welcome
 
 If you want to contribute to this please read the [Contribution guidelines](CONTRIBUTING.md)
 
@@ -137,7 +137,7 @@ Once you enable debug logging, you ideally need to make the error happen. Run yo
 
 **Replace &lt;mobile_number&gt; by your mobile number**
 
-```
+```yaml
 type: custom:button-card
 variables:
   var_call: '[[[ return states["sensor.youfone_<mobile_number>_voice_sms"].attributes;]]]'
@@ -147,7 +147,7 @@ variables:
     states["sensor.youfone_<mobile_number>_remaining_days"].attributes;]]]
 styles:
   grid:
-    - grid-template-areas: '''balance'' ''product'''
+    - grid-template-areas: "'balance' 'product'"
     - grid-template-rows: 1fr
   card:
     - padding: 0px
@@ -157,7 +157,7 @@ custom_fields:
       type: custom:button-card
       styles:
         grid:
-          - grid-template-areas: '''minuten data sms'''
+          - grid-template-areas: "'minuten data sms'"
           - grid-template-columns: 1fr 1fr 1fr
         card:
           - padding: 0px
@@ -294,7 +294,7 @@ custom_fields:
 
 **Replace &lt;mobile_number&gt; by your mobile number**
 
-```
+```yaml
 type: vertical-stack
 cards:
   - type: markdown
@@ -340,7 +340,7 @@ cards:
       label: gebruikt
       min: 0
       max: 100
-      unit: '%'
+      unit: "%"
       colors:
         - color: var(--label-badge-green)
           value: 0
@@ -354,7 +354,7 @@ cards:
       attribute: period_percentage_completed
       min: 0
       max: 100
-      unit: '%'
+      unit: "%"
 ```
 
 </details>
