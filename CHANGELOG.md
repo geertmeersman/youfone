@@ -1,5 +1,18 @@
 # Changelog
 
+## [v0.10.3](https://github.com/geertmeersman/youfone/tree/v0.10.3) (2024-03-23)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.2...v0.10.3)
+
+**Merged pull requests:**
+
+- fix: config flow [\#131](https://github.com/geertmeersman/youfone/pull/131) ([geertmeersman](https://github.com/geertmeersman))
+- refactor: improve github workflows [\#130](https://github.com/geertmeersman/youfone/pull/130) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.3.2 to 0.3.3 [\#129](https://github.com/geertmeersman/youfone/pull/129) ([dependabot[bot]](https://github.com/apps/dependabot))
+- docs: bug\_report markdown [\#128](https://github.com/geertmeersman/youfone/pull/128) ([geertmeersman](https://github.com/geertmeersman))
+- refactor: markdown & config flow [\#127](https://github.com/geertmeersman/youfone/pull/127) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.3.0 to 0.3.2 [\#126](https://github.com/geertmeersman/youfone/pull/126) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.10.2](https://github.com/geertmeersman/youfone/tree/v0.10.2) (2024-03-08)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.1...v0.10.2)
