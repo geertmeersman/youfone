@@ -103,7 +103,7 @@ class YoufoneBinarySensor(YoufoneEntity, BinarySensorEntity):
         item: YoufoneItem,
     ) -> None:
         """Set entity ID."""
-        super().__init__(coordinator, description, item)
+        super().__init__(coordinator, description, item, None)
         self.entity_id = f"binary_sensor.{DOMAIN}_{self.item.key}"
 
     @property
