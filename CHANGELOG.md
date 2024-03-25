@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.10.4](https://github.com/geertmeersman/youfone/tree/v0.10.4) (2024-03-25)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.3...v0.10.4)
+
+**Merged pull requests:**
+
+- fix: re-enable binary alarm sensors for BE [\#133](https://github.com/geertmeersman/youfone/pull/133) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.3.3 to 0.3.4 [\#132](https://github.com/geertmeersman/youfone/pull/132) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.10.3](https://github.com/geertmeersman/youfone/tree/v0.10.3) (2024-03-23)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.2...v0.10.3)
