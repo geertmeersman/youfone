@@ -7,8 +7,7 @@ from homeassistant.const import Platform
 
 from .models import YoufoneEnvironment
 
-# PLATFORMS: Final = [Platform.SENSOR, Platform.BINARY_SENSOR]
-PLATFORMS: Final = [Platform.SENSOR]
+PLATFORMS: Final = [Platform.SENSOR, Platform.BINARY_SENSOR]
 
 ATTRIBUTION: Final = "Data provided by Youfone"
 
