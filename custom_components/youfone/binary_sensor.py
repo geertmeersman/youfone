@@ -20,7 +20,7 @@ from homeassistant.helpers.typing import StateType
 
 from . import YoufoneDataUpdateCoordinator
 from .const import DOMAIN
-from .entity import YoufoneEntity
+from .entity import YoufoneBeEntity
 from .models import YoufoneItem
 
 _LOGGER = logging.getLogger(__name__)
@@ -32,6 +32,7 @@ class YoufoneSensorDescription(SensorEntityDescription):
 
     value_fn: Callable[[Any], StateType] | None = None
     name_suffix: str | None = None
+    unique_id_fn: Callable | None = None
 
 
 SENSOR_DESCRIPTIONS: list[SensorEntityDescription] = [
@@ -39,6 +40,7 @@ SENSOR_DESCRIPTIONS: list[SensorEntityDescription] = [
         key="usage_percentage_data",
         icon="mdi:signal-4g",
         device_class=BinarySensorDeviceClass.SAFETY,
+        unique_id_fn=lambda customer: customer.get("customer_id"),
         name_suffix="Alarm",
         value_fn=lambda data: data.state
         > data.extra_attributes.get("period_percentage_completed"),
@@ -47,6 +49,7 @@ SENSOR_DESCRIPTIONS: list[SensorEntityDescription] = [
         key="usage_percentage_voice_sms",
         icon="mdi:phone",
         device_class=BinarySensorDeviceClass.SAFETY,
+        unique_id_fn=lambda customer: customer.get("customer_id"),
         name_suffix="Alarm",
         value_fn=lambda data: data.state
         > data.extra_attributes.get("period_percentage_completed"),
@@ -91,7 +94,7 @@ async def async_setup_entry(
             async_add_entities(entities)
 
 
-class YoufoneBinarySensor(YoufoneEntity, BinarySensorEntity):
+class YoufoneBinarySensor(YoufoneBeEntity, BinarySensorEntity):
     """Representation of a Youfone binary sensor."""
 
     entity_description: YoufoneSensorDescription
@@ -103,7 +106,7 @@ class YoufoneBinarySensor(YoufoneEntity, BinarySensorEntity):
         item: YoufoneItem,
     ) -> None:
         """Set entity ID."""
-        super().__init__(coordinator, description, item, None)
+        super().__init__(coordinator, description, item)
         self.entity_id = f"binary_sensor.{DOMAIN}_{self.item.key}"
 
     @property
