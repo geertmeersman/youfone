@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.10.7](https://github.com/geertmeersman/youfone/tree/v0.10.7) (2024-04-17)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.6...v0.10.7)
+
+**Merged pull requests:**
+
+- fix: youfone =\> yoin for BE [\#138](https://github.com/geertmeersman/youfone/pull/138) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.3.4 to 0.3.7 [\#137](https://github.com/geertmeersman/youfone/pull/137) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.10.6](https://github.com/geertmeersman/youfone/tree/v0.10.6) (2024-03-25)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.5...v0.10.6)
