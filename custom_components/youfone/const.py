@@ -12,8 +12,8 @@ PLATFORMS: Final = [Platform.SENSOR, Platform.BINARY_SENSOR]
 ATTRIBUTION: Final = "Data provided by Youfone"
 
 DEFAULT_YOUFONE_ENVIRONMENT = YoufoneEnvironment(
-    api_endpoint="https://my.youfone.be/prov/MyYoufone/MyYOufone.Wcf/v2.0/Service.svc/json",
-    base_url="https://my.youfone.be",
+    api_endpoint="https://my.yoin.be/prov/MyYoufone/MyYOufone.Wcf/v2.0/Service.svc/json",
+    base_url="https://my.yoin.be",
 )
 
 BASE_HEADERS = {
@@ -25,7 +25,7 @@ DEFAULT_COUNTRY = "be"
 COUNTRY_CHOICES = ["be", "nl"]
 
 COORDINATOR_MIN_UPDATE_INTERVAL = 2  # hours
-WEBSITE = "https://my.youfone.be/"
+WEBSITE = "https://my.yoin.be/"
 
 manifestfile = Path(__file__).parent / "manifest.json"
 with open(manifestfile) as json_file:
