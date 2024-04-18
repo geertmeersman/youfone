@@ -12,7 +12,6 @@ from homeassistant.components.binary_sensor import (
 )
 from homeassistant.components.sensor import SensorEntityDescription
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_COUNTRY
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityDescription
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -63,6 +62,7 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up the Youfone binary sensors."""
+    """
     _LOGGER.debug("[binary_sensor|async_setup_entry|async_add_entities|start]")
     coordinator: YoufoneDataUpdateCoordinator = hass.data[DOMAIN][entry.entry_id][
         "coordinator"
@@ -92,6 +92,7 @@ async def async_setup_entry(
                     )
 
             async_add_entities(entities)
+"""
 
 
 class YoufoneBinarySensor(YoufoneBeEntity, BinarySensorEntity):

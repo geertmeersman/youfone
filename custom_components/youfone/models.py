@@ -29,7 +29,6 @@ class YoufoneItem:
     key: str = ""
     type: str = ""
     state: str = ""
-    country: str = ""
     device_key: str = ""
     device_name: str = ""
     device_model: str = ""
