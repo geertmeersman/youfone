@@ -19,7 +19,7 @@ from homeassistant.helpers.typing import StateType
 
 from . import YoufoneDataUpdateCoordinator
 from .const import DOMAIN
-from .entity import YoufoneBeEntity
+from .entity import YoufoneEntity
 from .models import YoufoneItem
 
 _LOGGER = logging.getLogger(__name__)
@@ -95,7 +95,7 @@ async def async_setup_entry(
 """
 
 
-class YoufoneBinarySensor(YoufoneBeEntity, BinarySensorEntity):
+class YoufoneBinarySensor(YoufoneEntity, BinarySensorEntity):
     """Representation of a Youfone binary sensor."""
 
     entity_description: YoufoneSensorDescription
