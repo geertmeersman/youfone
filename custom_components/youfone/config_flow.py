@@ -18,7 +18,7 @@ from homeassistant.helpers.selector import (
     TextSelectorType,
 )
 from homeassistant.helpers.typing import UNDEFINED
-import voluptuous as vol
+import voluptuous as vol  # type: ignore
 
 from .const import COORDINATOR_MIN_UPDATE_INTERVAL, DOMAIN, NAME
 from .exceptions import BadCredentialsException, YoufoneServiceException
