@@ -1,5 +1,25 @@
 # Changelog
 
+## [v0.11.0](https://github.com/geertmeersman/youfone/tree/v0.11.0) (2024-04-18)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.11.7-beta.6...v0.11.0)
+
+**Merged pull requests:**
+
+- feat!: removed youfone BE, new Yoin integration available [\#139](https://github.com/geertmeersman/youfone/pull/139) ([geertmeersman](https://github.com/geertmeersman))
+
+## [v0.11.7-beta.6](https://github.com/geertmeersman/youfone/tree/v0.11.7-beta.6) (2024-04-18)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.11.7-beta.3...v0.11.7-beta.6)
+
+## [v0.11.7-beta.3](https://github.com/geertmeersman/youfone/tree/v0.11.7-beta.3) (2024-04-18)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.8-beta.1...v0.11.7-beta.3)
+
+## [v0.10.8-beta.1](https://github.com/geertmeersman/youfone/tree/v0.10.8-beta.1) (2024-04-18)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.7...v0.10.8-beta.1)
+
 ## [v0.10.7](https://github.com/geertmeersman/youfone/tree/v0.10.7) (2024-04-17)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.6...v0.10.7)
