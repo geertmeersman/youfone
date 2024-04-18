@@ -14,7 +14,7 @@ from homeassistant.components.sensor import (
     SensorStateClass,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_COUNTRY, CURRENCY_EURO, PERCENTAGE
+from homeassistant.const import CURRENCY_EURO, PERCENTAGE
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityDescription
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -22,8 +22,7 @@ from homeassistant.helpers.typing import StateType
 
 from . import YoufoneDataUpdateCoordinator
 from .const import DOMAIN
-from .entity import YoufoneBeEntity, YoufoneEntity
-from .models import YoufoneItem
+from .entity import YoufoneEntity
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -198,63 +197,23 @@ async def async_setup_entry(
     ]
     # _LOGGER.debug(f"[sensor|async_setup_entry|async_add_entities|SUPPORTED_KEYS] {SUPPORTED_KEYS}")
 
-    if entry.data[CONF_COUNTRY] == "be":
-        entities: list[YoufoneBeSensor] = []
-
-        SUPPORTED_KEYS = {
-            description.key: description for description in SENSOR_DESCRIPTIONS
-        }
-        if coordinator.data is not None:
-            for _, item in coordinator.data.items():
-                if description := SUPPORTED_KEYS.get(item.type):
-                    if item.native_unit_of_measurement is not None:
-                        native_unit_of_measurement = item.native_unit_of_measurement
-                    else:
-                        native_unit_of_measurement = (
-                            description.native_unit_of_measurement
-                        )
-                    sensor_description = YoufoneBeSensorDescription(
-                        key=str(item.key),
-                        name=item.name,
-                        value_fn=description.value_fn,
-                        native_unit_of_measurement=native_unit_of_measurement,
-                        icon=description.icon,
-                    )
-
-                    _LOGGER.debug(f"[sensor|async_setup_entry|adding] {item.name}")
+    entities: list[YoufoneSensor] = []
+    device_name = ""
+    for sensor_type in SENSOR_TYPES:
+        _LOGGER.debug(f"Searching for {sensor_type.key}-{sensor_type.translation_key}")
+        if sensor_type.key in coordinator.data:
+            item_id = None
+            if sensor_type.key == "customer":
+                device_name = coordinator.data[sensor_type.key].get("email")
+                entities.append(
+                    YoufoneSensor(coordinator, sensor_type, device_name, item_id)
+                )
+            elif sensor_type.key in ["sim_only"]:
+                for index in range(len(coordinator.data[sensor_type.key])):
                     entities.append(
-                        YoufoneBeSensor(
-                            coordinator=coordinator,
-                            description=sensor_description,
-                            item=item,
-                        )
+                        YoufoneSensor(coordinator, sensor_type, device_name, index)
                     )
-                else:
-                    _LOGGER.debug(
-                        f"[sensor|async_setup_entry|no support type found] {item.name}, type: {item.type}, keys: {SUPPORTED_KEYS.get(item.type)}",
-                        True,
-                    )
-        async_add_entities(entities)
-    else:
-        entities: list[YoufoneSensor] = []
-        device_name = ""
-        for sensor_type in SENSOR_TYPES:
-            _LOGGER.debug(
-                f"Searching for {sensor_type.key}-{sensor_type.translation_key}"
-            )
-            if sensor_type.key in coordinator.data:
-                item_id = None
-                if sensor_type.key == "customer":
-                    device_name = coordinator.data[sensor_type.key].get("email")
-                    entities.append(
-                        YoufoneSensor(coordinator, sensor_type, device_name, item_id)
-                    )
-                elif sensor_type.key in ["sim_only"]:
-                    for index in range(len(coordinator.data[sensor_type.key])):
-                        entities.append(
-                            YoufoneSensor(coordinator, sensor_type, device_name, index)
-                        )
-        async_add_entities(entities)
+    async_add_entities(entities)
 
 
 class YoufoneSensor(YoufoneEntity, RestoreSensor, SensorEntity):
@@ -312,43 +271,4 @@ class YoufoneSensor(YoufoneEntity, RestoreSensor, SensorEntity):
             and self.entity_description.attributes_fn(self.item) is not None
         ):
             return attributes | self.entity_description.attributes_fn(self.item)
-        return attributes
-
-
-class YoufoneBeSensor(YoufoneBeEntity, SensorEntity):
-    """Representation of a Youfone sensor."""
-
-    entity_description: YoufoneBeSensorDescription
-
-    def __init__(
-        self,
-        coordinator: YoufoneDataUpdateCoordinator,
-        description: EntityDescription,
-        item: YoufoneItem,
-    ) -> None:
-        """Set entity ID."""
-        super().__init__(coordinator, description, item)
-        self.entity_id = f"sensor.{DOMAIN}_{self.item.key}"
-
-    @property
-    def native_value(self) -> str:
-        """Return the status of the sensor."""
-        state = self.item.state
-
-        if self.entity_description.value_fn:
-            return self.entity_description.value_fn(state)
-
-        return state
-
-    @property
-    def extra_state_attributes(self):
-        """Return attributes for sensor."""
-        if not self.coordinator.data:
-            return {}
-        attributes = {
-            "last_synced": self.last_synced,
-        }
-        if len(self.item.extra_attributes) > 0:
-            for attr in self.item.extra_attributes:
-                attributes[attr] = self.item.extra_attributes[attr]
         return attributes

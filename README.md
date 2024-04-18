@@ -13,11 +13,6 @@ When Home Assistant restarts, it will fetch the data from the local storage and 
 When adding a hub of the integration, it might take 1 minute to complete the addition, due to a 5 seconds interval set between each API call to Youfone.
 ```
 
-## Note - Youfone NL Sensors
-
-For the Youfone NL sensors, the below lovelace code examples still needs to be adapted as the API recently changed.
-It can also be advised to remove your configuration, reboot HA and add it again to start clean.
-
 ### Features
 
 - 📱 Mobile data sensors
@@ -60,8 +55,7 @@ It can also be advised to remove your configuration, reboot HA and add it again 
 ## Table of Contents
 
 - [Youfone for Home Assistant](#youfone-for-home-assistant)
-  - [Note - Youfone NL Sensors](#note---youfone-nl-sensors)
-    - [Features](#features)
+  - [Features](#features)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
     - [Using HACS (recommended)](#using-hacs-recommended)
@@ -70,15 +64,8 @@ It can also be advised to remove your configuration, reboot HA and add it again 
   - [Troubleshooting](#troubleshooting)
     - [Enable debug logging](#enable-debug-logging)
     - [Disable debug logging and download logs](#disable-debug-logging-and-download-logs)
-  - [Lovelace examples](#lovelace-examples)
-    - [Voice, Sms \& Data overview](#voice-sms--data-overview)
-    - [Subscription details + gauge](#subscription-details--gauge)
   - [Screenshots](#screenshots)
-    - [Msisdn info](#msisdn-info)
-    - [Useraccount](#useraccount)
-    - [Youcoins](#youcoins)
-    - [Invoices](#invoices)
-    - [Config flow](#config-flow)
+    - [Sensors](#sensors)
   - [Code origin](#code-origin)
 
 ## Installation
@@ -105,9 +92,9 @@ It can also be advised to remove your configuration, reboot HA and add it again 
 
 This integration will set up the following platforms.
 
-| Platform  | Description                                           |
-| --------- | ----------------------------------------------------- |
-| `youfone` | Home Assistant component for Youfone BE & NL services |
+| Platform  | Description                                      |
+| --------- | ------------------------------------------------ |
+| `youfone` | Home Assistant component for Youfone NL services |
 
 ## Contributions are welcome
 
@@ -127,261 +114,11 @@ Once you enable debug logging, you ideally need to make the error happen. Run yo
 
 ![disable-debug-logging](https://raw.githubusercontent.com/geertmeersman/youfone/main/images/screenshots/disable-debug-logging.gif)
 
-## Lovelace examples
-
-### Voice, Sms & Data overview
-
-![Lovelace overview.](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/lovelace_overview.png)
-
-<details><summary>Show markdown code</summary>
-
-**Replace &lt;mobile_number&gt; by your mobile number**
-
-```yaml
-type: custom:button-card
-variables:
-  var_call: '[[[ return states["sensor.youfone_<mobile_number>_voice_sms"].attributes;]]]'
-  var_internet: '[[[ return states["sensor.youfone_<mobile_number>_data"].attributes;]]]'
-  var_remaining: >-
-    [[[ return
-    states["sensor.youfone_<mobile_number>_remaining_days"].attributes;]]]
-styles:
-  grid:
-    - grid-template-areas: "'balance' 'product'"
-    - grid-template-rows: 1fr
-  card:
-    - padding: 0px
-custom_fields:
-  balance:
-    card:
-      type: custom:button-card
-      styles:
-        grid:
-          - grid-template-areas: "'minuten data sms'"
-          - grid-template-columns: 1fr 1fr 1fr
-        card:
-          - padding: 0px
-      custom_fields:
-        minuten:
-          card:
-            show_name: true
-            show_icon: false
-            name: '[[[ return "belminuten" ]]]'
-            type: custom:button-card
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/abonnementen
-            custom_fields:
-              totaal: |
-                [[[
-                  return 'van de '+variables.var_call.BundleDurationWithUnits+' gebruikt'
-                ]]]
-              gebruikt: |
-                [[[
-                  return variables.var_call.UsedAmount+''
-                ]]]
-            styles:
-              custom_fields:
-                gebruikt:
-                  - font-size: 20px
-                totaal:
-                  - font-size: 10px
-              grid:
-                - grid-template-areas: '"gebruikt" "n" "totaal"'
-              label:
-                - font-size: 20px
-              card:
-                - background: >-
-                    [[[ return
-                    variables.var_call.used_percentage>90?"red":"#398087" ]]]
-                - background-size: cover
-                - background-position: center
-                - font-weight: bold
-                - font-family: Helvetica
-                - font-size: 13px
-        data:
-          card:
-            show_name: true
-            show_icon: false
-            name: '[[[ return "mobiele data" ]]]'
-            type: custom:button-card
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/abonnementen
-            custom_fields:
-              totaal: |
-                [[[
-                  return 'van de '+variables.var_internet.BundleDurationWithUnits+' gebruikt'
-                ]]]
-              resterend: |
-                [[[
-                  return Math.ceil(variables.var_internet.Percentage)+'%'
-                ]]]
-            styles:
-              custom_fields:
-                resterend:
-                  - font-size: 20px
-                totaal:
-                  - font-size: 10px
-              grid:
-                - grid-template-areas: '"resterend" "n" "totaal"'
-              label:
-                - font-size: 20px
-              card:
-                - background: >-
-                    [[[ return
-                    variables.var_internet.used_percentage>90?"red":"#00a5db"
-                    ]]]
-                - background-size: cover
-                - background-position: center
-                - font-weight: bold
-                - font-family: Helvetica
-                - font-size: 13px
-        sms:
-          card:
-            show_name: true
-            show_icon: false
-            name: '[[[ return "sms''en" ]]]'
-            type: custom:button-card
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/abonnementen
-            custom_fields:
-              totaal: |
-                [[[
-                  return 'van de '+variables.var_call.BundleDurationWithUnits.replace(' Min', '')+' gebruikt'
-                ]]]
-              gebruikt: |
-                [[[
-                  return variables.var_call.UsedAmount+''
-                ]]]
-            styles:
-              custom_fields:
-                gebruikt:
-                  - font-size: 20px
-                totaal:
-                  - font-size: 10px
-              grid:
-                - grid-template-areas: '"gebruikt" "n" "totaal"'
-              label:
-                - font-size: 20px
-              card:
-                - background: >-
-                    [[[ return variables.var_call.Percentage>90?"red":"#8d7fdb"
-                    ]]]
-                - background-size: cover
-                - background-position: center
-                - font-weight: bold
-                - font-family: Helvetica
-                - font-size: 13px
-  product:
-    card:
-      type: markdown
-      content: >
-        ###### Nog
-        {{state_attr('sensor.youfone_<mobile_number>_remaining_days','NumberOfRemainingDays')|int}}
-        dagen | Vervalt op
-        {{state_attr('sensor.youfone_<mobile_number>_remaining_days','StartDate')}}
-```
-
-</details>
-
-### Subscription details + gauge
-
-![Lovelace Usage Gauge](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/lovelace_usage_gauge.png)
-
-<details><summary>Show markdown code</summary>
-
-**Replace &lt;mobile_number&gt; by your mobile number**
-
-```yaml
-type: vertical-stack
-cards:
-  - type: markdown
-    content: >
-      # Username : {{ states["sensor.youfone_<mobile_number>_data"].state|int}}%
-
-      Product: {{
-      states["sensor.youfone_<mobile_number>_abonnement_type"].attributes.friendly_name
-      }}
-
-      Data verbruikt: {{
-      states["sensor.youfone_<mobile_number>_data"].attributes.UsedAmount}}/{{
-      states["sensor.youfone_<mobile_number>_data"].attributes.BundleDurationWithUnits}}
-
-      Voice/sms verbruikt: {{
-      states["sensor.youfone_<mobile_number>_voice_sms"].attributes.UsedAmount}}/{{
-      states["sensor.youfone_<mobile_number>_voice_sms"].attributes.BundleDurationWithUnits}}
-
-      Nog {{ states["sensor.youfone_<mobile_number>_remaining_days"].state }} dagen
-      resterend in de huidige periode
-
-      Laatste update:
-      {{state_attr('sensor.youfone_<mobile_number>_sim_info','last_synced') |
-      as_timestamp | timestamp_custom("%d-%m-%Y %H:%M")}}
-    style: |
-      ha-card {
-        background: {% if(states.sensor.youfone_<mobile_number>_data.state|int > 90) %}red{% elif(states.sensor.youfone_<mobile_number>_data.state|int > 80) %}orange{% else %}green{%- endif %};
-        background-image: url(https://github.com/geertmeersman/youfone/raw/main/images/brand/logo_text.png);
-        background-size: cover;
-        background-position: center;
-        font-weight: bold;
-        font-family: Helvetica;
-        font-size: 13px;
-      }
-  - type: custom:dual-gauge-card
-    title: Username
-    min: 0
-    max: 100
-    shadeInner: true
-    cardwidth: 350
-    outer:
-      entity: sensor.youfone_<mobile_number>_data
-      label: gebruikt
-      min: 0
-      max: 100
-      unit: "%"
-      colors:
-        - color: var(--label-badge-green)
-          value: 0
-        - color: var(--label-badge-yellow)
-          value: 60
-        - color: var(--label-badge-red)
-          value: 80
-    inner:
-      entity: sensor.youfone_<mobile_number>_remaining_days
-      label: period
-      attribute: period_percentage_completed
-      min: 0
-      max: 100
-      unit: "%"
-```
-
-</details>
-
 ## Screenshots
 
-### Msisdn info
+### Sensors
 
-![Msisdn](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/msisdn.png)
-
-### Useraccount
-
-![Useraccount](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/useraccount.png)
-
-### Youcoins
-
-![Youcoins](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/youcoins.png)
-
-### Invoices
-
-![Invoices](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/invoices.png)
-
-### Config flow
-
-![Config flow](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/config_flow.png)
-
-![Config options](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/config_options.png)
+![Sensors](https://github.com/geertmeersman/youfone/raw/main/images/screenshots/sensors.png)
 
 ## Code origin
 

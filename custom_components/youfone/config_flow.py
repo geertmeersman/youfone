@@ -6,21 +6,13 @@ from typing import Any
 
 from aioyoufone import YoufoneClient
 from homeassistant.config_entries import ConfigEntry, ConfigFlow, OptionsFlow
-from homeassistant.const import (
-    CONF_COUNTRY,
-    CONF_PASSWORD,
-    CONF_SCAN_INTERVAL,
-    CONF_USERNAME,
-)
+from homeassistant.const import CONF_PASSWORD, CONF_SCAN_INTERVAL, CONF_USERNAME
 from homeassistant.core import callback
 from homeassistant.data_entry_flow import FlowHandler, FlowResult
 from homeassistant.helpers.selector import (
     NumberSelector,
     NumberSelectorConfig,
     NumberSelectorMode,
-    SelectSelector,
-    SelectSelectorConfig,
-    SelectSelectorMode,
     TextSelector,
     TextSelectorConfig,
     TextSelectorType,
@@ -28,14 +20,7 @@ from homeassistant.helpers.selector import (
 from homeassistant.helpers.typing import UNDEFINED
 import voluptuous as vol
 
-from .client import YoufoneClient as YoufoneClientBE
-from .const import (
-    COORDINATOR_MIN_UPDATE_INTERVAL,
-    COUNTRY_CHOICES,
-    DEFAULT_COUNTRY,
-    DOMAIN,
-    NAME,
-)
+from .const import COORDINATOR_MIN_UPDATE_INTERVAL, DOMAIN, NAME
 from .exceptions import BadCredentialsException, YoufoneServiceException
 from .models import YoufoneConfigEntryData
 
@@ -45,14 +30,6 @@ DEFAULT_ENTRY_DATA = YoufoneConfigEntryData(
     username=None,
     password=None,
     scan_interval=COORDINATOR_MIN_UPDATE_INTERVAL,
-)
-
-COUNTRY_SELECTOR = SelectSelector(
-    SelectSelectorConfig(
-        options=COUNTRY_CHOICES,
-        mode=SelectSelectorMode.DROPDOWN,
-        translation_key=CONF_COUNTRY,
-    )
 )
 
 
@@ -76,20 +53,11 @@ class YoufoneCommonFlow(ABC, FlowHandler):
     async def async_validate_input(self, user_input: dict[str, Any]) -> None:
         """Validate user credentials."""
 
-        if user_input[CONF_COUNTRY] == "be":
-            client = YoufoneClientBE(
-                username=user_input[CONF_USERNAME],
-                password=user_input[CONF_PASSWORD],
-                country=user_input[CONF_COUNTRY],
-            )
-            profile = await self.hass.async_add_executor_job(client.login)
-        else:
-            client = YoufoneClient(
-                email=user_input[CONF_USERNAME],
-                password=user_input[CONF_PASSWORD],
-                country=user_input[CONF_COUNTRY],
-            )
-            profile = await client.login()
+        client = YoufoneClient(
+            email=user_input[CONF_USERNAME],
+            password=user_input[CONF_PASSWORD],
+        )
+        profile = await client.login()
 
         return profile
 
@@ -119,7 +87,6 @@ class YoufoneCommonFlow(ABC, FlowHandler):
                     type=TextSelectorType.PASSWORD, autocomplete="current-password"
                 )
             ),
-            vol.Required(CONF_COUNTRY, default=DEFAULT_COUNTRY): COUNTRY_SELECTOR,
             vol.Required(
                 CONF_SCAN_INTERVAL, default=COORDINATOR_MIN_UPDATE_INTERVAL
             ): NumberSelector(
@@ -134,31 +101,6 @@ class YoufoneCommonFlow(ABC, FlowHandler):
         return self.async_show_form(
             step_id="connection_init",
             data_schema=vol.Schema(fields),
-            errors=errors,
-        )
-
-    async def async_step_country(self, user_input: dict | None = None) -> FlowResult:
-        """Configure language."""
-        errors: dict = {}
-
-        if user_input is not None:
-            if user_input[CONF_COUNTRY] not in COUNTRY_CHOICES:
-                errors["base"] = "country_not_found"
-            if not errors:
-                self.new_entry_data |= YoufoneConfigEntryData(
-                    country=user_input[CONF_COUNTRY],
-                )
-                _LOGGER.debug(f"Country set to : {user_input[CONF_COUNTRY]}")
-                return self.finish_flow()
-
-        fields = {
-            vol.Required(CONF_COUNTRY): COUNTRY_SELECTOR,
-        }
-        return self.async_show_form(
-            step_id="country",
-            data_schema=self.add_suggested_values_to_schema(
-                vol.Schema(fields), {"country": self.initial_data.get(CONF_COUNTRY)}
-            ),
             errors=errors,
         )
 
@@ -288,7 +230,6 @@ class YoufoneOptionsFlow(YoufoneCommonFlow, OptionsFlow):
             menu_options=[
                 "username_password",
                 "scan_interval",
-                "country",
             ],
         )
 
