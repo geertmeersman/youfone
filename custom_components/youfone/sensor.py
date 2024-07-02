@@ -78,8 +78,8 @@ SENSOR_TYPES: tuple[YoufoneSensorDescription, ...] = (
         available_fn=lambda sim: sim.get("msisdn") is not None,
         native_unit_of_measurement=PERCENTAGE,
         value_fn=lambda sim: "0"
-        if sim.get("usage").get("data").get("percentage") is None
-        else sim.get("usage").get("data").get("percentage"),
+        if sim.get("usage").get("data").get("calculated_percentage") is None
+        else sim.get("usage").get("data").get("calculated_percentage"),
         attributes_fn=lambda sim: {
             "usage": sim.get("usage").get("data"),
             "msisdn": f"+{sim.get('msisdn')}",
@@ -106,8 +106,8 @@ SENSOR_TYPES: tuple[YoufoneSensorDescription, ...] = (
         available_fn=lambda sim: sim.get("msisdn") is not None,
         native_unit_of_measurement=PERCENTAGE,
         value_fn=lambda sim: "∞"
-        if sim.get("usage").get("voice").get("percentage") is None
-        else sim.get("usage").get("voice").get("percentage"),
+        if sim.get("usage").get("voice").get("calculated_percentage") is None
+        else sim.get("usage").get("voice").get("calculated_percentage"),
         attributes_fn=lambda sim: {
             "usage": sim.get("usage").get("voice"),
             "msisdn": f"+{sim.get('msisdn')}",
