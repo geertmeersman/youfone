@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.12.1](https://github.com/geertmeersman/youfone/tree/v0.12.1) (2024-07-02)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.0...v0.12.1)
+
+**Merged pull requests:**
+
+- fix: voice/data position, bump aioyoufone [\#154](https://github.com/geertmeersman/youfone/pull/154) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.12.0](https://github.com/geertmeersman/youfone/tree/v0.12.0) (2024-07-02)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.11.0...v0.12.0)
