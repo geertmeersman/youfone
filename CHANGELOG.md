@@ -1,5 +1,25 @@
 # Changelog
 
+## [v0.12.0](https://github.com/geertmeersman/youfone/tree/v0.12.0) (2024-07-02)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.11.0...v0.12.0)
+
+**Merged pull requests:**
+
+- feat: bump aioyoufone, calculated percentage attribute and alert impr… [\#153](https://github.com/geertmeersman/youfone/pull/153) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.4.10 to 0.5.0 [\#151](https://github.com/geertmeersman/youfone/pull/151) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.4.9 to 0.4.10 [\#150](https://github.com/geertmeersman/youfone/pull/150) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): update pip requirement from \<24.1,\>=8.0.3 to \>=8.0.3,\<24.2 [\#149](https://github.com/geertmeersman/youfone/pull/149) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.4.8 to 0.4.9 [\#148](https://github.com/geertmeersman/youfone/pull/148) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.4.7 to 0.4.8 [\#147](https://github.com/geertmeersman/youfone/pull/147) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.4.5 to 0.4.7 [\#146](https://github.com/geertmeersman/youfone/pull/146) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.4.4 to 0.4.5 [\#145](https://github.com/geertmeersman/youfone/pull/145) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.4.3 to 0.4.4 [\#144](https://github.com/geertmeersman/youfone/pull/144) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.4.2 to 0.4.3 [\#143](https://github.com/geertmeersman/youfone/pull/143) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.4.1 to 0.4.2 [\#142](https://github.com/geertmeersman/youfone/pull/142) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.3.7 to 0.4.1 [\#141](https://github.com/geertmeersman/youfone/pull/141) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore: ignore type for vscode [\#140](https://github.com/geertmeersman/youfone/pull/140) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.11.0](https://github.com/geertmeersman/youfone/tree/v0.11.0) (2024-04-18)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.11.7-beta.6...v0.11.0)
