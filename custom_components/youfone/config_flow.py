@@ -4,7 +4,6 @@ from abc import ABC, abstractmethod
 import logging
 from typing import Any
 
-from aioyoufone import YoufoneClient
 from homeassistant.config_entries import ConfigEntry, ConfigFlow, OptionsFlow
 from homeassistant.const import CONF_PASSWORD, CONF_SCAN_INTERVAL, CONF_USERNAME
 from homeassistant.core import callback
@@ -20,6 +19,7 @@ from homeassistant.helpers.selector import (
 from homeassistant.helpers.typing import UNDEFINED
 import voluptuous as vol  # type: ignore
 
+from .client.client import YoufoneClient
 from .const import COORDINATOR_MIN_UPDATE_INTERVAL, DOMAIN, NAME
 from .exceptions import BadCredentialsException, YoufoneServiceException
 from .models import YoufoneConfigEntryData
@@ -54,6 +54,7 @@ class YoufoneCommonFlow(ABC, FlowHandler):
         """Validate user credentials."""
 
         client = YoufoneClient(
+            hass=self.hass,
             email=user_input[CONF_USERNAME],
             password=user_input[CONF_PASSWORD],
         )
@@ -237,7 +238,7 @@ class YoufoneOptionsFlow(YoufoneCommonFlow, OptionsFlow):
 class YoufoneConfigFlow(YoufoneCommonFlow, ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Youfone."""
 
-    VERSION = 3
+    VERSION = 4
 
     def __init__(self) -> None:
         """Initialize Youfone Config Flow."""

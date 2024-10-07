@@ -7,7 +7,6 @@ import logging
 from pathlib import Path
 import random
 
-from aioyoufone import YoufoneClient
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_PASSWORD, CONF_SCAN_INTERVAL, CONF_USERNAME
 from homeassistant.core import HomeAssistant
@@ -16,6 +15,7 @@ from homeassistant.helpers.storage import STORAGE_DIR, Store
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from requests.exceptions import ConnectionError  # type: ignore
 
+from .client.client import YoufoneClient
 from .const import COORDINATOR_MIN_UPDATE_INTERVAL, DOMAIN, PLATFORMS
 from .exceptions import (
     BadCredentialsException,
@@ -43,6 +43,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         hass.data[DOMAIN][entry.entry_id].setdefault(platform, set())
 
     client = YoufoneClient(
+        hass=hass,
         email=entry.data[CONF_USERNAME],
         password=entry.data[CONF_PASSWORD],
     )
@@ -188,22 +189,20 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
 
 async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Migrate old entry."""
-    _LOGGER.info("Migrating from version %s", config_entry.version)
+    current_version = config_entry.version
+    _LOGGER.info("Migrating from version %s", current_version)
 
-    if config_entry.version == 1:
+    if config_entry.version < 2:
         new = {**config_entry.data}
         new[CONF_SCAN_INTERVAL] = COORDINATOR_MIN_UPDATE_INTERVAL
-        config_entry.version = 2
-        hass.config_entries.async_update_entry(config_entry, data=new)
-    if config_entry.version == 2:
-        new = {**config_entry.data}
-        config_entry.version = 3
+        hass.config_entries.async_update_entry(config_entry, data=new, version=2)
+    if config_entry.version < 4:
         storage_file = Path(
             f"{hass.config.path(STORAGE_DIR)}/{DOMAIN}/{config_entry.entry_id}"
         )
         if storage_file.is_file():
             storage_file.unlink()
-        hass.config_entries.async_update_entry(config_entry, data=new)
+        hass.config_entries.async_update_entry(config_entry, version=4)
 
     _LOGGER.info("Migration to version %s successful", config_entry.version)
 
