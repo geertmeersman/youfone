@@ -238,7 +238,7 @@ class YoufoneOptionsFlow(YoufoneCommonFlow, OptionsFlow):
 class YoufoneConfigFlow(YoufoneCommonFlow, ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Youfone."""
 
-    VERSION = 3
+    VERSION = 4
 
     def __init__(self) -> None:
         """Initialize Youfone Config Flow."""

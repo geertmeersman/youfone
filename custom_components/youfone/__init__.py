@@ -197,15 +197,13 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
         new[CONF_SCAN_INTERVAL] = COORDINATOR_MIN_UPDATE_INTERVAL
         config_entry.version = 2
         hass.config_entries.async_update_entry(config_entry, data=new)
-    if config_entry.version < 3:
-        new = {**config_entry.data}
-        config_entry.version = 3
+    if config_entry.version < 4:
         storage_file = Path(
             f"{hass.config.path(STORAGE_DIR)}/{DOMAIN}/{config_entry.entry_id}"
         )
         if storage_file.is_file():
             storage_file.unlink()
-        hass.config_entries.async_update_entry(config_entry, data=new)
+        hass.config_entries.async_update_entry(config_entry, version=4)
 
     _LOGGER.info("Migration to version %s successful", config_entry.version)
 
