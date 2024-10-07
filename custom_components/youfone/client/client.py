@@ -42,6 +42,7 @@ class YoufoneClient:
 
         Args:
         ----
+            hass (HomeAssistant): Instance of HomeAssistant.
             email (str): The email associated with the Youfone account.
             password (str): The password associated with the Youfone account.
             custom_headers (dict, optional): Custom headers for HTTP requests. Defaults to None.
