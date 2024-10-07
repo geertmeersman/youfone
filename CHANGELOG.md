@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.12.2](https://github.com/geertmeersman/youfone/tree/v0.12.2) (2024-07-02)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.1...v0.12.2)
+
+**Merged pull requests:**
+
+- fix: voice/data sensor value = calculated value [\#155](https://github.com/geertmeersman/youfone/pull/155) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.12.1](https://github.com/geertmeersman/youfone/tree/v0.12.1) (2024-07-02)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.0...v0.12.1)
