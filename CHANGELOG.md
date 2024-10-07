@@ -1,5 +1,37 @@
 # Changelog
 
+## [v0.12.3](https://github.com/geertmeersman/youfone/tree/v0.12.3) (2024-10-07)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.3-beta.6...v0.12.3)
+
+**Closed issues:**
+
+- Youfone integration not working anymore [\#170](https://github.com/geertmeersman/youfone/issues/170)
+
+**Merged pull requests:**
+
+- fix: context.load\_verify\_locations httpx client [\#172](https://github.com/geertmeersman/youfone/pull/172) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.6.8 to 0.6.9 [\#171](https://github.com/geertmeersman/youfone/pull/171) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.6.7 to 0.6.8 [\#169](https://github.com/geertmeersman/youfone/pull/169) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.6.5 to 0.6.7 [\#168](https://github.com/geertmeersman/youfone/pull/168) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.6.4 to 0.6.5 [\#167](https://github.com/geertmeersman/youfone/pull/167) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.6.2 to 0.6.4 [\#166](https://github.com/geertmeersman/youfone/pull/166) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.5.1 to 0.6.2 [\#164](https://github.com/geertmeersman/youfone/pull/164) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): update pip requirement from \<24.2,\>=8.0.3 to \>=8.0.3,\<24.3 [\#159](https://github.com/geertmeersman/youfone/pull/159) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.5.0 to 0.5.1 [\#156](https://github.com/geertmeersman/youfone/pull/156) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v0.12.3-beta.6](https://github.com/geertmeersman/youfone/tree/v0.12.3-beta.6) (2024-10-07)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.3-beta.2...v0.12.3-beta.6)
+
+## [v0.12.3-beta.2](https://github.com/geertmeersman/youfone/tree/v0.12.3-beta.2) (2024-10-07)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.2...v0.12.3-beta.2)
+
+**Closed issues:**
+
+- Percentage of data usage looks incorrect [\#152](https://github.com/geertmeersman/youfone/issues/152)
+
 ## [v0.12.2](https://github.com/geertmeersman/youfone/tree/v0.12.2) (2024-07-02)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.1...v0.12.2)
