@@ -195,8 +195,7 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
     if config_entry.version < 2:
         new = {**config_entry.data}
         new[CONF_SCAN_INTERVAL] = COORDINATOR_MIN_UPDATE_INTERVAL
-        config_entry.version = 2
-        hass.config_entries.async_update_entry(config_entry, data=new)
+        hass.config_entries.async_update_entry(config_entry, data=new, version=2)
     if config_entry.version < 4:
         storage_file = Path(
             f"{hass.config.path(STORAGE_DIR)}/{DOMAIN}/{config_entry.entry_id}"

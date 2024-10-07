@@ -156,16 +156,14 @@ class YoufoneClient:
 
         """
         data = {"email": self.email, "password": self.password}
-        for expected_status in [200]:
-            json = await self.request(
-                "POST",
-                "authentication/login",
-                data,
-                return_json=True,
-                expected_status=expected_status,
-            )
-            return json
-        return False
+        json = await self.request(
+            "POST",
+            "authentication/login",
+            data,
+            return_json=True,
+            expected_status=200,
+        )
+        return json
 
     async def get_available_cards(self):
         """Retrieve available cards for the Youfone customer.
@@ -202,16 +200,14 @@ class YoufoneClient:
             dict or None: A dictionary containing SIM-only information or None if the request fails.
 
         """
-        for expected_status in [200]:
-            json = await self.request(
-                "POST",
-                "Card/GetSimOnly",
-                data,
-                return_json=True,
-                expected_status=expected_status,
-            )
-            return json
-        return None
+        json = await self.request(
+            "POST",
+            "Card/GetSimOnly",
+            data,
+            return_json=True,
+            expected_status=200,
+        )
+        return json
 
     async def get_abonnement(self, data):
         """Retrieve SIM-only abonnement information from the Youfone API.
@@ -225,16 +221,14 @@ class YoufoneClient:
             dict or None: A dictionary containing SIM-only abonnement information or None if the request fails.
 
         """
-        for expected_status in [200]:
-            json = await self.request(
-                "POST",
-                "Products/SimOnly/GetAbonnement",
-                data,
-                return_json=True,
-                expected_status=expected_status,
-            )
-            return json
-        return None
+        json = await self.request(
+            "POST",
+            "Products/SimOnly/GetAbonnement",
+            data,
+            return_json=True,
+            expected_status=200,
+        )
+        return json
 
     def transform_sim_only_usage(self, json_data):
         """Transform the given JSON data representing SIM-only usage into a specific format.
@@ -339,9 +333,12 @@ class YoufoneClient:
         elapsed_time_seconds = (current_datetime - start_datetime).total_seconds()
 
         # Calculate the percentage elapsed in the billing period
-        percentage_elapsed = round(
-            (elapsed_time_seconds / period_length_seconds) * 100, 2
-        )
+        if period_length_seconds == 0:
+            percentage_elapsed = 0.00
+        else:
+            percentage_elapsed = round(
+                (elapsed_time_seconds / period_length_seconds) * 100, 2
+            )
 
         return percentage_elapsed
 
