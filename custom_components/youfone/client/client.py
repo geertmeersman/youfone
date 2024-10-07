@@ -128,7 +128,6 @@ class YoufoneClient:
                 )
                 _LOGGER.debug(f"Request Headers: {headers}")
                 _LOGGER.debug(f"Response Headers: {response.headers}")
-                _LOGGER.debug(f"Response Content: {response.content}")
 
             if response.status_code == expected_status:
                 # Update security key if present in response headers
@@ -177,16 +176,14 @@ class YoufoneClient:
         data = {
             "customerId": self.customer_id,
         }
-        for expected_status in [200]:
-            json = await self.request(
-                "POST",
-                "Card/GetAvailableCards",
-                data,
-                return_json=True,
-                expected_status=expected_status,
-            )
-            return json
-        return False
+        json = await self.request(
+            "POST",
+            "Card/GetAvailableCards",
+            data,
+            return_json=True,
+            expected_status=200,
+        )
+        return json
 
     async def get_sim_only(self, data):
         """Retrieve SIM-only options from the Youfone API.
