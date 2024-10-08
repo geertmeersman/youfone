@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import asyncio
 from datetime import timedelta
 import logging
 from pathlib import Path
@@ -75,8 +76,23 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
+
+    # Unload the platforms first
     if unload_ok := await hass.config_entries.async_unload_platforms(entry, PLATFORMS):
         hass.data[DOMAIN].pop(entry.entry_id)
+
+        # Define blocking file operations
+        def remove_storage_files():
+            storage = Path(f"{hass.config.path(STORAGE_DIR)}/{DOMAIN}/{entry.entry_id}")
+            storage.unlink(missing_ok=True)  # Unlink (delete) the storage file
+
+            storage_dir = Path(f"{hass.config.path(STORAGE_DIR)}/{DOMAIN}")
+            # If the directory exists and is empty, remove it
+            if storage_dir.is_dir() and not any(storage_dir.iterdir()):
+                storage_dir.rmdir()
+
+        # Offload the file system operations to a thread
+        await asyncio.to_thread(remove_storage_files)
 
     return unload_ok
 
