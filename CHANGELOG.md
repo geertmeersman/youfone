@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.12.4](https://github.com/geertmeersman/youfone/tree/v0.12.4) (2024-10-08)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.3...v0.12.4)
+
+**Merged pull requests:**
+
+- fix: async for blocking file system operations [\#173](https://github.com/geertmeersman/youfone/pull/173) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.12.3](https://github.com/geertmeersman/youfone/tree/v0.12.3) (2024-10-07)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.3-beta.6...v0.12.3)
