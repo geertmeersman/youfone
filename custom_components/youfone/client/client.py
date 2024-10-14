@@ -16,7 +16,9 @@ import httpx
 from .const import API_BASE_URL, API_HEADERS
 
 _LOGGER = logging.getLogger(__name__)
-DATA_ASYNC_CLIENT: HassKey[httpx.AsyncClient] = HassKey("httpx_async_client_youfone")
+DATA_ASYNC_CLIENT_YOUFONE: HassKey[httpx.AsyncClient] = HassKey(
+    "httpx_async_client_youfone"
+)
 
 
 @callback
@@ -26,8 +28,8 @@ def get_async_client(hass: HomeAssistant) -> httpx.AsyncClient:
 
     This method must be run in the event loop.
     """
-    if (client := hass.data.get(DATA_ASYNC_CLIENT)) is None:
-        client = hass.data[DATA_ASYNC_CLIENT] = create_async_httpx_client(
+    if (client := hass.data.get(DATA_ASYNC_CLIENT_YOUFONE)) is None:
+        client = hass.data[DATA_ASYNC_CLIENT_YOUFONE] = create_async_httpx_client(
             hass, http2=True
         )
 
