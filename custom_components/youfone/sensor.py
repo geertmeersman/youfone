@@ -55,8 +55,13 @@ SENSOR_TYPES: tuple[YoufoneSensorDescription, ...] = (
         icon="mdi:sim",
         translation_key="sim_subscription",
         unique_id_fn=lambda sim: sim.get("msisdn"),
-        available_fn=lambda sim: sim.get("msisdn") is not None,
-        value_fn=lambda sim: sim.get("subscription_info").get("subscriptions")[0],
+        available_fn=lambda sim: sim.get("msisdn") is not None
+        and len(sim.get("subscription_info").get("subscriptions")),
+        value_fn=lambda sim: (
+            sim.get("subscription_info").get("subscriptions")[0]
+            if len(sim.get("subscription_info").get("subscriptions")) > 0
+            else None
+        ),  # Return None if no subscriptions
         attributes_fn=lambda sim: sim.get("subscription_info"),
     ),
     YoufoneSensorDescription(
@@ -75,15 +80,25 @@ SENSOR_TYPES: tuple[YoufoneSensorDescription, ...] = (
         icon="mdi:signal-5g",
         translation_key="data",
         unique_id_fn=lambda sim: sim.get("msisdn"),
-        available_fn=lambda sim: sim.get("msisdn") is not None,
+        available_fn=lambda sim: sim.get("msisdn") is not None
+        and len(sim.get("usage")) > 0,
         native_unit_of_measurement=PERCENTAGE,
-        value_fn=lambda sim: "0"
-        if sim.get("usage").get("data").get("calculated_percentage") is None
-        else sim.get("usage").get("data").get("calculated_percentage"),
+        value_fn=lambda sim: (
+            "0"
+            if len(sim.get("usage")) == 0
+            or sim.get("usage").get("data").get("calculated_percentage") is None
+            else sim.get("usage").get("data").get("calculated_percentage")
+        ),
         attributes_fn=lambda sim: {
-            "usage": sim.get("usage").get("data"),
+            "usage": (
+                sim.get("usage").get("data") if len(sim.get("usage")) > 0 else None
+            ),
             "msisdn": f"+{sim.get('msisdn')}",
-            "is_unlimited": sim.get("usage").get("data").get("is_unlimited"),
+            "is_unlimited": (
+                sim.get("usage").get("data").get("is_unlimited")
+                if len(sim.get("usage")) > 0
+                else None
+            ),
         },
     ),
     YoufoneSensorDescription(
@@ -91,11 +106,22 @@ SENSOR_TYPES: tuple[YoufoneSensorDescription, ...] = (
         icon="mdi:calendar-end-outline",
         translation_key="remaining_days",
         unique_id_fn=lambda sim: sim.get("msisdn"),
-        available_fn=lambda sim: sim.get("msisdn") is not None,
-        value_fn=lambda sim: sim.get("usage").get("data").get("remaining_days"),
+        available_fn=lambda sim: sim.get("msisdn") is not None
+        and len(sim.get("usage")) > 0,
+        value_fn=lambda sim: (
+            sim.get("usage").get("data").get("remaining_days")
+            if len(sim.get("usage")) > 0
+            else None
+        ),
         attributes_fn=lambda sim: {
-            "usage": sim.get("usage").get("data"),
-            "period_percentage": sim.get("usage").get("data").get("period_percentage"),
+            "usage": (
+                sim.get("usage").get("data") if len(sim.get("usage")) > 0 else None
+            ),
+            "period_percentage": (
+                sim.get("usage").get("data").get("period_percentage")
+                if len(sim.get("usage")) > 0
+                else None
+            ),
         },
     ),
     YoufoneSensorDescription(
@@ -103,11 +129,15 @@ SENSOR_TYPES: tuple[YoufoneSensorDescription, ...] = (
         icon="mdi:phone",
         translation_key="voice",
         unique_id_fn=lambda sim: sim.get("msisdn"),
-        available_fn=lambda sim: sim.get("msisdn") is not None,
+        available_fn=lambda sim: sim.get("msisdn") is not None
+        and len(sim.get("usage")) > 0,
         native_unit_of_measurement=PERCENTAGE,
-        value_fn=lambda sim: "∞"
-        if sim.get("usage").get("voice").get("calculated_percentage") is None
-        else sim.get("usage").get("voice").get("calculated_percentage"),
+        value_fn=lambda sim: (
+            "∞"
+            if len(sim.get("usage")) == 0
+            or sim.get("usage").get("voice").get("calculated_percentage") is None
+            else sim.get("usage").get("voice").get("calculated_percentage")
+        ),
         attributes_fn=lambda sim: {
             "usage": sim.get("usage").get("voice"),
             "msisdn": f"+{sim.get('msisdn')}",
