@@ -8,6 +8,7 @@ import logging
 from pathlib import Path
 import random
 
+from aioyoufone import YoufoneClient
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_PASSWORD, CONF_SCAN_INTERVAL, CONF_USERNAME
 from homeassistant.core import HomeAssistant
@@ -16,7 +17,6 @@ from homeassistant.helpers.storage import STORAGE_DIR, Store
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from requests.exceptions import ConnectionError  # type: ignore
 
-from .client.client import YoufoneClient
 from .const import COORDINATOR_MIN_UPDATE_INTERVAL, DOMAIN, PLATFORMS
 from .exceptions import (
     BadCredentialsException,
@@ -44,7 +44,6 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         hass.data[DOMAIN][entry.entry_id].setdefault(platform, set())
 
     client = YoufoneClient(
-        hass=hass,
         email=entry.data[CONF_USERNAME],
         password=entry.data[CONF_PASSWORD],
     )
