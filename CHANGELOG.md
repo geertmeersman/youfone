@@ -1,5 +1,21 @@
 # Changelog
 
+## [v0.12.5](https://github.com/geertmeersman/youfone/tree/v0.12.5) (2024-10-15)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.5-beta.5...v0.12.5)
+
+**Merged pull requests:**
+
+- fix: DATA\_ASYNC\_CLIENT\_YOUFONE httpx issue fix [\#175](https://github.com/geertmeersman/youfone/pull/175) ([geertmeersman](https://github.com/geertmeersman))
+
+## [v0.12.5-beta.5](https://github.com/geertmeersman/youfone/tree/v0.12.5-beta.5) (2024-10-15)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.5-beta.2...v0.12.5-beta.5)
+
+## [v0.12.5-beta.2](https://github.com/geertmeersman/youfone/tree/v0.12.5-beta.2) (2024-10-14)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.4...v0.12.5-beta.2)
+
 ## [v0.12.4](https://github.com/geertmeersman/youfone/tree/v0.12.4) (2024-10-08)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.3...v0.12.4)
