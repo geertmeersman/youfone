@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.12.6](https://github.com/geertmeersman/youfone/tree/v0.12.6) (2024-10-15)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.5...v0.12.6)
+
+**Merged pull requests:**
+
+- fix: Enhanced sensor logic for improved availability and value checks related to SIM cards and usage statistics [\#176](https://github.com/geertmeersman/youfone/pull/176) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v0.12.5](https://github.com/geertmeersman/youfone/tree/v0.12.5) (2024-10-15)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.5-beta.5...v0.12.5)
