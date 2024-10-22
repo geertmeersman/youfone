@@ -30,6 +30,8 @@ When adding a hub of the integration, it might take 1 minute to complete the add
 [![buyme_coffee](https://img.shields.io/badge/Buy%20me%20an%20Omer-donate-yellow?style=for-the-badge&logo=buymeacoffee)](https://www.buymeacoffee.com/geertmeersman)
 [![discord](https://img.shields.io/discord/1094977038269546576?style=for-the-badge&logo=discord)](https://discord.gg/JpjHptEN2D)
 
+[![discord](http://invidget.switchblade.xyz/JpjHptEN2D)](https://discord.gg/JpjHptEN2D)
+
 [![MIT License](https://img.shields.io/github/license/geertmeersman/youfone?style=flat-square)](https://github.com/geertmeersman/youfone/blob/master/LICENSE)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=flat-square)](https://github.com/hacs/integration)
 
@@ -101,6 +103,8 @@ This integration will set up the following platforms.
 If you want to contribute to this please read the [Contribution guidelines](CONTRIBUTING.md)
 
 ## Troubleshooting
+
+[![discord](http://invidget.switchblade.xyz/JpjHptEN2D)](https://discord.gg/JpjHptEN2D)
 
 ### Enable debug logging
 
