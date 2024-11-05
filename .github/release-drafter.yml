@@ -1,6 +1,9 @@
 name-template: "Release v$RESOLVED_VERSION"
 tag-template: "v$RESOLVED_VERSION"
 template: |
+  [![maintainer](https://img.shields.io/badge/maintainer-Geert%20Meersman-green?style=for-the-badge&logo=github)](https://github.com/geertmeersman)
+  [![buyme_coffee](https://img.shields.io/badge/Buy%20me%20an%20Omer-donate-yellow?style=for-the-badge&logo=buymeacoffee)](https://www.buymeacoffee.com/geertmeersman)
+
   ## What Changed 👀
 
   $CHANGES
@@ -54,49 +57,7 @@ categories:
       - deps
       - dependencies
     collapse-after: 5
-autolabeler:
-  - label: "breaking change"
-    title:
-      - "/!:/i"
-  - label: "breaking"
-    title:
-      - "/!:/i"
-  - label: "feature"
-    title:
-      - "/feat:/i"
-  - label: "perf"
-    title:
-      - "/perf:/i"
-  - label: "fix"
-    title:
-      - "/fix:/i"
-  - label: "style"
-    title:
-      - "/style:/i"
-  - label: "refactor"
-    title:
-      - "/refactor:/i"
-  - label: "test"
-    title:
-      - "/test:/i"
-  - label: "chore"
-    title:
-      - "/chore:/i"
-  - label: "doc"
-    title:
-      - "/docs:/i"
-  - label: "documentation"
-    title:
-      - "/docs:/i"
-  - label: "ci"
-    title:
-      - "/ci:/i"
-  - label: "dependencies"
-    title:
-      - "/deps:/i"
-      - '/\(deps\)/i'
-      - "/dependencies:/i"
-      - "/bump:/i"
+
 change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
 version-resolver:
