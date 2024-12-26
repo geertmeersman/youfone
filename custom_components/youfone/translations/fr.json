@@ -1,67 +1,25 @@
 {
   "config": {
+    "abort": {
+      "already_configured": "Le compte est d\u00e9j\u00e0 configur\u00e9"
+    },
+    "error": {
+      "cannot_connect": "\u00c9chec de la connexion",
+      "invalid_auth": "Authentification invalide",
+      "service_error": "Service non disponible",
+      "unknown": "Erreur inattendue"
+    },
     "step": {
       "connection_init": {
-        "title": "Nouveau compte Youfone",
-        "description": "Configurer votre compte utilisateur Youfone",
         "data": {
-          "username": "Nom d'utilisateur",
-          "password": "Mot de passe",
-          "scan_interval": "Intervalle de mise à jour (heures)",
-          "country": "Pays"
-        }
-      }
-    },
-    "abort": {
-      "already_configured": "Le compte est déjà configuré"
-    },
-    "error": {
-      "cannot_connect": "Échec de la connexion",
-      "invalid_auth": "Authentification invalide",
-      "unknown": "Erreur inattendue",
-      "service_error": "Service non disponible"
-    }
-  },
-  "options": {
-    "step": {
-      "country": {
-        "title": "Modifier votre pays",
-        "description": "Cela ne devrait normalement pas être utilisé",
-        "data": {
-          "country": "Pays"
-        }
-      },
-      "username_password": {
-        "title": "Mettre à jour votre nom d'utilisateur et/ou votre mot de passe",
-        "description": "À faire lorsque vous avez changé votre nom d'utilisateur et/ou votre mot de passe sur 'Youfone'",
-        "data": {
-          "password": "Mot de passe"
-        }
-      },
-      "scan_interval": {
-        "title": "Intervalle de mise à jour",
-        "description": "Modifier l'intervalle de mise à jour pour actualiser les capteurs",
-        "data": {
-          "scan_interval": "Intervalle de mise à jour (heures)"
-        }
-      },
-      "init": {
-        "title": "Modifier les options",
-        "menu_options": {
           "country": "Pays",
-          "scan_interval": "Intervalle de mise à jour",
-          "username_password": "Nom d'utilisateur & mot de passe"
-        }
+          "password": "Mot de passe",
+          "scan_interval": "Intervalle de mise \u00e0 jour (heures)",
+          "username": "Nom d'utilisateur"
+        },
+        "description": "Configurer votre compte utilisateur Youfone",
+        "title": "Nouveau compte Youfone"
       }
-    },
-    "error": {
-      "cannot_connect": "Échec de la connexion",
-      "invalid_auth": "Authentification invalide",
-      "unknown": "Erreur inattendue",
-      "service_error": "Service non disponible"
-    },
-    "abort": {
-      "already_configured": "Le compte est déjà configuré"
     }
   },
   "entity": {
@@ -70,13 +28,55 @@
         "name": "Client"
       },
       "data": {
-        "name": "Données"
-      },
-      "voice": {
-        "name": "Voix/SMS"
+        "name": "Donn\u00e9es"
       },
       "sim_subscription": {
         "name": "Abonnement"
+      },
+      "voice": {
+        "name": "Voix/SMS"
+      }
+    }
+  },
+  "options": {
+    "abort": {
+      "already_configured": "Le compte est d\u00e9j\u00e0 configur\u00e9"
+    },
+    "error": {
+      "cannot_connect": "\u00c9chec de la connexion",
+      "invalid_auth": "Authentification invalide",
+      "service_error": "Service non disponible",
+      "unknown": "Erreur inattendue"
+    },
+    "step": {
+      "country": {
+        "data": {
+          "country": "Pays"
+        },
+        "description": "Cela ne devrait normalement pas \u00eatre utilis\u00e9",
+        "title": "Modifier votre pays"
+      },
+      "init": {
+        "menu_options": {
+          "country": "Pays",
+          "scan_interval": "Intervalle de mise \u00e0 jour",
+          "username_password": "Nom d'utilisateur & mot de passe"
+        },
+        "title": "Modifier les options"
+      },
+      "scan_interval": {
+        "data": {
+          "scan_interval": "Intervalle de mise \u00e0 jour (heures)"
+        },
+        "description": "Modifier l'intervalle de mise \u00e0 jour pour actualiser les capteurs",
+        "title": "Intervalle de mise \u00e0 jour"
+      },
+      "username_password": {
+        "data": {
+          "password": "Mot de passe"
+        },
+        "description": "\u00c0 faire lorsque vous avez chang\u00e9 votre nom d'utilisateur et/ou votre mot de passe sur 'Youfone'",
+        "title": "Mettre \u00e0 jour votre nom d'utilisateur et/ou votre mot de passe"
       }
     }
   },

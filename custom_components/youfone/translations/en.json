@@ -1,67 +1,25 @@
 {
   "config": {
+    "abort": {
+      "already_configured": "Account is already configured"
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "Invalid authentication",
+      "service_error": "Service unavailable",
+      "unknown": "Unexpected error"
+    },
     "step": {
       "connection_init": {
-        "title": "New Youfone account",
-        "description": "Set up your Youfone user account",
         "data": {
-          "username": "Username",
+          "country": "Country",
           "password": "Password",
           "scan_interval": "Update interval (hours)",
-          "country": "Country"
-        }
+          "username": "Username"
+        },
+        "description": "Set up your Youfone user account",
+        "title": "New Youfone account"
       }
-    },
-    "abort": {
-      "already_configured": "Account is already configured"
-    },
-    "error": {
-      "cannot_connect": "Failed to connect",
-      "invalid_auth": "Invalid authentication",
-      "unknown": "Unexpected error",
-      "service_error": "Service unavailable"
-    }
-  },
-  "options": {
-    "step": {
-      "country": {
-        "title": "Change your country",
-        "description": "This normally should not be used",
-        "data": {
-          "country": "Country"
-        }
-      },
-      "username_password": {
-        "title": "Update your username and/or password",
-        "description": "To do when you changed your username and/or password on 'Youfone'",
-        "data": {
-          "password": "Password"
-        }
-      },
-      "scan_interval": {
-        "title": "Update interval",
-        "description": "Change the update interval for refreshing the sensors",
-        "data": {
-          "scan_interval": "Update interval (hours)"
-        }
-      },
-      "init": {
-        "title": "Change options",
-        "menu_options": {
-          "country": "Country",
-          "scan_interval": "Update interval",
-          "username_password": "User & password"
-        }
-      }
-    },
-    "error": {
-      "cannot_connect": "Failed to connect",
-      "invalid_auth": "Invalid authentication",
-      "unknown": "Unexpected error",
-      "service_error": "Service unavailable"
-    },
-    "abort": {
-      "already_configured": "Account is already configured"
     }
   },
   "entity": {
@@ -72,11 +30,53 @@
       "data": {
         "name": "Data"
       },
-      "voice": {
-        "name": "Voice/SMS"
-      },
       "sim_subscription": {
         "name": "Subscription"
+      },
+      "voice": {
+        "name": "Voice/SMS"
+      }
+    }
+  },
+  "options": {
+    "abort": {
+      "already_configured": "Account is already configured"
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "Invalid authentication",
+      "service_error": "Service unavailable",
+      "unknown": "Unexpected error"
+    },
+    "step": {
+      "country": {
+        "data": {
+          "country": "Country"
+        },
+        "description": "This normally should not be used",
+        "title": "Change your country"
+      },
+      "init": {
+        "menu_options": {
+          "country": "Country",
+          "scan_interval": "Update interval",
+          "username_password": "User & password"
+        },
+        "title": "Change options"
+      },
+      "scan_interval": {
+        "data": {
+          "scan_interval": "Update interval (hours)"
+        },
+        "description": "Change the update interval for refreshing the sensors",
+        "title": "Update interval"
+      },
+      "username_password": {
+        "data": {
+          "password": "Password"
+        },
+        "description": "To do when you changed your username and/or password on 'Youfone'",
+        "title": "Update your username and/or password"
       }
     }
   },
