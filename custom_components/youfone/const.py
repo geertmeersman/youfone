@@ -1,4 +1,5 @@
 """Constants used by Youfone."""
+
 import json
 from pathlib import Path
 from typing import Final
