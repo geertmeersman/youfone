@@ -1,7 +1,9 @@
 {
+  "country": [
+    "NL"
+  ],
+  "filename": "youfone.zip",
   "name": "Youfone",
   "render_readme": true,
-  "country": ["NL"],
-  "zip_release": true,
-  "filename": "youfone.zip"
+  "zip_release": true
 }

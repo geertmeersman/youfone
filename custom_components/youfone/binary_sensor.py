@@ -1,4 +1,5 @@
 """Binary sensor platform for Youfone."""
+
 from __future__ import annotations
 
 from collections.abc import Callable

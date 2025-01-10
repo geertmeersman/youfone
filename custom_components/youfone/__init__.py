@@ -54,16 +54,16 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     storage_dir.mkdir(exist_ok=True)
     store: Store = Store(hass, 1, f"{DOMAIN}/{entry.entry_id}")
     dev_reg = dr.async_get(hass)
-    hass.data[DOMAIN][entry.entry_id][
-        "coordinator"
-    ] = coordinator = YoufoneDataUpdateCoordinator(
-        hass,
-        config_entry_id=entry.entry_id,
-        dev_reg=dev_reg,
-        client=client,
-        store=store,
-        scan_interval=entry.data[CONF_SCAN_INTERVAL],
-        entry=entry,
+    hass.data[DOMAIN][entry.entry_id]["coordinator"] = coordinator = (
+        YoufoneDataUpdateCoordinator(
+            hass,
+            config_entry_id=entry.entry_id,
+            dev_reg=dev_reg,
+            client=client,
+            store=store,
+            scan_interval=entry.data[CONF_SCAN_INTERVAL],
+            entry=entry,
+        )
     )
 
     await coordinator.async_config_entry_first_refresh()

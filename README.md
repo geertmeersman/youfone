@@ -87,7 +87,7 @@ When adding a hub of the integration, it might take 1 minute to complete the add
 
 ### Manual
 
-1. Copy the `custom_components/youfone` directory of this repository as `config/custom_components/youfone` in your Home Assistant instalation.
+1. Copy the `custom_components/youfone` directory of this repository as `config/custom_components/youfone` in your Home Assistant installation.
 2. Restart Home Assistant
 3. Add the 'Youfone' integration via HA Settings > 'Devices and Services' > 'Integrations'
 4. Provide your Youfone username and password
