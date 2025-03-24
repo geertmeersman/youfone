@@ -1,5 +1,42 @@
 # Changelog
 
+## [v0.13.0](https://github.com/geertmeersman/youfone/tree/v0.13.0) (2025-03-24)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.6...v0.13.0)
+
+**Closed issues:**
+
+- cannot be processed as a number [\#195](https://github.com/geertmeersman/youfone/issues/195)
+- Youfone integration interferes with other integrations [\#174](https://github.com/geertmeersman/youfone/issues/174)
+
+**Merged pull requests:**
+
+- fix: New options flow properties [\#211](https://github.com/geertmeersman/youfone/pull/211) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.9.9 to 0.11.2 [\#210](https://github.com/geertmeersman/youfone/pull/210) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.9.7 to 0.9.9 [\#207](https://github.com/geertmeersman/youfone/pull/207) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.8.6 to 0.9.7 [\#206](https://github.com/geertmeersman/youfone/pull/206) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): update pip requirement from \<24.4,\>=8.0.3 to \>=8.0.3,\<25.1 [\#202](https://github.com/geertmeersman/youfone/pull/202) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore: github sync dev-current workflow [\#198](https://github.com/geertmeersman/youfone/pull/198) ([geertmeersman](https://github.com/geertmeersman))
+- chore: spellcheck [\#197](https://github.com/geertmeersman/youfone/pull/197) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.8.4 to 0.8.6 [\#196](https://github.com/geertmeersman/youfone/pull/196) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore: pre-commit [\#194](https://github.com/geertmeersman/youfone/pull/194) ([geertmeersman](https://github.com/geertmeersman))
+- fix: pretty-format-json [\#193](https://github.com/geertmeersman/youfone/pull/193) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.8.3 to 0.8.4 [\#192](https://github.com/geertmeersman/youfone/pull/192) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.8.2 to 0.8.3 [\#191](https://github.com/geertmeersman/youfone/pull/191) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.8.0 to 0.8.2 [\#190](https://github.com/geertmeersman/youfone/pull/190) ([dependabot[bot]](https://github.com/apps/dependabot))
+- fix: github workflow delete pre-releases on release [\#188](https://github.com/geertmeersman/youfone/pull/188) ([geertmeersman](https://github.com/geertmeersman))
+- fix: beta release zip file [\#187](https://github.com/geertmeersman/youfone/pull/187) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.7.4 to 0.8.0 [\#186](https://github.com/geertmeersman/youfone/pull/186) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.7.3 to 0.7.4 [\#185](https://github.com/geertmeersman/youfone/pull/185) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.7.2 to 0.7.3 [\#184](https://github.com/geertmeersman/youfone/pull/184) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore: zip\_release for hacs [\#183](https://github.com/geertmeersman/youfone/pull/183) ([geertmeersman](https://github.com/geertmeersman))
+- docs: release template [\#182](https://github.com/geertmeersman/youfone/pull/182) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.7.1 to 0.7.2 [\#181](https://github.com/geertmeersman/youfone/pull/181) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump colorlog from 6.8.2 to 6.9.0 [\#180](https://github.com/geertmeersman/youfone/pull/180) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): update pip requirement from \<24.3,\>=8.0.3 to \>=8.0.3,\<24.4 [\#179](https://github.com/geertmeersman/youfone/pull/179) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.7.0 to 0.7.1 [\#178](https://github.com/geertmeersman/youfone/pull/178) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.6.9 to 0.7.0 [\#177](https://github.com/geertmeersman/youfone/pull/177) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.12.6](https://github.com/geertmeersman/youfone/tree/v0.12.6) (2024-10-15)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.5...v0.12.6)
@@ -54,11 +91,7 @@
 
 ## [v0.12.3-beta.6](https://github.com/geertmeersman/youfone/tree/v0.12.3-beta.6) (2024-10-07)
 
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.3-beta.2...v0.12.3-beta.6)
-
-## [v0.12.3-beta.2](https://github.com/geertmeersman/youfone/tree/v0.12.3-beta.2) (2024-10-07)
-
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.2...v0.12.3-beta.2)
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.2...v0.12.3-beta.6)
 
 **Closed issues:**
 
@@ -102,23 +135,11 @@
 
 ## [v0.11.0](https://github.com/geertmeersman/youfone/tree/v0.11.0) (2024-04-18)
 
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.11.7-beta.6...v0.11.0)
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.7...v0.11.0)
 
 **Merged pull requests:**
 
 - feat!: removed youfone BE, new Yoin integration available [\#139](https://github.com/geertmeersman/youfone/pull/139) ([geertmeersman](https://github.com/geertmeersman))
-
-## [v0.11.7-beta.6](https://github.com/geertmeersman/youfone/tree/v0.11.7-beta.6) (2024-04-18)
-
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.11.7-beta.3...v0.11.7-beta.6)
-
-## [v0.11.7-beta.3](https://github.com/geertmeersman/youfone/tree/v0.11.7-beta.3) (2024-04-18)
-
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.8-beta.1...v0.11.7-beta.3)
-
-## [v0.10.8-beta.1](https://github.com/geertmeersman/youfone/tree/v0.10.8-beta.1) (2024-04-18)
-
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.10.7...v0.10.8-beta.1)
 
 ## [v0.10.7](https://github.com/geertmeersman/youfone/tree/v0.10.7) (2024-04-17)
 
@@ -214,18 +235,11 @@
 
 ## [v0.8.0](https://github.com/geertmeersman/youfone/tree/v0.8.0) (2024-03-06)
 
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.8.0-beta.13...v0.8.0)
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.7.0...v0.8.0)
 
 **Merged pull requests:**
 
 - feat: new Youfone API for NL [\#119](https://github.com/geertmeersman/youfone/pull/119) ([geertmeersman](https://github.com/geertmeersman))
-
-## [v0.8.0-beta.13](https://github.com/geertmeersman/youfone/tree/v0.8.0-beta.13) (2024-03-06)
-
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.7.0...v0.8.0-beta.13)
-
-**Merged pull requests:**
-
 - build\(deps\): bump ruff from 0.2.2 to 0.3.0 [\#118](https://github.com/geertmeersman/youfone/pull/118) ([dependabot[bot]](https://github.com/apps/dependabot))
 - build\(deps\): bump ruff from 0.2.1 to 0.2.2 [\#117](https://github.com/geertmeersman/youfone/pull/117) ([dependabot[bot]](https://github.com/apps/dependabot))
 
