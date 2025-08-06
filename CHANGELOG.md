@@ -1,5 +1,27 @@
 # Changelog
 
+## [v1.0.0](https://github.com/geertmeersman/youfone/tree/v1.0.0) (2025-08-06)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.13.0...v1.0.0)
+
+**Merged pull requests:**
+
+- chore: Pass config\_entry explicitly to DataUpdateCoordinator to avoid C… [\#234](https://github.com/geertmeersman/youfone/pull/234) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): update pip requirement from \<25.2,\>=8.0.3 to \>=8.0.3,\<25.3 [\#233](https://github.com/geertmeersman/youfone/pull/233) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.5 to 0.12.7 [\#232](https://github.com/geertmeersman/youfone/pull/232) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.4 to 0.12.5 [\#231](https://github.com/geertmeersman/youfone/pull/231) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump hugo19941994/delete-draft-releases from 1.0.1 to 2.0.0 [\#230](https://github.com/geertmeersman/youfone/pull/230) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.3 to 0.12.4 [\#229](https://github.com/geertmeersman/youfone/pull/229) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.2 to 0.12.3 [\#228](https://github.com/geertmeersman/youfone/pull/228) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.1 to 0.12.2 [\#227](https://github.com/geertmeersman/youfone/pull/227) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.0 to 0.12.1 [\#226](https://github.com/geertmeersman/youfone/pull/226) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.11.13 to 0.12.0 [\#225](https://github.com/geertmeersman/youfone/pull/225) ([dependabot[bot]](https://github.com/apps/dependabot))
+- fix: reduce to 1 commit when releasing [\#224](https://github.com/geertmeersman/youfone/pull/224) ([geertmeersman](https://github.com/geertmeersman))
+- fix: sync dev-current workflow trigger [\#223](https://github.com/geertmeersman/youfone/pull/223) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.11.12 to 0.11.13 [\#222](https://github.com/geertmeersman/youfone/pull/222) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.11.2 to 0.11.12 [\#221](https://github.com/geertmeersman/youfone/pull/221) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): update pip requirement from \<25.1,\>=8.0.3 to \>=8.0.3,\<25.2 [\#215](https://github.com/geertmeersman/youfone/pull/215) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.13.0](https://github.com/geertmeersman/youfone/tree/v0.13.0) (2025-03-24)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.12.6...v0.13.0)
@@ -358,17 +380,7 @@
 
 ## [v0.4.4](https://github.com/geertmeersman/youfone/tree/v0.4.4) (2023-10-14)
 
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.4.3-beta.12...v0.4.4)
-
-**Merged pull requests:**
-
-- fix: sleep added between requests, trying to avoid IP blacklisting [\#70](https://github.com/geertmeersman/youfone/pull/70) ([geertmeersman](https://github.com/geertmeersman))
-- build\(deps\): bump ruff from 0.0.291 to 0.0.292 [\#69](https://github.com/geertmeersman/youfone/pull/69) ([dependabot[bot]](https://github.com/apps/dependabot))
-- build\(deps\): bump actions/setup-python from 4.7.0 to 4.7.1 [\#68](https://github.com/geertmeersman/youfone/pull/68) ([dependabot[bot]](https://github.com/apps/dependabot))
-
-## [v1.4.3-beta.12](https://github.com/geertmeersman/youfone/tree/v1.4.3-beta.12) (2023-10-14)
-
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.3...v1.4.3-beta.12)
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.4.3...v0.4.4)
 
 **Closed issues:**
 
@@ -377,6 +389,9 @@
 
 **Merged pull requests:**
 
+- fix: sleep added between requests, trying to avoid IP blacklisting [\#70](https://github.com/geertmeersman/youfone/pull/70) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.0.291 to 0.0.292 [\#69](https://github.com/geertmeersman/youfone/pull/69) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/setup-python from 4.7.0 to 4.7.1 [\#68](https://github.com/geertmeersman/youfone/pull/68) ([dependabot[bot]](https://github.com/apps/dependabot))
 - build\(deps\): bump ruff from 0.0.290 to 0.0.291 [\#67](https://github.com/geertmeersman/youfone/pull/67) ([dependabot[bot]](https://github.com/apps/dependabot))
 - build\(deps\): bump ruff from 0.0.287 to 0.0.290 [\#66](https://github.com/geertmeersman/youfone/pull/66) ([dependabot[bot]](https://github.com/apps/dependabot))
 - build\(deps\): bump actions/checkout from 3 to 4 [\#65](https://github.com/geertmeersman/youfone/pull/65) ([dependabot[bot]](https://github.com/apps/dependabot))
