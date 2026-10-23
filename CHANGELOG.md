@@ -1,5 +1,59 @@
 # Changelog
 
+## [v1.0.1](https://github.com/geertmeersman/youfone/tree/v1.0.1) (2026-10-23)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.0.0...v1.0.1)
+
+**Closed issues:**
+
+- Does the date usage reset to 0 on the 1st at midnight? [\#264](https://github.com/geertmeersman/youfone/issues/264)
+
+**Merged pull requests:**
+
+- fix: let release-drafter determine version via semver-increment, remove semver-action [\#280](https://github.com/geertmeersman/youfone/pull/280) ([geertmeersman](https://github.com/geertmeersman))
+- fix: add Release prefix to release name template [\#279](https://github.com/geertmeersman/youfone/pull/279) ([geertmeersman](https://github.com/geertmeersman))
+- fix: migrate release-drafter to new format, remove deprecated version-resolver [\#278](https://github.com/geertmeersman/youfone/pull/278) ([geertmeersman](https://github.com/geertmeersman))
+- fix: add semver-increment patch to Maintenance and Documentation categories [\#277](https://github.com/geertmeersman/youfone/pull/277) ([geertmeersman](https://github.com/geertmeersman))
+- chore: only trigger release drafter on custom\_components changes [\#275](https://github.com/geertmeersman/youfone/pull/275) ([geertmeersman](https://github.com/geertmeersman))
+- chore: update release drafter template, remove beta release and dev-current workflows [\#274](https://github.com/geertmeersman/youfone/pull/274) ([geertmeersman](https://github.com/geertmeersman))
+- feat: add workflow to auto-label PRs without custom\_components changes as skip-changelog [\#273](https://github.com/geertmeersman/youfone/pull/273) ([geertmeersman](https://github.com/geertmeersman))
+- docs: add downloads \(latest release\) badge to README [\#272](https://github.com/geertmeersman/youfone/pull/272) ([geertmeersman](https://github.com/geertmeersman))
+- chore: add local brand assets [\#271](https://github.com/geertmeersman/youfone/pull/271) ([geertmeersman](https://github.com/geertmeersman))
+- chore: add semver fallback for missing tags in release workflows [\#270](https://github.com/geertmeersman/youfone/pull/270) ([geertmeersman](https://github.com/geertmeersman))
+- fix: remove httpx requirement from manifest.json [\#269](https://github.com/geertmeersman/youfone/pull/269) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump EndBug/add-and-commit from 10 to 11 [\#268](https://github.com/geertmeersman/youfone/pull/268) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/stale from 10 to 11 [\#267](https://github.com/geertmeersman/youfone/pull/267) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore: update funding, issue templates, and workflows; remove depreca… [\#266](https://github.com/geertmeersman/youfone/pull/266) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump actions/checkout from 6 to 7 [\#265](https://github.com/geertmeersman/youfone/pull/265) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/dependency-review-action from 4 to 5 [\#263](https://github.com/geertmeersman/youfone/pull/263) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/github-script from 8 to 9 [\#262](https://github.com/geertmeersman/youfone/pull/262) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump hugo19941994/delete-draft-releases from 2.0.0 to 3.0.0 [\#261](https://github.com/geertmeersman/youfone/pull/261) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump EndBug/add-and-commit from 9 to 10 [\#260](https://github.com/geertmeersman/youfone/pull/260) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump release-drafter/release-drafter from 6 to 7 [\#259](https://github.com/geertmeersman/youfone/pull/259) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/upload-artifact from 6 to 7 [\#258](https://github.com/geertmeersman/youfone/pull/258) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/upload-artifact from 5 to 6 [\#257](https://github.com/geertmeersman/youfone/pull/257) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/checkout from 5 to 6 [\#256](https://github.com/geertmeersman/youfone/pull/256) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/upload-artifact from 4 to 5 [\#255](https://github.com/geertmeersman/youfone/pull/255) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore: archived ruff-actions replaced [\#254](https://github.com/geertmeersman/youfone/pull/254) ([geertmeersman](https://github.com/geertmeersman))
+- chore\(release\): improved release workflow [\#253](https://github.com/geertmeersman/youfone/pull/253) ([geertmeersman](https://github.com/geertmeersman))
+- build\(deps\): bump ruff from 0.14.0 to 0.14.1 [\#252](https://github.com/geertmeersman/youfone/pull/252) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump colorlog from 6.9.0 to 6.10.1 [\#251](https://github.com/geertmeersman/youfone/pull/251) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.13.3 to 0.14.0 [\#249](https://github.com/geertmeersman/youfone/pull/249) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump github/codeql-action from 3 to 4 [\#248](https://github.com/geertmeersman/youfone/pull/248) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.13.2 to 0.13.3 [\#247](https://github.com/geertmeersman/youfone/pull/247) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.13.1 to 0.13.2 [\#246](https://github.com/geertmeersman/youfone/pull/246) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.13.0 to 0.13.1 [\#245](https://github.com/geertmeersman/youfone/pull/245) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.12 to 0.13.0 [\#244](https://github.com/geertmeersman/youfone/pull/244) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.11 to 0.12.12 [\#243](https://github.com/geertmeersman/youfone/pull/243) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/github-script from 7 to 8 [\#242](https://github.com/geertmeersman/youfone/pull/242) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/stale from 9 to 10 [\#241](https://github.com/geertmeersman/youfone/pull/241) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/setup-python from 5 to 6 [\#240](https://github.com/geertmeersman/youfone/pull/240) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.10 to 0.12.11 [\#239](https://github.com/geertmeersman/youfone/pull/239) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.9 to 0.12.10 [\#238](https://github.com/geertmeersman/youfone/pull/238) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.8 to 0.12.9 [\#237](https://github.com/geertmeersman/youfone/pull/237) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump actions/checkout from 4 to 5 [\#236](https://github.com/geertmeersman/youfone/pull/236) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ruff from 0.12.7 to 0.12.8 [\#235](https://github.com/geertmeersman/youfone/pull/235) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v1.0.0](https://github.com/geertmeersman/youfone/tree/v1.0.0) (2025-08-06)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v0.13.0...v1.0.0)
