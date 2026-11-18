@@ -40,7 +40,7 @@ class YoufoneClient:
             self.client = httpx.AsyncClient(
                 headers=self.custom_headers,
                 http2=True,
-                verify=False,
+                verify=True,
                 timeout=httpx.Timeout(20.0, read=10.0),
             )
 
