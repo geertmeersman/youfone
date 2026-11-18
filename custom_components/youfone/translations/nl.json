@@ -30,6 +30,9 @@
       "data": {
         "name": "Data"
       },
+      "sim_roaming_data": {
+        "name": "World Roaming Data"
+      },
       "sim_subscription": {
         "name": "Abonnement"
       },

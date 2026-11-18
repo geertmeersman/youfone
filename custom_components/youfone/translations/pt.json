@@ -30,6 +30,9 @@
       "data": {
         "name": "Dados"
       },
+      "sim_roaming_data": {
+        "name": "Dados de Roaming Mundial"
+      },
       "sim_subscription": {
         "name": "Assinatura"
       },
