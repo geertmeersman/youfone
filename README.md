@@ -30,7 +30,7 @@ A Home Assistant integration allowing to monitor your Youfone usage
 [![MIT License](https://img.shields.io/github/license/geertmeersman/youfone?style=flat-square)](https://github.com/geertmeersman/youfone/blob/master/LICENSE)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=flat-square)](https://github.com/hacs/integration)
 
-[![Open your Home Assistant instance and open the repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg?style=flat-square)](https://my.home-assistant.io/redirect/hacs_repository/?owner=geertmeersman&repository=youfone&category=integration)
+[![Open your Home Assistant instance and open the repository inside the Home Assistant Marketplace.](https://my.home-assistant.io/badges/hacs_repository.svg?style=flat-square)](https://my.home-assistant.io/redirect/hacs_repository/?owner=geertmeersman&repository=youfone&category=integration)
 
 [![GitHub issues](https://img.shields.io/github/issues/geertmeersman/youfone)](https://github.com/geertmeersman/youfone/issues)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/geertmeersman/youfone.svg)](http://isitmaintained.com/project/geertmeersman/youfone)
@@ -56,7 +56,7 @@ A Home Assistant integration allowing to monitor your Youfone usage
   - [Features](#features)
   - [Table of Contents](#table-of-contents)
   - [Installation](#installation)
-    - [Using HACS (recommended)](#using-hacs-recommended)
+    - [Using the Home Assistant Marketplace (recommended)](#using-the-home-assistant-marketplace-recommended)
     - [Manual](#manual)
   - [Entities](#entities)
   - [Contributions are welcome](#contributions-are-welcome)
@@ -68,22 +68,18 @@ A Home Assistant integration allowing to monitor your Youfone usage
 
 ## Installation
 
-### Using [HACS](https://hacs.xyz/) (recommended)
+### Using the [Home Assistant Marketplace](https://www.home-assistant.io/integrations/marketplace/) (recommended)
 
 **Click on this button:**
 
-[![Open your Home Assistant instance and open the repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg?style=flat-square)](https://my.home-assistant.io/redirect/hacs_repository/?owner=geertmeersman&repository=youfone&category=integration)
+[![Open your Home Assistant instance and open the repository inside the Home Assistant Marketplace.](https://my.home-assistant.io/badges/hacs_repository.svg?style=flat-square)](https://my.home-assistant.io/redirect/hacs_repository/?owner=geertmeersman&repository=youfone&category=integration)
 
 **or follow these steps:**
 
-1. Open HACS in your Home Assistant instance
-2. Go to **Integrations**
-3. Click the **Explore & Download Repositories** button
-4. Search for `Youfone` and click it
-5. Click **Download** and confirm
-6. Restart Home Assistant
-7. Go to **Settings → Devices & Services → Add Integration**
-8. Search for `Youfone` and follow the configuration steps
+1. Simply search for `Youfone` in the Home Assistant Marketplace and install it easily.
+2. Restart Home Assistant
+3. Add the 'Youfone' integration via HA Settings > 'Devices and Services' > 'Integrations'
+4. Provide your Youfone username and password
 
 ### Manual
 
