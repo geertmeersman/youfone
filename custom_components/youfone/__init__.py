@@ -131,7 +131,7 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
     async def async_config_entry_first_refresh(self) -> None:
         """Refresh data for the first time when a config entry is setup."""
         self.data = await self.store.async_load() or {}
-        if len(self.data) == 0:
+        if len(self.data) == 0 or "sim_roaming" not in self.data:
             await super().async_config_entry_first_refresh()
 
     async def get_data(self) -> dict | None:

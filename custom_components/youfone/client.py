@@ -1,5 +1,6 @@
 """Youfone API Client."""
 
+import asyncio
 from datetime import datetime, timedelta
 import logging
 
@@ -34,14 +35,20 @@ class YoufoneClient:
         self.custom_headers = custom_headers or {}
         self.debug = debug
 
+    def _create_client(self):
+        """Create the httpx client (blocking, run in executor)."""
+        return httpx.AsyncClient(
+            headers=self.custom_headers,
+            http2=True,
+            verify=True,
+            timeout=httpx.Timeout(20.0, read=10.0),
+        )
+
     async def start_session(self):
         """Start the httpx session."""
         if self.client is None:
-            self.client = httpx.AsyncClient(
-                headers=self.custom_headers,
-                http2=True,
-                verify=True,
-                timeout=httpx.Timeout(20.0, read=10.0),
+            self.client = await asyncio.get_running_loop().run_in_executor(
+                None, self._create_client
             )
 
     async def close_session(self):
