@@ -1,5 +1,44 @@
 # Changelog
 
+## [v1.1.0](https://github.com/geertmeersman/youfone/tree/v1.1.0) (2026-11-22)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.0.1.beta3...v1.1.0)
+
+**Merged pull requests:**
+
+- fix: blocking event loop in start\_session and sim\_roaming unavailable from stale cache [\#291](https://github.com/geertmeersman/youfone/pull/291) ([geertmeersman](https://github.com/geertmeersman))
+
+## [v1.0.1.beta3](https://github.com/geertmeersman/youfone/tree/v1.0.1.beta3) (2026-11-22)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.0.1.beta2...v1.0.1.beta3)
+
+**Merged pull requests:**
+
+- feat\(roaming\): inline client, add SIM\_ROAMING support [\#290](https://github.com/geertmeersman/youfone/pull/290) ([geertmeersman](https://github.com/geertmeersman))
+
+## [v1.0.1.beta2](https://github.com/geertmeersman/youfone/tree/v1.0.1.beta2) (2026-11-18)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.0.1.beta1...v1.0.1.beta2)
+
+## [v1.0.1.beta1](https://github.com/geertmeersman/youfone/tree/v1.0.1.beta1) (2026-11-18)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.0.1...v1.0.1.beta1)
+
+**Closed issues:**
+
+- Update naar 1.01 geeft foutmelding in Home Assistant [\#284](https://github.com/geertmeersman/youfone/issues/284)
+- HACS becomes Marketplace without managed support for Python [\#283](https://github.com/geertmeersman/youfone/issues/283)
+
+**Merged pull requests:**
+
+- ci: combine PR workflows into single pr.yml [\#289](https://github.com/geertmeersman/youfone/pull/289) ([geertmeersman](https://github.com/geertmeersman))
+- chore: remove redundant DISCORD\_WEBHOOK from step-level env [\#288](https://github.com/geertmeersman/youfone/pull/288) ([geertmeersman](https://github.com/geertmeersman))
+- fix: use env var for Discord webhook conditional [\#287](https://github.com/geertmeersman/youfone/pull/287) ([geertmeersman](https://github.com/geertmeersman))
+- chore: remove Discord references from README [\#286](https://github.com/geertmeersman/youfone/pull/286) ([geertmeersman](https://github.com/geertmeersman))
+- chore: skip Discord notification if webhook secret is not set [\#285](https://github.com/geertmeersman/youfone/pull/285) ([geertmeersman](https://github.com/geertmeersman))
+- fix: add maintainer badges and full changelog link to release template [\#282](https://github.com/geertmeersman/youfone/pull/282) ([geertmeersman](https://github.com/geertmeersman))
+- fix: get version from draft release instead of semver-action [\#281](https://github.com/geertmeersman/youfone/pull/281) ([geertmeersman](https://github.com/geertmeersman))
+
 ## [v1.0.1](https://github.com/geertmeersman/youfone/tree/v1.0.1) (2026-10-23)
 
 [Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.0.0...v1.0.1)
