@@ -7,19 +7,16 @@
 
 A Home Assistant integration allowing to monitor your Youfone usage
 
-```text
-In order to avoid IP blacklisting / DDOS identification, the update interval is set to a minimum of 2 hours (you can increase it in the configuration).
-When Home Assistant restarts, it will fetch the data from the local storage and it will update the sensors after the configured interval.
-When adding a hub of the integration, it might take 1 minute to complete the addition, due to a 5 seconds interval set between each API call to Youfone.
-```
+> **Note:** To avoid IP blacklisting, the update interval is set to a minimum of 2 hours (configurable). On restart, Home Assistant loads data from local storage and refreshes after the configured interval.
 
 ### Features
 
-- 📱 Mobile data sensors
-- 📞 Voice & sms sensors
-- 💲 Youcoins balance
-- 📈 Invoice sensors
-- 👱 User account information
+- 📱 Mobile data usage sensors
+- 🌍 World roaming bundle sensors
+- 📞 Voice & SMS sensors
+- 💰 Subscription price sensor
+- 📅 Remaining days sensor
+- 👤 User account information
 
 ---
 
@@ -61,12 +58,12 @@ When adding a hub of the integration, it might take 1 minute to complete the add
   - [Installation](#installation)
     - [Using HACS (recommended)](#using-hacs-recommended)
     - [Manual](#manual)
+  - [Entities](#entities)
   - [Contributions are welcome](#contributions-are-welcome)
   - [Troubleshooting](#troubleshooting)
     - [Enable debug logging](#enable-debug-logging)
     - [Disable debug logging and download logs](#disable-debug-logging-and-download-logs)
   - [Screenshots](#screenshots)
-    - [Sensors](#sensors)
   - [Code origin](#code-origin)
 
 ## Installation
@@ -79,30 +76,50 @@ When adding a hub of the integration, it might take 1 minute to complete the add
 
 **or follow these steps:**
 
-1. Simply search for `Youfone` in HACS and install it easily.
-2. Restart Home Assistant
-3. Add the 'Youfone' integration via HA Settings > 'Devices and Services' > 'Integrations'
-4. Provide your Youfone username and password
+1. Open HACS in your Home Assistant instance
+2. Go to **Integrations**
+3. Click the **Explore & Download Repositories** button
+4. Search for `Youfone` and click it
+5. Click **Download** and confirm
+6. Restart Home Assistant
+7. Go to **Settings → Devices & Services → Add Integration**
+8. Search for `Youfone` and follow the configuration steps
 
 ### Manual
 
-1. Copy the `custom_components/youfone` directory of this repository as `config/custom_components/youfone` in your Home Assistant installation.
+1. Copy the `custom_components/youfone` directory into your `config/custom_components/` folder
 2. Restart Home Assistant
-3. Add the 'Youfone' integration via HA Settings > 'Devices and Services' > 'Integrations'
-4. Provide your Youfone username and password
+3. Go to **Settings → Devices & Services → Add Integration**
+4. Search for `Youfone` and follow the configuration steps
 
-This integration will set up the following platforms.
+## Entities
 
-| Platform  | Description                                      |
-| --------- | ------------------------------------------------ |
-| `youfone` | Home Assistant component for Youfone NL services |
+Each SIM card is represented as a separate device. The following sensors are created per SIM:
+
+### SIM subscription sensors
+
+| Entity | Description | Unit | Attributes |
+| ------ | ----------- | ---- | ---------- |
+| `sensor.youfone_customer` | Account holder name | – | Full customer info |
+| `sensor.youfone_sim_subscription_<msisdn>` | Active subscription name | – | Full subscription info |
+| `sensor.youfone_sim_subscription_price_<msisdn>` | Monthly subscription price | € | – |
+| `sensor.youfone_data_<msisdn>` | Mobile data usage | % | Used, total, unlimited flag, msisdn |
+| `sensor.youfone_voice_<msisdn>` | Voice & SMS usage | % | Used, total, unlimited flag, msisdn |
+| `sensor.youfone_remaining_days_<msisdn>` | Days remaining in billing period | days | Period percentage |
+
+### World roaming sensors
+
+Shown only when a separately purchased world roaming bundle is active on the account (`SIM_ROAMING` card type).
+
+| Entity | Description | Unit | Attributes |
+| ------ | ----------- | ---- | ---------- |
+| `sensor.youfone_sim_roaming_data_<msisdn>` | Roaming bundle data usage | % | Bundle name, destination (e.g. Marokko), used MB, total MB, due date, remaining days |
 
 ## Contributions are welcome
 
 If you want to contribute to this please read the [Contribution guidelines](CONTRIBUTING.md)
 
 ## Troubleshooting
-
 
 ### Enable debug logging
 

@@ -144,6 +144,24 @@ SENSOR_TYPES: tuple[YoufoneSensorDescription, ...] = (
             "is_unlimited": sim.get("usage").get("voice").get("is_unlimited"),
         },
     ),
+    YoufoneSensorDescription(
+        key="sim_roaming",
+        icon="mdi:earth",
+        translation_key="sim_roaming_data",
+        unique_id_fn=lambda sim: sim.get("msisdn"),
+        available_fn=lambda sim: sim.get("msisdn") is not None
+        and len(sim.get("bundles")) > 0,
+        native_unit_of_measurement=PERCENTAGE,
+        value_fn=lambda sim: (
+            sim.get("bundles")[0].get("calculated_percentage")
+            if sim.get("bundles")
+            else None
+        ),
+        attributes_fn=lambda sim: {
+            "msisdn": f"+{sim.get('msisdn')}",
+            "bundles": sim.get("bundles"),
+        },
+    ),
 )
 
 
@@ -238,7 +256,7 @@ async def async_setup_entry(
                 entities.append(
                     YoufoneSensor(coordinator, sensor_type, device_name, item_id)
                 )
-            elif sensor_type.key in ["sim_only"]:
+            elif sensor_type.key in ["sim_only", "sim_roaming"]:
                 for index in range(len(coordinator.data[sensor_type.key])):
                     entities.append(
                         YoufoneSensor(coordinator, sensor_type, device_name, index)

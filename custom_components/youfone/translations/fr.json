@@ -30,6 +30,9 @@
       "data": {
         "name": "Donn\u00e9es"
       },
+      "sim_roaming_data": {
+        "name": "Donn\u00e9es Roaming Mondial"
+      },
       "sim_subscription": {
         "name": "Abonnement"
       },
