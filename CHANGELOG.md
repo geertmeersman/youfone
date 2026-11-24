@@ -1,28 +1,20 @@
 # Changelog
 
+## [v1.1.1](https://github.com/geertmeersman/youfone/tree/v1.1.1) (2026-11-24)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.1.0.beta1...v1.1.1)
+
+**Merged pull requests:**
+
+- fix: config\_flow import, reauth flow, auth error handling and debug log redaction [\#293](https://github.com/geertmeersman/youfone/pull/293) ([geertmeersman](https://github.com/geertmeersman))
+
+## [v1.1.0.beta1](https://github.com/geertmeersman/youfone/tree/v1.1.0.beta1) (2026-11-24)
+
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.1.0...v1.1.0.beta1)
+
 ## [v1.1.0](https://github.com/geertmeersman/youfone/tree/v1.1.0) (2026-11-22)
 
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.0.1.beta3...v1.1.0)
-
-**Merged pull requests:**
-
-- fix: blocking event loop in start\_session and sim\_roaming unavailable from stale cache [\#291](https://github.com/geertmeersman/youfone/pull/291) ([geertmeersman](https://github.com/geertmeersman))
-
-## [v1.0.1.beta3](https://github.com/geertmeersman/youfone/tree/v1.0.1.beta3) (2026-11-22)
-
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.0.1.beta2...v1.0.1.beta3)
-
-**Merged pull requests:**
-
-- feat\(roaming\): inline client, add SIM\_ROAMING support [\#290](https://github.com/geertmeersman/youfone/pull/290) ([geertmeersman](https://github.com/geertmeersman))
-
-## [v1.0.1.beta2](https://github.com/geertmeersman/youfone/tree/v1.0.1.beta2) (2026-11-18)
-
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.0.1.beta1...v1.0.1.beta2)
-
-## [v1.0.1.beta1](https://github.com/geertmeersman/youfone/tree/v1.0.1.beta1) (2026-11-18)
-
-[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.0.1...v1.0.1.beta1)
+[Full Changelog](https://github.com/geertmeersman/youfone/compare/v1.0.1...v1.1.0)
 
 **Closed issues:**
 
@@ -31,6 +23,8 @@
 
 **Merged pull requests:**
 
+- fix: blocking event loop in start\_session and sim\_roaming unavailable from stale cache [\#291](https://github.com/geertmeersman/youfone/pull/291) ([geertmeersman](https://github.com/geertmeersman))
+- feat\(roaming\): inline client, add SIM\_ROAMING support [\#290](https://github.com/geertmeersman/youfone/pull/290) ([geertmeersman](https://github.com/geertmeersman))
 - ci: combine PR workflows into single pr.yml [\#289](https://github.com/geertmeersman/youfone/pull/289) ([geertmeersman](https://github.com/geertmeersman))
 - chore: remove redundant DISCORD\_WEBHOOK from step-level env [\#288](https://github.com/geertmeersman/youfone/pull/288) ([geertmeersman](https://github.com/geertmeersman))
 - fix: use env var for Discord webhook conditional [\#287](https://github.com/geertmeersman/youfone/pull/287) ([geertmeersman](https://github.com/geertmeersman))
