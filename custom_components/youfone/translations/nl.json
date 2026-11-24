@@ -1,7 +1,8 @@
 {
   "config": {
     "abort": {
-      "already_configured": "Account is al geconfigureerd"
+      "already_configured": "Account is al geconfigureerd",
+      "reauth_successful": "Opnieuw aanmelden gelukt"
     },
     "error": {
       "cannot_connect": "Verbinding mislukt",
@@ -19,6 +20,13 @@
         },
         "description": "Stel uw Youfone-gebruikersaccount in",
         "title": "Nieuw Youfone-account"
+      },
+      "reauth_confirm": {
+        "data": {
+          "password": "Wachtwoord"
+        },
+        "description": "Het wachtwoord voor {username} werd geweigerd. Voer het huidige wachtwoord in.",
+        "title": "Opnieuw aanmelden"
       }
     }
   },
