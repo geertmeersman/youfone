@@ -1,10 +1,10 @@
 """Config flow to configure the Youfone integration."""
 
 from abc import ABC, abstractmethod
+from collections.abc import Mapping
 import logging
 from typing import Any
 
-from aioyoufone import YoufoneClient
 from homeassistant.config_entries import ConfigEntry, ConfigFlow, OptionsFlow
 from homeassistant.const import CONF_PASSWORD, CONF_SCAN_INTERVAL, CONF_USERNAME
 from homeassistant.core import callback
@@ -20,6 +20,7 @@ from homeassistant.helpers.selector import (
 from homeassistant.helpers.typing import UNDEFINED
 import voluptuous as vol  # type: ignore
 
+from .client import YoufoneClient
 from .const import COORDINATOR_MIN_UPDATE_INTERVAL, DOMAIN, NAME
 from .exceptions import BadCredentialsException, YoufoneServiceException
 from .models import YoufoneConfigEntryData
@@ -249,6 +250,41 @@ class YoufoneConfigFlow(YoufoneCommonFlow, ConfigFlow, domain=DOMAIN):
     def async_get_options_flow(config_entry: ConfigEntry) -> YoufoneOptionsFlow:
         """Get the options flow for this handler."""
         return YoufoneOptionsFlow(config_entry)
+
+    async def async_step_reauth(self, entry_data: Mapping[str, Any]) -> FlowResult:
+        """Handle re-authentication after a login failure."""
+        return await self.async_step_reauth_confirm()
+
+    async def async_step_reauth_confirm(
+        self, user_input: dict | None = None
+    ) -> FlowResult:
+        """Ask for a new password."""
+        errors: dict = {}
+        entry = self._get_reauth_entry()
+
+        if user_input is not None:
+            test = await self.test_connection(dict(entry.data) | user_input)
+            if not test["errors"]:
+                return self.async_update_reload_and_abort(
+                    entry, data_updates=user_input
+                )
+            errors = test["errors"]
+
+        return self.async_show_form(
+            step_id="reauth_confirm",
+            data_schema=vol.Schema(
+                {
+                    vol.Required(CONF_PASSWORD): TextSelector(
+                        TextSelectorConfig(
+                            type=TextSelectorType.PASSWORD,
+                            autocomplete="current-password",
+                        )
+                    ),
+                }
+            ),
+            description_placeholders={"username": entry.data[CONF_USERNAME]},
+            errors=errors,
+        )
 
     @callback
     def finish_flow(self) -> FlowResult:

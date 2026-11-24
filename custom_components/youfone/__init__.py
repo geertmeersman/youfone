@@ -11,6 +11,7 @@ import random
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_PASSWORD, CONF_SCAN_INTERVAL, CONF_USERNAME
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.storage import STORAGE_DIR, Store
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
@@ -136,8 +137,15 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
 
     async def get_data(self) -> dict | None:
         """Get the data from the Youfone client."""
-        self.data = await self.client.fetch_data()
-        _LOGGER.debug(f"Fetched data: {self.data}")
+        data = await self.client.fetch_data()
+        if "error" in data:
+            raise YoufoneServiceException(data["error"])
+        self.data = data
+        _LOGGER.debug(
+            "Fetched data: %d SIM-only and %d roaming line(s)",
+            len(self.data.get("sim_only", [])),
+            len(self.data.get("sim_roaming", [])),
+        )
         await self.store.async_save(self.data)
 
     async def _async_update_data(self) -> dict | None:
@@ -152,53 +160,13 @@ class YoufoneDataUpdateCoordinator(DataUpdateCoordinator):
             except YoufoneServiceException as exception:
                 _LOGGER.warning(f"YoufoneServiceException {exception}")
             except BadCredentialsException as exception:
-                _LOGGER.warning(f"Login failed: {exception}")
+                raise ConfigEntryAuthFailed(f"Login failed: {exception}") from exception
             except YoufoneException as exception:
                 _LOGGER.warning(f"YoufoneException {exception}")
             except Exception as exception:
                 _LOGGER.warning(f"Exception {exception}")
 
         if len(self.data):
-            return self.data
-            # Map data item as YoufoneItem if it is restored from the data store
-            new_data = {}
-            for key, value in self.data.items():
-                if not isinstance(value, YoufoneItem):
-                    new_data[key] = YoufoneItem(**value)
-                else:
-                    new_data[key] = value
-            self.data = new_data
-
-            current_items = {
-                list(device.identifiers)[0][1]
-                for device in dr.async_entries_for_config_entry(
-                    self._device_registry, self._config_entry_id
-                )
-            }
-            fetched_items = set()
-            for item_value in self.data.values():
-                device_key = item_value.device_key
-                if device_key:
-                    fetched_items.add(device_key)
-
-            if stale_items := current_items - fetched_items:
-                for device_key in stale_items:
-                    if device := self._device_registry.async_get_device(
-                        {(DOMAIN, device_key)}
-                    ):
-                        _LOGGER.debug(
-                            f"[init|YoufoneDataUpdateCoordinator|_async_update_data|async_remove_device] {device_key}",
-                            True,
-                        )
-                        self._device_registry.async_remove_device(device.id)
-            """
-            if fetched_items - current_items:
-                self.hass.async_create_task(
-                    self.hass.config_entries.async_reload(self._config_entry_id)
-                )
-                return None
-            _LOGGER.debug("Returning fetched data")
-            """
             return self.data
         return {}
 

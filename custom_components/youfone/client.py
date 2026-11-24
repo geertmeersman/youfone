@@ -92,14 +92,15 @@ class YoufoneClient:
                 _LOGGER.debug(
                     f"HTTP {method} {endpoint_path} - Status: {response.status_code}"
                 )
-                _LOGGER.debug(f"Request Headers: {headers}")
-                _LOGGER.debug(f"Response Headers: {response.headers}")
-                _LOGGER.debug(f"Response Content: {response.content}")
 
             if response.status_code == expected_status:
                 if "securitykey" in response.headers:
                     self.security_key = response.headers["securitykey"]
                 return response.json() if return_json else response.text()
+            elif path == "authentication/login" and response.status_code in (401, 403):
+                raise BadCredentialsException(
+                    f"Login rejected with status code {response.status_code}"
+                )
             else:
                 raise YoufoneServiceException(
                     f"Request to {endpoint_path} failed with status code {response.status_code}"
@@ -263,6 +264,8 @@ class YoufoneClient:
                                         ),
                                     }
                                 )
+        except BadCredentialsException:
+            raise
         except Exception as e:
             error_message = e.args[0] if e.args else str(e)
             return {"error": error_message}

@@ -243,7 +243,6 @@ async def async_setup_entry(
     coordinator: YoufoneDataUpdateCoordinator = hass.data[DOMAIN][entry.entry_id][
         "coordinator"
     ]
-    # _LOGGER.debug(f"[sensor|async_setup_entry|async_add_entities|SUPPORTED_KEYS] {SUPPORTED_KEYS}")
 
     entities: list[YoufoneSensor] = []
     device_name = ""

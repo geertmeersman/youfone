@@ -73,8 +73,7 @@ class YoufoneEntity(CoordinatorEntity[YoufoneDataUpdateCoordinator]):
             self.async_write_ha_state()
             return
         _LOGGER.debug(
-            f"[YoufoneEntity|_handle_coordinator_update] {self._attr_unique_id}: async_write_ha_state ignored since API fetch failed or not found",
-            True,
+            f"[YoufoneEntity|_handle_coordinator_update] {self._attr_unique_id}: async_write_ha_state ignored since API fetch failed or not found"
         )
 
     @property
